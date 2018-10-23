@@ -1,0 +1,76 @@
+Usuario con acceso y registrado en el sistema desde un Computador (desde equipos moviles esos pasos pueden variar dada la interfaz)
+
+Primer Paso: Ingresar a http://mercadoasiva.communitylab4u.cl/
+
+Segundo Paso: Arriba a la derecha dar click en "ENTRAR"
+
+Tercer Paso: Ingresar credenciales de usuario en "Rut Empresa..." y contraseña en "Contraseña"
+
+	**Credenciales de prueba usuario: Usuario = 71540100
+					  Contraseña = 	2aXTpB
+
+Cuarto Paso: Dar click en "ACCEDER A LA PLATAFORMA"
+
+Quinto Paso: A la izquerda se ve menu desplegable, dentro de el las siguientes funciones
+	Panel De Control
+	Buscador
+	Buzon
+	Mis Productos	
+	Mi informacion
+	Desconectarse
+
+En panel de control:
+	Se pueden observar estadisticas de la plataforma de forma general como en relacion al usuario
+
+En buscador:
+	Arriba se ve barra de buscador (productos y servicios)
+	Al comenzar a escribir sistema desplegara un listado de los indices de la base de datos, se puede continuar escribiendo hasta completar uno o dar click para autocompletar
+	Dar click en lupa a la derecha de barra de busqueda para ejecutarla
+
+Si no hay resultados:
+	Se mostrara la vista vacia bajo la barra del buscador
+Si hay resultados:
+	Se mostraran cuadros con la imagen de las empresas junto a datos basicos
+	Al dar click en una de las imagenes de alguna empresa se abrira una ventana emergente con los datos de esta
+	Dentro de esta ventana se encuentra
+		Descripcion 
+		Ubicacion
+		Productos
+		INFO
+	Al dar click en cada opcion se vera la informacion pertinente si la empresa tiene algun registro de ello
+
+	Al pasar el mouse por encima de una imagen de alguna empresa, esta se elevara revelando un boton bajo ella, este contendra el mensaje "envia un mensaje a esta empresa"
+		Al dar click en "envia un mensaje a esta empresa" se abrira una nueva ventana emergente
+		Dentro del cuadro de texto "Escribe tu consulta aqui..." se puede ingresar una consulta para dicha emperesa seleccionada, esta sera notificada de quien recibio esta consulta y podra responderla con posterioridad
+		Para enviar la consulta basta con dar click en "Enviar", se mostrara un mensaje de envio correcto con posterioridad 
+		Para cancelar la consulta basta con presionar "Cancelar", se mostrara un mensaje evidenciando la cancelacion, alternativamente tambien se puede dar click fuera de la ventana de la consulta para cancelar esta
+
+En el buzon:
+	Hay 2 tablas, "Consultas recibidas" y "Consultas respondidas"
+	
+	En "Consultas recibidas" se mostraran consultas de otras empresas hacia el usuario junto a su fecha y opcion de responder
+	Al dar click en responder se abrira una ventana emergente similar a la del buscador para enviar mensajes
+
+	En "consultas respondidas" se mostrara un registro tanto de consultas recibidas que ya fueron respondidas como de consultas hechas y su correspondiente respuesta de tenerla
+
+En mis productos:
+	Aqui se agregaran los productos de cada empresa EN DESARROLLO POR INTEGRACION DE API MERCADOPUBLICO...
+
+En mi informacion:
+	Se mostraran 2 categorias, "Editar Perfil" y "Giros"
+	
+	En "Editar Perfil" se mostraran todos los datos llenados por el usuario sobre su empresa, estos se pueden editar en los campos correspondientes y actualizar una vez todos los campos esten completos en la parte inferior del mismo formulario con "Actualizar Perfil"
+	En "Giros" se mostraran los giros ingresados de la empresa junto al boton "Editar"
+	Al dar click en "Editar" se abrira una ventana emergente con 2 pestañas "Agregar Giros" y "Eliminar Giros" 
+	Desde "Agregar giros" se pueden agregar nuevos giros a la empresa desde la pestaña desde todos los giros dispuestos por el SII seleccionando la opcion "Agregar" a la derecha del giro correspondiente, adicionalmente estos se pueden filtrar desde la esquina superior derecha de la tabla
+	Desde "Eliminar Giros" se podran eliminar los giros ya activos en cada empresa (DESHABILITADO TEMPORALMENTE)
+
+En Desconectarse se cerrara la sesion y el usuario sera llevado de vuelta a la pantalla inicial
+
+	
+	  
+	
+	
+	
+	
+	

@@ -1,0 +1,333 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>md-angular-cli-pro documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">md-angular-cli-pro documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Interfaces</li>
+  <li>DataTable</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/tables/datatable.net/datatable.component.ts</code>
+        </p>
+
+
+
+        <section>
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#dataRows">dataRows</a>
+                                </li>
+                                <li>
+                                        <a href="#footerRow">footerRow</a>
+                                </li>
+                                <li>
+                                        <a href="#headerRow">headerRow</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="dataRows"></a>
+                                        <span class="name"><b>dataRows</b><a href="#dataRows"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>dataRows:     <code>string[][]</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>string[][]</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="footerRow"></a>
+                                        <span class="name"><b>footerRow</b><a href="#footerRow"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>footerRow:     <code>string[]</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>string[]</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="headerRow"></a>
+                                        <span class="name"><b>headerRow</b><a href="#headerRow"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>headerRow:     <code>string[]</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>string[]</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, AfterViewInit } from &#x27;@angular/core&#x27;;
+import { ServicesService } from &#x27;../../services.service&#x27;;
+import { Observable } from &#x27;rxjs/Observable&#x27;;
+
+
+declare interface DataTable {
+  headerRow: string[];
+  footerRow: string[];
+  dataRows: string[][];
+}
+
+declare const $: any;
+
+@Component({
+    selector: &#x27;app-data-table-cmp&#x27;,
+    templateUrl: &#x27;datatable.component.html&#x27;
+})
+
+export class DataTableComponent implements OnInit, AfterViewInit {
+    public dataTable: DataTable;
+    public dataEmpresa: Observable&lt;any&gt;;
+    public oTable:any;
+
+    constructor( private service: ServicesService) {
+      setTimeout(function(){
+        //
+        $(document).ready(function() {
+          var users &#x3D; $(&#x27;#datatables&#x27;).DataTable({
+            &quot;dom&quot;: &quot;t&quot;,
+            &quot;columnDefs&quot;: [
+              {
+                  &quot;targets&quot;: [ 1 ],
+                  &quot;visible&quot;: false,
+                  &quot;searchable&quot;: true
+              }
+          ]
+          });
+        
+          $(&#x27;#myInputTextField&#x27;).keyup(function() {
+            users.search($(this).val()).draw();
+          })
+        });
+      },500);
+     
+  }
+
+    ngOnInit() {
+      this.service.getAllEmpresasConData().subscribe(val&#x3D;&gt;{
+        this.dataEmpresa&#x3D; val;
+        console.log(val);
+      },
+    error&#x3D;&gt;{
+      console.log(error);
+    });
+        this.dataTable &#x3D; {
+            headerRow: [ &#x27;Nombre Empresa&#x27;, &#x27;Descripccion&#x27;],
+            footerRow: [ &#x27;Nombre Empresa&#x27;, &#x27;Descripccion&#x27; ],
+
+            dataRows: [
+                [&#x27;Empresa A&#x27;, &#x27;Direccion 1&#x27;, &#x27;Giro Empresa 1&#x27;, &#x27;Item 1&#x27;],
+                [&#x27;Empresa B&#x27;, &#x27;Direccion 2&#x27;, &#x27;Giro Empresa 2&#x27;, &#x27;Item 2&#x27;],
+                [&#x27;Empresa C&#x27;, &#x27;Direccion 3&#x27;, &#x27;Giro Empresa 3&#x27;, &#x27;Item 3&#x27;],
+                [&#x27;Empresa D&#x27;, &#x27;Direccion 4&#x27;, &#x27;Giro Empresa 4&#x27;, &#x27;Item 4&#x27;],
+                [&#x27;Empresa E&#x27;, &#x27;Direccion 5&#x27;, &#x27;Giro Empresa 5&#x27;, &#x27;Item 5&#x27;],
+                [&#x27;Empresa F&#x27;, &#x27;Direccion 6&#x27;, &#x27;Giro Empresa 6&#x27;, &#x27;Item 6&#x27;],
+                [&#x27;Empresa G&#x27;, &#x27;Direccion 7&#x27;, &#x27;Giro Empresa 7&#x27;, &#x27;Item 7&#x27;],
+                [&#x27;Empresa H&#x27;, &#x27;Direccion 8&#x27;, &#x27;Giro Empresa 8&#x27;, &#x27;Item 8&#x27;],
+                [&#x27;Empresa I&#x27;, &#x27;Direccion 9&#x27;, &#x27;Giro Empresa 9&#x27;, &#x27;Item 9&#x27;],
+                [&#x27;Empresa J&#x27;, &#x27;Direccion 10&#x27;, &#x27;Giro Empresa 10&#x27;, &#x27;Item 10&#x27;],
+                [&#x27;Empresa K&#x27;, &#x27;Direccion 11&#x27;, &#x27;Giro Empresa 11&#x27;, &#x27;Item 11&#x27;],
+                [&#x27;Empresa L&#x27;, &#x27;Direccion 12&#x27;, &#x27;Giro Empresa 12&#x27;, &#x27;Item 12&#x27;],
+            ]
+         };
+
+    }
+
+    ngAfterViewInit() {     
+     
+
+      $(&#x27;.card .material-datatables label&#x27;).addClass(&#x27;form-group&#x27;);
+    }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'DataTable.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <script src="../js/menu-wc.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,247 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-icon card-header-rose">
+            <div class="card-icon">
+              <i class="material-icons">perm_identity</i>
+            </div>
+            <h4 class="card-title">Editar Perfil -
+              <small class="category">Completa tu perfil</small>
+            </h4>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="userForm" novalidate (ngSubmit)="save(userForm.value, userForm.valid)">
+              <div class="row">
+                <div class="col-md-12">
+                  <label class="bmd-label-floating">Nombre de Empresa</label>
+                  <input type="text" class="form-control" formControlName="nombre_empresa">
+                  <small [hidden]="userForm.controls.nombre_empresa.valid || (userForm.controls.nombre_empresa.pristine && !submitted)">
+                    El nombre de la empresa es requerido.
+                  </small>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Razon Social</label>
+                    <input type="text" class="form-control " formControlName="razon_social_empresa">
+                    <small [hidden]="userForm.controls.razon_social_empresa.valid || (userForm.controls.razon_social_empresa.pristine && !submitted)">
+                      La razon social de la empresa es requerida.
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Tamaño Empresa</label>
+                    <input type="text" class="form-control" formControlName="tamano_empresa">
+                    <small [hidden]="userForm.controls.tamano_empresa.valid || (userForm.controls.tamano_empresa.pristine && !submitted)">
+                      El tamaño de la empresa es empresa es requerido.
+                    </small>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Ciudad Empresa</label>
+                    <input type="text" class="form-control" formControlName="ciudad_empresa">
+                    <small [hidden]="userForm.controls.ciudad_empresa.valid || (userForm.controls.ciudad_empresa.pristine && !submitted)">
+                      La ciudad es requerida.
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Encargado de contacto</label>
+                    <input type="text" class="form-control" formControlName="encargado_contacto_empresa">
+                    <small [hidden]="userForm.controls.encargado_contacto_empresa.valid || (userForm.controls.encargado_contacto_empresa.pristine && !submitted)">
+                      El encargado de contacto es requerido.
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">E-Mail Contacto</label>
+                    <input type="text" class="form-control" formControlName="mail_empresa">
+                    <small [hidden]="userForm.controls.mail_empresa.valid || (userForm.controls.mail_empresa.pristine && !submitted)">
+                      El E-Mail de contacto es requerido.
+                    </small>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Fono Contacto</label>
+                    <input type="text" class="form-control" formControlName="fono_empresa">
+                    <small [hidden]="userForm.controls.fono_empresa.valid || (userForm.controls.fono_empresa.pristine && !submitted)">
+                      El Fono de contacto es requerido.
+                    </small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Calle Empresa</label>
+                    <input type="text" class="form-control" formControlName="calle_empresa">
+                    <small [hidden]="userForm.controls.calle_empresa.valid || (userForm.controls.calle_empresa.pristine && !submitted)">
+                      La calle de la empresa es requerida.
+                    </small>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Numero Calle Empresa</label>
+                    <input type="text" class="form-control" formControlName="numero_calle_empresa">
+                    <small [hidden]="userForm.controls.numero_calle_empresa.valid || (userForm.controls.numero_calle_empresa.pristine && !submitted)">
+                      El numero de la calle de la empresa es requerido.
+                    </small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Sobre mi empresa</label>
+                    <div class="form-group">
+                      <label class="bmd-label-floating"> Escribe un pequeño resumen sobre tu empresa.</label>
+                      <textarea class="form-control" rows="5" formControlName="descripcion_empresa"></textarea>
+
+                      <small [hidden]="userForm.controls.descripcion_empresa.valid || (userForm.controls.descripcion_empresa.pristine && !submitted)">
+                        La descripcion de la empresa es requerida.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button mat-raised-button type="submit" [disabled]="!userForm.valid" class="btn btn-rose pull-right">Actualizar Perfil</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-profile">
+
+          <div class="card-body">
+            <h6 class="card-category text-gray">Giros</h6>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>
+                      Nombre Giro
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let d of DataGiros">
+                    <td>{{d.nombre_giro}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="card-description">Aqui puedes editar los giros de tu empresa</p>
+            <button mat-raised-button type="submit" class="btn btn-rose" data-toggle="modal" data-target="#giroModal">Editar</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- notice modal -->
+<div class="modal fade" id="giroModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notice">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">Cambia los giros de tu empresa</h5>
+
+
+      </div>
+      <div class="modal-body">
+
+        <div class="card ">
+          <div class="card-body ">
+            <ul class="nav nav-pills nav-pills-warning" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#link1" role="tablist">
+                  Agregar Giros
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#link2" role="tablist">
+                  Eliminar Giros
+                </a>
+              </li>
+
+            </ul>
+            <div class="tab-content tab-space">
+              <div class="tab-pane active" id="link1">
+
+                <div class="toolbar">
+                  <!--        Here you can write extra buttons/actions for the toolbar              -->
+                </div>
+                <div class="material-datatables">
+                  <table id="giroDatatable1" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                    <thead>
+                      <tr>
+                        <th>Nombre Giro</th>
+                        <th>Agregar</th>
+                      </tr>
+                    </thead>
+                    <tfoot>
+                      <tr>
+                        <th>Nombre Giro</th>
+                        <th>Agregar</th>
+                      </tr>
+                    </tfoot>
+                    <tbody>
+                      <tr *ngFor="let e of AllGiros">
+                        <td>{{e.nombre_giro}}</td>
+                        <td>
+                          <button mat-raised-button type="submit" class="btn btn-rose">Agregar </button>
+
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="tab-pane" id="link2">
+                Solicita permiso para cambiar tu información.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button mat-raised-button type="button" class="btn btn-info btn-round" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end notice modal -->

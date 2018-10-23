@@ -1,0 +1,240 @@
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="row">
+
+    </div>
+
+
+    <!--BUSCADOR-->
+    <div class="row">
+      <div class="card col-md-6 ml-auto mr-auto text-left">
+
+        <form>
+          <mat-form-field>
+            <input matInput placeholder="Productos y Servicios" [matAutocomplete]="auto" name="joke" #joke="ngModel"
+              [(ngModel)]="currentItem" (ngModelChange)="doFilter()">
+            <button mat-raised-button type="submit" matSuffix (click)="search(currentItem)" class="btn btn-white btn-round btn-just-icon center">
+              <i class="material-icons">search</i>
+            </button>
+          </mat-form-field>
+
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let item of items | async" [value]="item.nombre_producto">
+              {{item.nombre_producto}}
+            </mat-option>
+          </mat-autocomplete>
+
+        </form>
+
+
+
+      </div>
+    </div>
+    <!--FIN BUSCADOR-->
+    <div class="row card-group">
+      <div class="col-md-4" *ngFor="let e of dataEmpresa ">
+
+        <div class="card card-product">
+          <div class="card-header card-header-image" data-header-animation="true" (click)="setEmpresaModal(e)"
+            data-toggle="modal" data-target="#myModal">
+            <a>
+              <img class="img" src="{{e.imagen_empresa}}">
+            </a>
+          </div>
+          <div class="card-body">
+            <div class="card-actions text-center">
+              <button mat-raised-button type="button" class="btn btn-danger btn-link fix-broken-card">
+                <i class="material-icons">build</i> Fix Header!
+              </button>
+              <button mat-raised-button type="button" class="btn btn-default btn-link" (click)="showSwal(e)" matTooltip="Envia un mensaje a esta Empresa"
+                [matTooltipPosition]="'below'">
+                <i class="material-icons">art_track</i>
+              </button>
+            </div>
+            <h4 class="card-title">
+              <a href="">{{e.nombre_empresa}}</a>
+            </h4>
+            <div class="card-description">
+              {{e.razon_social_empresa}}
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="Giro">
+              <h4></h4>
+            </div>
+            <div class="stats">
+              <p class="card-category">
+                <i class="material-icons">list_alt</i> {{e.nombre_area_giro}}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+<!-- Empresa Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <div class="page-categories">
+          <h3 class="title text-center">{{EmpresaModal.nombre_empresa}}</h3>
+          <br />
+          <ul class="nav nav-pills nav-pills-warning nav-pills-icons justify-content-center" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#link7" role="tablist">
+                <i class="material-icons">info</i> Descripcion
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#link8" role="tablist">
+                <i class="material-icons">location_on</i> Ubicacion
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#link9" role="tablist">
+                <i class="material-icons">shopping_cart</i> Productos
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#link10" role="tablist">
+                <i class="material-icons">help_outline</i> Info
+              </a>
+            </li>
+          </ul>
+          <div class="tab-content tab-space tab-subcategories">
+            <div class="tab-pane" id="link7">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Descripcion de la Empresa</h4>
+                  <p class="card-category">
+
+                  </p>
+                </div>
+                <div class="card-body">
+                  {{EmpresaModal.descripcion_empresa}}
+
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>
+                            <h4 class="card-title">Giros</h4>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let d of EmpresaModal.giros_empresa">
+                          <td>{{d.nombre_giro}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane active" id="link8">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Ubicación</h4>
+                  <p class="card-category">
+
+                  </p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class="text-primary">
+                        <tr>
+                          <th>
+                            Calle
+                          </th>
+                          <th>
+                            Numero
+                          </th>
+                          <th>
+                            Ciudad
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>{{EmpresaModal.calle_empresa}}</td>
+                          <td>{{EmpresaModal.numero_calle_empresa}}</td>
+                          <td>{{EmpresaModal.ciudad_empresa}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="link9">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Otros productos y servicios que ofrece esta empresa.</h4>
+                  <p class="card-category">
+
+                  </p>
+                </div>
+                <div class="card-body">
+
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class="text-primary">
+                        <tr>
+                          <th>
+                            <h4 class="card-title">Productos y Servicios registrados</h4>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let d of EmpresaModal.productos_empresa">
+                          <td>{{d.nombre_producto}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="link10">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Ayuda</h4>
+                  <p class="card-category">
+                    Información adicional
+                  </p>
+                </div>
+                <div class="card-body">
+                  <br> Encargado de contacto:
+                  <br> {{EmpresaModal.encargado_contacto_empresa}}
+                  <br> Fono:
+                  <br> {{EmpresaModal.fono_empresa}}
+                  <br> E-Mail:
+                  <br> {{EmpresaModal.mail_empresa}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button mat-raised-button type="button" class="btn btn-danger btn-link" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  End Modal -->

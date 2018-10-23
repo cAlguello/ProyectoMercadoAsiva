@@ -1,0 +1,131 @@
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="row">
+
+      <div class="col-md-12">
+        <div class="card card-chart">
+          <div class="card">
+
+          </div>
+          <div class="card-body" align="center">
+            <!--
+            <img class="img" src="http://villalejana.com/wp-content/uploads/2017/08/mapa.png">
+            <h4 class="card-title">Ubicación de Interesados</h4>
+            <p class="card-category"></p>
+-->
+          </div>
+
+        </div>
+      </div>
+
+
+
+      <div class="col-md-6">
+        <div class="card card-chart">
+          <div class="card-header card-header-rose" data-header-animation="true">
+            <div class="ct-chart" id="websiteViewsChart"></div>
+          </div>
+          <div class="card-body">
+            <div class="card-actions">
+              <button mat-raised-button type="button" class="btn btn-danger btn-link fix-broken-card">
+                <i class="material-icons">build</i> Fix Header!
+              </button>
+              <button mat-raised-button type="button" class="btn btn-info btn-link" matTooltip="Refresh"
+                [matTooltipPosition]="'below'">
+                <i class="material-icons">refresh</i>
+              </button>
+              <button mat-raised-button type="button" class="btn btn-default btn-link" matTooltip="Change Date"
+                [matTooltipPosition]="'below'">
+                <i class="material-icons">edit</i>
+              </button>
+            </div>
+            <h4 class="card-title">Productos mas Consultados</h4>
+            <p class="card-category">
+              <span class="text-success">
+                Registro de productos mas consultados dentro de la plataforma, revisa si ofreces alguno!
+              </span>
+            </p>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">access_time</i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card card-chart">
+          <div class="card-header card-header-success" data-header-animation="true">
+            <div class="ct-chart" id="dailySalesChart"></div>
+          </div>
+          <div class="card-body">
+            <div class="card-actions">
+              <button mat-raised-button type="button" class="btn btn-danger btn-link fix-broken-card">
+                <i class="material-icons">build</i> Fix Header!
+              </button>
+              <button mat-raised-button type="button" class="btn btn-info btn-link" matTooltip="Refresh"
+                [matTooltipPosition]="'below'">
+                <i class="material-icons">refresh</i>
+              </button>
+              <button mat-raised-button type="button" class="btn btn-default btn-link" matTooltip="Change Date"
+                [matTooltipPosition]="'below'">
+                <i class="material-icons">edit</i>
+              </button>
+            </div>
+            <h4 class="card-title">Cantidad de consultas</h4>
+            <p class="card-category">
+              <span class="text-success">
+                Registro de usuarios que han consultado el detalle de tu información
+              </span>
+            </p>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">access_time</i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-rose card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">equalizer</i>
+            </div>
+            <p class="card-category">Visitas a mi Perfil</p>
+            <h3 class="card-title" *ngFor="let e of dataLogEmpresa ">{{e.total}}</h3>
+
+
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">local_offer</i> Completa tu información para llamar mas la atención!
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-success card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">store</i>
+            </div>
+            <p class="card-category">Tiempo promedio de respuesta</p>
+            <h3 class="card-title">1,5h</h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">date_range</i> Siempre intenta responder rápidamente a tus solicitudes
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

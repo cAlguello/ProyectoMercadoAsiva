@@ -1,0 +1,12 @@
+.cards body tr {
+    float: left;
+}
+.cards tbody td {
+    display: block;
+}
+
+.img{
+    width: 100% !important;
+    height: 15vw !important;
+    object-fit: cover !important;
+}

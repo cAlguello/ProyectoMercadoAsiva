@@ -1,0 +1,6 @@
+INSTALL NOTES
+
+Referencia: https://docs.docker.com/get-started/part6/
+
+Se necesita tener instalado docker community edition con anterioridad
+

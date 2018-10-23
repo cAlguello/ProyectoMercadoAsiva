@@ -1,0 +1,558 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>md-angular-cli-pro documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">md-angular-cli-pro documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>RegularFormsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/forms/regularforms/regularforms.component.ts</code>
+</p>
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-regularforms-cmp</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>regularforms.component.html</code></td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+
+declare var $: any;
+
+@Component({
+    selector: &#x27;app-regularforms-cmp&#x27;,
+    templateUrl: &#x27;regularforms.component.html&#x27;
+})
+
+export class RegularFormsComponent {}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;main-content&quot;&gt;
+  &lt;div class&#x3D;&quot;container-fluid&quot;&gt;
+    &lt;div class&#x3D;&quot;row&quot;&gt;
+      &lt;div class&#x3D;&quot;col-md-6&quot;&gt;
+        &lt;div class&#x3D;&quot;card &quot;&gt;
+          &lt;div class&#x3D;&quot;card-header card-header-rose card-header-icon&quot;&gt;
+            &lt;div class&#x3D;&quot;card-icon&quot;&gt;
+              &lt;i class&#x3D;&quot;material-icons&quot;&gt;mail_outline&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;h4 class&#x3D;&quot;card-title&quot;&gt;Stacked Form&lt;/h4&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;card-body &quot;&gt;
+            &lt;form method&#x3D;&quot;#&quot; action&#x3D;&quot;#&quot;&gt;
+              &lt;mat-form-field class&#x3D;&quot;example-full-width&quot;&gt;
+                &lt;input matInput placeholder&#x3D;&quot;Email Address&quot; type&#x3D;&quot;email&quot;&gt;
+              &lt;/mat-form-field&gt;
+              &lt;mat-form-field class&#x3D;&quot;example-full-width&quot;&gt;
+                &lt;input matInput placeholder&#x3D;&quot;Password&quot; type&#x3D;&quot;password&quot;&gt;
+              &lt;/mat-form-field&gt;
+              &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                &lt;label class&#x3D;&quot;form-check-label&quot;&gt;
+                  &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; value&#x3D;&quot;&quot;&gt; Subscribe to newsletter
+                  &lt;span class&#x3D;&quot;form-check-sign&quot;&gt;
+                    &lt;span class&#x3D;&quot;check&quot;&gt;&lt;/span&gt;
+                  &lt;/span&gt;
+                &lt;/label&gt;
+              &lt;/div&gt;
+            &lt;/form&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;card-footer &quot;&gt;
+            &lt;button mat-raised-button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-fill btn-rose&quot;&gt;Submit&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-md-6&quot;&gt;
+        &lt;div class&#x3D;&quot;card &quot;&gt;
+          &lt;div class&#x3D;&quot;card-header card-header-rose card-header-icon&quot;&gt;
+            &lt;div class&#x3D;&quot;card-icon&quot;&gt;
+              &lt;i class&#x3D;&quot;material-icons&quot;&gt;contacts&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;h4 class&#x3D;&quot;card-title&quot;&gt;Horizontal Form&lt;/h4&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;card-body &quot;&gt;
+            &lt;form class&#x3D;&quot;form-horizontal&quot;&gt;
+              &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;label class&#x3D;&quot;col-md-3 col-2 col-form-label&quot;&gt;Email&lt;/label&gt;
+                &lt;div class&#x3D;&quot;col-md-9 col-9&quot;&gt;
+                  &lt;mat-form-field class&#x3D;&quot;example-full-width&quot;&gt;
+                    &lt;input matInput type&#x3D;&quot;email&quot;&gt;
+                  &lt;/mat-form-field&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;label class&#x3D;&quot;col-md-3 col-2 col-form-label&quot;&gt;Password&lt;/label&gt;
+                &lt;div class&#x3D;&quot;col-md-9 col-9&quot;&gt;
+                  &lt;mat-form-field class&#x3D;&quot;example-full-width&quot;&gt;
+                    &lt;input matInput type&#x3D;&quot;password&quot;&gt;
+                  &lt;/mat-form-field&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;label class&#x3D;&quot;col-md-3&quot;&gt;&lt;/label&gt;
+                &lt;div class&#x3D;&quot;col-md-9&quot;&gt;
+                  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-check-label&quot;&gt;
+                      &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; value&#x3D;&quot;&quot;&gt; Remember me
+                      &lt;span class&#x3D;&quot;form-check-sign&quot;&gt;
+                        &lt;span class&#x3D;&quot;check&quot;&gt;&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/form&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;card-footer &quot;&gt;
+            &lt;div class&#x3D;&quot;row&quot;&gt;
+              &lt;div class&#x3D;&quot;col-md-9&quot;&gt;
+                &lt;button mat-raised-button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-fill btn-rose&quot;&gt;Sign in&lt;/button&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-md-12&quot;&gt;
+        &lt;div class&#x3D;&quot;card &quot;&gt;
+          &lt;div class&#x3D;&quot;card-header card-header-rose card-header-text&quot;&gt;
+            &lt;div class&#x3D;&quot;card-text&quot;&gt;
+              &lt;h4 class&#x3D;&quot;card-title&quot;&gt;Form Elements&lt;/h4&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;card-body &quot;&gt;
+            &lt;form method&#x3D;&quot;get&quot; action&#x3D;&quot;/&quot; class&#x3D;&quot;form-horizontal&quot;&gt;
+              &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;label class&#x3D;&quot;col-sm-2 col-form-label&quot;&gt;With help&lt;/label&gt;
+                &lt;div class&#x3D;&quot;col-sm-10&quot;&gt;
+                  &lt;mat-form-field class&#x3D;&quot;example-full-width&quot;&gt;
+                    &lt;input matInput type&#x3D;&quot;text&quot;&gt;
+                  &lt;/mat-form-field&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;label class&#x3D;&quot;col-sm-2 col-form-label&quot;&gt;Password&lt;/label&gt;
+                &lt;div class&#x3D;&quot;col-sm-10&quot;&gt;
+                  &lt;mat-form-field class&#x3D;&quot;example-full-width&quot;&gt;
+                    &lt;input matInput type&#x3D;&quot;password&quot;&gt;
+                  &lt;/mat-form-field&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;label class&#x3D;&quot;col-sm-2 col-form-label&quot;&gt;Placeholder&lt;/label&gt;
+                &lt;div class&#x3D;&quot;col-sm-10&quot;&gt;
+                  &lt;mat-form-field class&#x3D;&quot;example-full-width&quot;&gt;
+                    &lt;input matInput type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;placeholder&quot;&gt;
+                  &lt;/mat-form-field&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;label class&#x3D;&quot;col-sm-2 col-form-label&quot;&gt;Disabled&lt;/label&gt;
+                &lt;div class&#x3D;&quot;col-sm-10&quot;&gt;
+                  &lt;mat-form-field class&#x3D;&quot;example-full-width&quot;&gt;
+                    &lt;input matInput type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;placeholder&quot; value&#x3D;&quot;Disabled input here..&quot; disabled&gt;
+                  &lt;/mat-form-field&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;label class&#x3D;&quot;col-sm-2 col-form-label&quot;&gt;Static control&lt;/label&gt;
+                &lt;div class&#x3D;&quot;col-sm-10&quot;&gt;
+                  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                    &lt;p class&#x3D;&quot;form-control-static&quot;&gt;hello@creative-tim.com&lt;/p&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;label class&#x3D;&quot;col-sm-2 col-form-label&quot;&gt;Checkboxes and radios&lt;/label&gt;
+                &lt;div class&#x3D;&quot;col-sm-10 checkbox-radios&quot;&gt;
+                  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-check-label&quot;&gt;
+                      &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; value&#x3D;&quot;&quot;&gt; First Checkbox
+                      &lt;span class&#x3D;&quot;form-check-sign&quot;&gt;
+                        &lt;span class&#x3D;&quot;check&quot;&gt;&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-check-label&quot;&gt;
+                      &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; value&#x3D;&quot;&quot;&gt; Second Checkbox
+                      &lt;span class&#x3D;&quot;form-check-sign&quot;&gt;
+                        &lt;span class&#x3D;&quot;check&quot;&gt;&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-check-label&quot;&gt;
+                      &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;radio&quot; name&#x3D;&quot;exampleRadios&quot; value&#x3D;&quot;option2&quot; checked&gt; First Radio
+                      &lt;span class&#x3D;&quot;circle&quot;&gt;
+                        &lt;span class&#x3D;&quot;check&quot;&gt;&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-check-label&quot;&gt;
+                      &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;radio&quot; name&#x3D;&quot;exampleRadios&quot; value&#x3D;&quot;option1&quot;&gt; Second Radio
+                      &lt;span class&#x3D;&quot;circle&quot;&gt;
+                        &lt;span class&#x3D;&quot;check&quot;&gt;&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;label class&#x3D;&quot;col-sm-2 col-form-label&quot;&gt;Inline checkboxes&lt;/label&gt;
+                &lt;div class&#x3D;&quot;col-sm-10&quot;&gt;
+                  &lt;div class&#x3D;&quot;form-check form-check-inline&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-check-label&quot;&gt;
+                      &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; value&#x3D;&quot;&quot;&gt; a
+                      &lt;span class&#x3D;&quot;form-check-sign&quot;&gt;
+                        &lt;span class&#x3D;&quot;check&quot;&gt;&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;form-check form-check-inline&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-check-label&quot;&gt;
+                      &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; value&#x3D;&quot;&quot;&gt; b
+                      &lt;span class&#x3D;&quot;form-check-sign&quot;&gt;
+                        &lt;span class&#x3D;&quot;check&quot;&gt;&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;form-check form-check-inline&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-check-label&quot;&gt;
+                      &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; value&#x3D;&quot;&quot;&gt; c
+                      &lt;span class&#x3D;&quot;form-check-sign&quot;&gt;
+                        &lt;span class&#x3D;&quot;check&quot;&gt;&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/form&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-md-12&quot;&gt;
+        &lt;div class&#x3D;&quot;card &quot;&gt;
+          &lt;div class&#x3D;&quot;card-header card-header-rose card-header-text&quot;&gt;
+            &lt;div class&#x3D;&quot;card-text&quot;&gt;
+              &lt;h4 class&#x3D;&quot;card-title&quot;&gt;Input Variants&lt;/h4&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;card-body &quot;&gt;
+            &lt;form method&#x3D;&quot;get&quot; action&#x3D;&quot;/&quot; class&#x3D;&quot;form-horizontal&quot;&gt;
+              &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;label class&#x3D;&quot;col-sm-2 col-form-label&quot;&gt;Custom Checkboxes &amp;amp; radios&lt;/label&gt;
+                &lt;div class&#x3D;&quot;col-sm-4 col-sm-offset-1 checkbox-radios&quot;&gt;
+                  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-check-label&quot;&gt;
+                      &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; value&#x3D;&quot;&quot; checked&gt; Checked
+                      &lt;span class&#x3D;&quot;form-check-sign&quot;&gt;
+                        &lt;span class&#x3D;&quot;check&quot;&gt;&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-check-label&quot;&gt;
+                      &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; value&#x3D;&quot;&quot;&gt; Unchecked
+                      &lt;span class&#x3D;&quot;form-check-sign&quot;&gt;
+                        &lt;span class&#x3D;&quot;check&quot;&gt;&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;form-check disabled&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-check-label&quot;&gt;
+                      &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; value&#x3D;&quot;&quot; disabled checked&gt; Disabled Checked
+                      &lt;span class&#x3D;&quot;form-check-sign&quot;&gt;
+                        &lt;span class&#x3D;&quot;check&quot;&gt;&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;form-check disabled&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-check-label&quot;&gt;
+                      &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; value&#x3D;&quot;&quot; disabled&gt; Disabled Unchecked
+                      &lt;span class&#x3D;&quot;form-check-sign&quot;&gt;
+                        &lt;span class&#x3D;&quot;check&quot;&gt;&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-sm-5 checkbox-radios&quot;&gt;
+                  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-check-label&quot;&gt;
+                      &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;radio&quot; name&#x3D;&quot;exampleRadios&quot; value&#x3D;&quot;option1&quot; checked&gt; Radio is on
+                      &lt;span class&#x3D;&quot;circle&quot;&gt;
+                        &lt;span class&#x3D;&quot;check&quot;&gt;&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-check-label&quot;&gt;
+                      &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;radio&quot; name&#x3D;&quot;exampleRadios&quot; value&#x3D;&quot;option2&quot;&gt; Radio is off
+                      &lt;span class&#x3D;&quot;circle&quot;&gt;
+                        &lt;span class&#x3D;&quot;check&quot;&gt;&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;form-check disabled&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-check-label&quot;&gt;
+                      &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;radio&quot; name&#x3D;&quot;exampleRadios2&quot; value&#x3D;&quot;option1&quot; checked disabled&gt; Disabled Radio is on
+                      &lt;span class&#x3D;&quot;circle&quot;&gt;
+                        &lt;span class&#x3D;&quot;check&quot;&gt;&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;form-check disabled&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-check-label&quot;&gt;
+                      &lt;input class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;radio&quot; name&#x3D;&quot;exampleRadios2&quot; value&#x3D;&quot;option2&quot; disabled&gt; Disabled Radio is off
+                      &lt;span class&#x3D;&quot;circle&quot;&gt;
+                        &lt;span class&#x3D;&quot;check&quot;&gt;&lt;/span&gt;
+                      &lt;/span&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;label class&#x3D;&quot;col-sm-2 col-form-label&quot;&gt;Input with success&lt;/label&gt;
+                &lt;div class&#x3D;&quot;col-sm-10&quot;&gt;
+                  &lt;mat-form-field class&#x3D;&quot;example-full-width has-success&quot;&gt;
+                    &lt;input matInput type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;Success input&quot;&gt;
+                    &lt;span class&#x3D;&quot;form-control-feedback&quot;&gt;
+                      &lt;i class&#x3D;&quot;material-icons&quot;&gt;done&lt;/i&gt;
+                    &lt;/span&gt;
+                  &lt;/mat-form-field&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;label class&#x3D;&quot;col-sm-2 col-form-label&quot;&gt;Input with error&lt;/label&gt;
+                &lt;div class&#x3D;&quot;col-sm-10&quot;&gt;
+                  &lt;mat-form-field class&#x3D;&quot;example-full-width has-danger&quot;&gt;
+                    &lt;input matInput type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;Error input&quot;&gt;
+                    &lt;span class&#x3D;&quot;form-control-feedback&quot;&gt;
+                      &lt;i class&#x3D;&quot;material-icons&quot;&gt;clear&lt;/i&gt;
+                    &lt;/span&gt;
+                  &lt;/mat-form-field&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;label class&#x3D;&quot;col-sm-2 col-form-label&quot;&gt;Column sizing&lt;/label&gt;
+                &lt;div class&#x3D;&quot;col-sm-10&quot;&gt;
+                  &lt;div class&#x3D;&quot;row&quot;&gt;
+                    &lt;div class&#x3D;&quot;col-md-3&quot;&gt;
+                      &lt;mat-form-field class&#x3D;&quot;example-full-width&quot;&gt;
+                        &lt;input matInput type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;.col-md-3&quot;&gt;
+                      &lt;/mat-form-field&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+                      &lt;mat-form-field class&#x3D;&quot;example-full-width&quot;&gt;
+                        &lt;input matInput type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;.col-md-4&quot;&gt;
+                      &lt;/mat-form-field&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;col-md-5&quot;&gt;
+                      &lt;mat-form-field class&#x3D;&quot;example-full-width&quot;&gt;
+                        &lt;input matInput type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;.col-md-5&quot;&gt;
+                      &lt;/mat-form-field&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/form&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="main-content">  <div class="container-fluid">    <div class="row">      <div class="col-md-6">        <div class="card ">          <div class="card-header card-header-rose card-header-icon">            <div class="card-icon">              <i class="material-icons">mail_outline</i>            </div>            <h4 class="card-title">Stacked Form</h4>          </div>          <div class="card-body ">            <form method="#" action="#">              <mat-form-field class="example-full-width">                <input matInput placeholder="Email Address" type="email">              </mat-form-field>              <mat-form-field class="example-full-width">                <input matInput placeholder="Password" type="password">              </mat-form-field>              <div class="form-check">                <label class="form-check-label">                  <input class="form-check-input" type="checkbox" value=""> Subscribe to newsletter                  <span class="form-check-sign">                    <span class="check"></span>                  </span>                </label>              </div>            </form>          </div>          <div class="card-footer ">            <button mat-raised-button type="submit" class="btn btn-fill btn-rose">Submit</button>          </div>        </div>      </div>      <div class="col-md-6">        <div class="card ">          <div class="card-header card-header-rose card-header-icon">            <div class="card-icon">              <i class="material-icons">contacts</i>            </div>            <h4 class="card-title">Horizontal Form</h4>          </div>          <div class="card-body ">            <form class="form-horizontal">              <div class="row">                <label class="col-md-3 col-2 col-form-label">Email</label>                <div class="col-md-9 col-9">                  <mat-form-field class="example-full-width">                    <input matInput type="email">                  </mat-form-field>                </div>              </div>              <div class="row">                <label class="col-md-3 col-2 col-form-label">Password</label>                <div class="col-md-9 col-9">                  <mat-form-field class="example-full-width">                    <input matInput type="password">                  </mat-form-field>                </div>              </div>              <div class="row">                <label class="col-md-3"></label>                <div class="col-md-9">                  <div class="form-check">                    <label class="form-check-label">                      <input class="form-check-input" type="checkbox" value=""> Remember me                      <span class="form-check-sign">                        <span class="check"></span>                      </span>                    </label>                  </div>                </div>              </div>            </form>          </div>          <div class="card-footer ">            <div class="row">              <div class="col-md-9">                <button mat-raised-button type="submit" class="btn btn-fill btn-rose">Sign in</button>              </div>            </div>          </div>        </div>      </div>      <div class="col-md-12">        <div class="card ">          <div class="card-header card-header-rose card-header-text">            <div class="card-text">              <h4 class="card-title">Form Elements</h4>            </div>          </div>          <div class="card-body ">            <form method="get" action="/" class="form-horizontal">              <div class="row">                <label class="col-sm-2 col-form-label">With help</label>                <div class="col-sm-10">                  <mat-form-field class="example-full-width">                    <input matInput type="text">                  </mat-form-field>                </div>              </div>              <div class="row">                <label class="col-sm-2 col-form-label">Password</label>                <div class="col-sm-10">                  <mat-form-field class="example-full-width">                    <input matInput type="password">                  </mat-form-field>                </div>              </div>              <div class="row">                <label class="col-sm-2 col-form-label">Placeholder</label>                <div class="col-sm-10">                  <mat-form-field class="example-full-width">                    <input matInput type="text" placeholder="placeholder">                  </mat-form-field>                </div>              </div>              <div class="row">                <label class="col-sm-2 col-form-label">Disabled</label>                <div class="col-sm-10">                  <mat-form-field class="example-full-width">                    <input matInput type="text" placeholder="placeholder" value="Disabled input here.." disabled>                  </mat-form-field>                </div>              </div>              <div class="row">                <label class="col-sm-2 col-form-label">Static control</label>                <div class="col-sm-10">                  <div class="form-group">                    <p class="form-control-static">hello@creative-tim.com</p>                  </div>                </div>              </div>              <div class="row">                <label class="col-sm-2 col-form-label">Checkboxes and radios</label>                <div class="col-sm-10 checkbox-radios">                  <div class="form-check">                    <label class="form-check-label">                      <input class="form-check-input" type="checkbox" value=""> First Checkbox                      <span class="form-check-sign">                        <span class="check"></span>                      </span>                    </label>                  </div>                  <div class="form-check">                    <label class="form-check-label">                      <input class="form-check-input" type="checkbox" value=""> Second Checkbox                      <span class="form-check-sign">                        <span class="check"></span>                      </span>                    </label>                  </div>                  <div class="form-check">                    <label class="form-check-label">                      <input class="form-check-input" type="radio" name="exampleRadios" value="option2" checked> First Radio                      <span class="circle">                        <span class="check"></span>                      </span>                    </label>                  </div>                  <div class="form-check">                    <label class="form-check-label">                      <input class="form-check-input" type="radio" name="exampleRadios" value="option1"> Second Radio                      <span class="circle">                        <span class="check"></span>                      </span>                    </label>                  </div>                </div>              </div>              <div class="row">                <label class="col-sm-2 col-form-label">Inline checkboxes</label>                <div class="col-sm-10">                  <div class="form-check form-check-inline">                    <label class="form-check-label">                      <input class="form-check-input" type="checkbox" value=""> a                      <span class="form-check-sign">                        <span class="check"></span>                      </span>                    </label>                  </div>                  <div class="form-check form-check-inline">                    <label class="form-check-label">                      <input class="form-check-input" type="checkbox" value=""> b                      <span class="form-check-sign">                        <span class="check"></span>                      </span>                    </label>                  </div>                  <div class="form-check form-check-inline">                    <label class="form-check-label">                      <input class="form-check-input" type="checkbox" value=""> c                      <span class="form-check-sign">                        <span class="check"></span>                      </span>                    </label>                  </div>                </div>              </div>            </form>          </div>        </div>      </div>      <div class="col-md-12">        <div class="card ">          <div class="card-header card-header-rose card-header-text">            <div class="card-text">              <h4 class="card-title">Input Variants</h4>            </div>          </div>          <div class="card-body ">            <form method="get" action="/" class="form-horizontal">              <div class="row">                <label class="col-sm-2 col-form-label">Custom Checkboxes &amp; radios</label>                <div class="col-sm-4 col-sm-offset-1 checkbox-radios">                  <div class="form-check">                    <label class="form-check-label">                      <input class="form-check-input" type="checkbox" value="" checked> Checked                      <span class="form-check-sign">                        <span class="check"></span>                      </span>                    </label>                  </div>                  <div class="form-check">                    <label class="form-check-label">                      <input class="form-check-input" type="checkbox" value=""> Unchecked                      <span class="form-check-sign">                        <span class="check"></span>                      </span>                    </label>                  </div>                  <div class="form-check disabled">                    <label class="form-check-label">                      <input class="form-check-input" type="checkbox" value="" disabled checked> Disabled Checked                      <span class="form-check-sign">                        <span class="check"></span>                      </span>                    </label>                  </div>                  <div class="form-check disabled">                    <label class="form-check-label">                      <input class="form-check-input" type="checkbox" value="" disabled> Disabled Unchecked                      <span class="form-check-sign">                        <span class="check"></span>                      </span>                    </label>                  </div>                </div>                <div class="col-sm-5 checkbox-radios">                  <div class="form-check">                    <label class="form-check-label">                      <input class="form-check-input" type="radio" name="exampleRadios" value="option1" checked> Radio is on                      <span class="circle">                        <span class="check"></span>                      </span>                    </label>                  </div>                  <div class="form-check">                    <label class="form-check-label">                      <input class="form-check-input" type="radio" name="exampleRadios" value="option2"> Radio is off                      <span class="circle">                        <span class="check"></span>                      </span>                    </label>                  </div>                  <div class="form-check disabled">                    <label class="form-check-label">                      <input class="form-check-input" type="radio" name="exampleRadios2" value="option1" checked disabled> Disabled Radio is on                      <span class="circle">                        <span class="check"></span>                      </span>                    </label>                  </div>                  <div class="form-check disabled">                    <label class="form-check-label">                      <input class="form-check-input" type="radio" name="exampleRadios2" value="option2" disabled> Disabled Radio is off                      <span class="circle">                        <span class="check"></span>                      </span>                    </label>                  </div>                </div>              </div>              <div class="row">                <label class="col-sm-2 col-form-label">Input with success</label>                <div class="col-sm-10">                  <mat-form-field class="example-full-width has-success">                    <input matInput type="text" placeholder="Success input">                    <span class="form-control-feedback">                      <i class="material-icons">done</i>                    </span>                  </mat-form-field>                </div>              </div>              <div class="row">                <label class="col-sm-2 col-form-label">Input with error</label>                <div class="col-sm-10">                  <mat-form-field class="example-full-width has-danger">                    <input matInput type="text" placeholder="Error input">                    <span class="form-control-feedback">                      <i class="material-icons">clear</i>                    </span>                  </mat-form-field>                </div>              </div>              <div class="row">                <label class="col-sm-2 col-form-label">Column sizing</label>                <div class="col-sm-10">                  <div class="row">                    <div class="col-md-3">                      <mat-form-field class="example-full-width">                        <input matInput type="text" placeholder=".col-md-3">                      </mat-form-field>                    </div>                    <div class="col-md-4">                      <mat-form-field class="example-full-width">                        <input matInput type="text" placeholder=".col-md-4">                      </mat-form-field>                    </div>                    <div class="col-md-5">                      <mat-form-field class="example-full-width">                        <input matInput type="text" placeholder=".col-md-5">                      </mat-form-field>                    </div>                  </div>                </div>              </div>            </form>          </div>        </div>      </div>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminLayoutComponent', 'selector': 'app-layout'},{'name': 'AnalisisComponent', 'selector': 'app-analisis'},{'name': 'AppComponent', 'selector': 'app-my-app'},{'name': 'AuthLayoutComponent', 'selector': 'app-layout'},{'name': 'ButtonsComponent', 'selector': 'app-buttons'},{'name': 'CalendarComponent', 'selector': 'app-calendar-cmp'},{'name': 'ChartsComponent', 'selector': 'app-charts-cmp'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DataTableComponent', 'selector': 'app-data-table-cmp'},{'name': 'ExtendedFormsComponent', 'selector': 'app-extendedforms-cmp'},{'name': 'ExtendedTableComponent', 'selector': 'app-extended-table-cmp'},{'name': 'FieldErrorDisplayComponent', 'selector': 'app-field-error-display'},{'name': 'FixedpluginComponent', 'selector': 'app-fixedplugin'},{'name': 'FooterComponent', 'selector': 'app-footer-cmp'},{'name': 'FullScreenMapsComponent', 'selector': 'app-fullscreen-map-cmp'},{'name': 'GoogleMapsComponent', 'selector': 'app-vector-maps-cmp'},{'name': 'GridSystemComponent', 'selector': 'app-grid-cmp'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'IconsComponent', 'selector': 'app-icons-cmp'},{'name': 'LockComponent', 'selector': 'app-lock-cmp'},{'name': 'LoginComponent', 'selector': 'app-login-cmp'},{'name': 'MdChartComponent', 'selector': 'app-md-chart'},{'name': 'MdTableComponent', 'selector': 'app-md-table'},{'name': 'MisProductosComponent', 'selector': 'app-mis-productos'},{'name': 'NavbarComponent', 'selector': 'app-navbar-cmp'},{'name': 'NotificationsComponent', 'selector': 'app-notifications-cmp'},{'name': 'PanelAdminComponent', 'selector': 'app-panel-admin'},{'name': 'PanelsComponent', 'selector': 'app-panels-cmp'},{'name': 'PricingComponent', 'selector': 'app-pricing-cmp'},{'name': 'RegularFormsComponent', 'selector': 'app-regularforms-cmp'},{'name': 'RegularTableComponent', 'selector': 'app-regular-table-cmp'},{'name': 'SearcherComponent', 'selector': 'app-searcher'},{'name': 'SidebarComponent', 'selector': 'app-sidebar-cmp'},{'name': 'SociosAdminComponent', 'selector': 'app-socios-admin'},{'name': 'SociosComponent', 'selector': 'app-socios'},{'name': 'SweetAlertComponent', 'selector': 'app-sweetalert-cmp'},{'name': 'TimelineComponent', 'selector': 'app-timeline-cmp'},{'name': 'TypographyComponent', 'selector': 'app-typography-cmp'},{'name': 'UserComponent', 'selector': 'app-user-cmp'},{'name': 'ValidationFormsComponent', 'selector': 'app-validationforms-cmp'},{'name': 'VectorMapsComponent', 'selector': 'app-vector-maps-cmp'},{'name': 'WidgetsComponent', 'selector': 'app-widgets-cmp'},{'name': 'WizardComponent', 'selector': 'app-wizard-cmp'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'RegularFormsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'RegularFormsComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <script src="../js/menu-wc.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

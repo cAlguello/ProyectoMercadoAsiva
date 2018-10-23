@@ -1,0 +1,502 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>md-angular-cli-pro documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">md-angular-cli-pro documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>SweetAlertComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/sweetalert/sweetalert.component.ts</code>
+</p>
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-sweetalert-cmp</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>sweetalert.component.html</code></td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#showSwal">showSwal</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+    <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showSwal"></a>
+                        <span class="name">
+                            <b>
+                            showSwal
+                            </b>
+                            <a href="#showSwal"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>showSwal(type: )</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/components/sweetalert/sweetalert.component.ts:11</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>type</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import swal from &#x27;sweetalert2&#x27;;
+declare var $: any;
+
+@Component({
+    selector: &#x27;app-sweetalert-cmp&#x27;,
+    templateUrl: &#x27;sweetalert.component.html&#x27;
+})
+
+export class SweetAlertComponent {
+    showSwal(type) {
+      if (type &#x3D;&#x3D; &#x27;basic&#x27;) {
+          swal({
+              title: &quot;Here&#x27;s a message!&quot;,
+              buttonsStyling: false,
+              confirmButtonClass: &quot;btn btn-success&quot;
+          }).catch(swal.noop)
+
+      } else if (type &#x3D;&#x3D; &#x27;title-and-text&#x27;) {
+          swal({
+              title: &quot;Here&#x27;s a message!&quot;,
+              text: &quot;It&#x27;s pretty, isn&#x27;t it?&quot;,
+              buttonsStyling: false,
+              confirmButtonClass: &quot;btn btn-info&quot;
+          }).catch(swal.noop)
+
+      } else if (type &#x3D;&#x3D; &#x27;success-message&#x27;) {
+          swal({
+              title: &quot;Good job!&quot;,
+              text: &quot;You clicked the button!&quot;,
+              buttonsStyling: false,
+              confirmButtonClass: &quot;btn btn-success&quot;,
+              type: &quot;success&quot;
+          }).catch(swal.noop)
+
+      } else if (type &#x3D;&#x3D; &#x27;warning-message-and-confirmation&#x27;) {
+          swal({
+            title: &#x27;Are you sure?&#x27;,
+            text: &quot;You won&#x27;t be able to revert this!&quot;,
+            type: &#x27;warning&#x27;,
+            showCancelButton: true,
+            confirmButtonClass: &#x27;btn btn-success&#x27;,
+            cancelButtonClass: &#x27;btn btn-danger&#x27;,
+            confirmButtonText: &#x27;Yes, delete it!&#x27;,
+             buttonsStyling: false
+          }).then((result) &#x3D;&gt; {
+            if (result.value) {
+              swal(
+                {
+                  title: &#x27;Deleted!&#x27;,
+                  text: &#x27;Your file has been deleted.&#x27;,
+                  type: &#x27;success&#x27;,
+                  confirmButtonClass: &quot;btn btn-success&quot;,
+                  buttonsStyling: false
+                }
+              )
+            }
+          })
+      } else if (type &#x3D;&#x3D; &#x27;warning-message-and-cancel&#x27;) {
+          swal({
+              title: &#x27;Are you sure?&#x27;,
+              text: &#x27;You will not be able to recover this imaginary file!&#x27;,
+              type: &#x27;warning&#x27;,
+              showCancelButton: true,
+              confirmButtonText: &#x27;Yes, delete it!&#x27;,
+              cancelButtonText: &#x27;No, keep it&#x27;,
+              confirmButtonClass: &quot;btn btn-success&quot;,
+              cancelButtonClass: &quot;btn btn-danger&quot;,
+              buttonsStyling: false
+          }).then((result) &#x3D;&gt; {
+            if (result.value) {
+              swal({
+                  title: &#x27;Deleted!&#x27;,
+                  text: &#x27;Your imaginary file has been deleted.&#x27;,
+                  type: &#x27;success&#x27;,
+                  confirmButtonClass: &quot;btn btn-success&quot;,
+                  buttonsStyling: false
+              }).catch(swal.noop)
+            } else {
+              swal({
+                  title: &#x27;Cancelled&#x27;,
+                  text: &#x27;Your imaginary file is safe :)&#x27;,
+                  type: &#x27;error&#x27;,
+                  confirmButtonClass: &quot;btn btn-info&quot;,
+                  buttonsStyling: false
+              }).catch(swal.noop)
+            }
+          })
+
+      } else if (type &#x3D;&#x3D; &#x27;custom-html&#x27;) {
+          swal({
+              title: &#x27;HTML example&#x27;,
+              buttonsStyling: false,
+              confirmButtonClass: &quot;btn btn-success&quot;,
+              html: &#x27;You can use &lt;b&gt;bold text&lt;/b&gt;, &#x27; +
+                  &#x27;&lt;a href&#x3D;&quot;http://github.com&quot;&gt;links&lt;/a&gt; &#x27; +
+                  &#x27;and other HTML tags&#x27;
+          }).catch(swal.noop)
+
+      } else if (type &#x3D;&#x3D; &#x27;auto-close&#x27;) {
+          swal({
+              title: &quot;Auto close alert!&quot;,
+              text: &quot;I will close in 2 seconds.&quot;,
+              timer: 2000,
+              showConfirmButton: false
+          }).catch(swal.noop)
+      } else if (type &#x3D;&#x3D; &#x27;input-field&#x27;) {
+         
+      }
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;main-content&quot;&gt;
+    &lt;div class&#x3D;&quot;container-fluid&quot;&gt;
+        &lt;div class&#x3D;&quot;header text-center&quot;&gt;
+            &lt;h3 class&#x3D;&quot;title&quot;&gt;Sweet Alert 2&lt;/h3&gt;
+            &lt;p class&#x3D;&quot;category&quot;&gt;A beautiful plugin, that replace the classic alert, Handcrafted by our friend
+                &lt;a target&#x3D;&quot;_blank&quot; href&#x3D;&quot;https://twitter.com/t4t5&quot;&gt;Tristan Edwards&lt;/a&gt;. Please check out the
+                &lt;a href&#x3D;&quot;https://sweetalert2.github.io/&quot; target&#x3D;&quot;_blank&quot;&gt;full documentation.&lt;/a&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;places-sweet-alerts&quot;&gt;
+            &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;div class&#x3D;&quot;col-md-3&quot;&gt;
+                    &lt;div class&#x3D;&quot;card&quot;&gt;
+                        &lt;div class&#x3D;&quot;card-body text-center&quot;&gt;
+                            &lt;h5&gt;Basic example&lt;/h5&gt;
+                            &lt;button mat-raised-button class&#x3D;&quot;btn btn-rose btn-fill&quot; (click)&#x3D;&quot;showSwal(&#x27;basic&#x27;)&quot;&gt;Try me!&lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-md-3&quot;&gt;
+                    &lt;div class&#x3D;&quot;card&quot;&gt;
+                        &lt;div class&#x3D;&quot;card-body text-center&quot;&gt;
+                            &lt;h5&gt;A title with a text under&lt;/h5&gt;
+                            &lt;button mat-raised-button class&#x3D;&quot;btn btn-rose btn-fill&quot; (click)&#x3D;&quot;showSwal(&#x27;title-and-text&#x27;)&quot;&gt;Try me!&lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-md-3&quot;&gt;
+                    &lt;div class&#x3D;&quot;card&quot;&gt;
+                        &lt;div class&#x3D;&quot;card-body text-center&quot;&gt;
+                            &lt;h5&gt;A success message&lt;/h5&gt;
+                            &lt;button mat-raised-button class&#x3D;&quot;btn btn-rose btn-fill&quot; (click)&#x3D;&quot;showSwal(&#x27;success-message&#x27;)&quot;&gt;Try me!&lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-md-3&quot;&gt;
+                    &lt;div class&#x3D;&quot;card&quot;&gt;
+                        &lt;div class&#x3D;&quot;card-body text-center&quot;&gt;
+                            &lt;h5&gt;Custom HTML description&lt;/h5&gt;
+                            &lt;button mat-raised-button class&#x3D;&quot;btn btn-rose btn-fill&quot; (click)&#x3D;&quot;showSwal(&#x27;custom-html&#x27;)&quot;&gt;Try me!&lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-md-3&quot;&gt;
+                    &lt;div class&#x3D;&quot;card&quot;&gt;
+                        &lt;div class&#x3D;&quot;card-body text-center&quot;&gt;
+                            &lt;h5&gt;A warning message, with a function attached to the &quot;Confirm&quot; Button...&lt;/h5&gt;
+                            &lt;button mat-raised-button class&#x3D;&quot;btn btn-rose btn-fill&quot; (click)&#x3D;&quot;showSwal(&#x27;warning-message-and-confirmation&#x27;)&quot;&gt;Try me!&lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-md-3&quot;&gt;
+                    &lt;div class&#x3D;&quot;card&quot;&gt;
+                        &lt;div class&#x3D;&quot;card-body text-center&quot;&gt;
+                            &lt;h5&gt;...and by passing a parameter, you can execute something else for &quot;Cancel&quot;&lt;/h5&gt;
+                            &lt;button mat-raised-button class&#x3D;&quot;btn btn-rose btn-fill&quot; (click)&#x3D;&quot;showSwal(&#x27;warning-message-and-cancel&#x27;)&quot;&gt;Try me!&lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-md-3&quot;&gt;
+                    &lt;div class&#x3D;&quot;card&quot;&gt;
+                        &lt;div class&#x3D;&quot;card-body text-center&quot;&gt;
+                            &lt;h5&gt;A message with auto close timer set to 2 seconds&lt;/h5&gt;
+                            &lt;button mat-raised-button class&#x3D;&quot;btn btn-rose btn-fill&quot; (click)&#x3D;&quot;showSwal(&#x27;auto-close&#x27;)&quot;&gt;Try me!&lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-md-3&quot;&gt;
+                    &lt;div class&#x3D;&quot;card&quot;&gt;
+                        &lt;div class&#x3D;&quot;card-body text-center&quot;&gt;
+                            &lt;h5&gt;Modal window with input field&lt;/h5&gt;
+                            &lt;button mat-raised-button class&#x3D;&quot;btn btn-rose btn-fill&quot; (click)&#x3D;&quot;showSwal(&#x27;input-field&#x27;)&quot;&gt;Try me!&lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="main-content">    <div class="container-fluid">        <div class="header text-center">            <h3 class="title">Sweet Alert 2</h3>            <p class="category">A beautiful plugin, that replace the classic alert, Handcrafted by our friend                <a target="_blank" href="https://twitter.com/t4t5">Tristan Edwards</a>. Please check out the                <a href="https://sweetalert2.github.io/" target="_blank">full documentation.</a>            </p>        </div>        <div class="places-sweet-alerts">            <div class="row">                <div class="col-md-3">                    <div class="card">                        <div class="card-body text-center">                            <h5>Basic example</h5>                            <button mat-raised-button class="btn btn-rose btn-fill" (click)="showSwal(\'basic\')">Try me!</button>                        </div>                    </div>                </div>                <div class="col-md-3">                    <div class="card">                        <div class="card-body text-center">                            <h5>A title with a text under</h5>                            <button mat-raised-button class="btn btn-rose btn-fill" (click)="showSwal(\'title-and-text\')">Try me!</button>                        </div>                    </div>                </div>                <div class="col-md-3">                    <div class="card">                        <div class="card-body text-center">                            <h5>A success message</h5>                            <button mat-raised-button class="btn btn-rose btn-fill" (click)="showSwal(\'success-message\')">Try me!</button>                        </div>                    </div>                </div>                <div class="col-md-3">                    <div class="card">                        <div class="card-body text-center">                            <h5>Custom HTML description</h5>                            <button mat-raised-button class="btn btn-rose btn-fill" (click)="showSwal(\'custom-html\')">Try me!</button>                        </div>                    </div>                </div>                <div class="col-md-3">                    <div class="card">                        <div class="card-body text-center">                            <h5>A warning message, with a function attached to the "Confirm" Button...</h5>                            <button mat-raised-button class="btn btn-rose btn-fill" (click)="showSwal(\'warning-message-and-confirmation\')">Try me!</button>                        </div>                    </div>                </div>                <div class="col-md-3">                    <div class="card">                        <div class="card-body text-center">                            <h5>...and by passing a parameter, you can execute something else for "Cancel"</h5>                            <button mat-raised-button class="btn btn-rose btn-fill" (click)="showSwal(\'warning-message-and-cancel\')">Try me!</button>                        </div>                    </div>                </div>                <div class="col-md-3">                    <div class="card">                        <div class="card-body text-center">                            <h5>A message with auto close timer set to 2 seconds</h5>                            <button mat-raised-button class="btn btn-rose btn-fill" (click)="showSwal(\'auto-close\')">Try me!</button>                        </div>                    </div>                </div>                <div class="col-md-3">                    <div class="card">                        <div class="card-body text-center">                            <h5>Modal window with input field</h5>                            <button mat-raised-button class="btn btn-rose btn-fill" (click)="showSwal(\'input-field\')">Try me!</button>                        </div>                    </div>                </div>            </div>        </div>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminLayoutComponent', 'selector': 'app-layout'},{'name': 'AnalisisComponent', 'selector': 'app-analisis'},{'name': 'AppComponent', 'selector': 'app-my-app'},{'name': 'AuthLayoutComponent', 'selector': 'app-layout'},{'name': 'ButtonsComponent', 'selector': 'app-buttons'},{'name': 'CalendarComponent', 'selector': 'app-calendar-cmp'},{'name': 'ChartsComponent', 'selector': 'app-charts-cmp'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DataTableComponent', 'selector': 'app-data-table-cmp'},{'name': 'ExtendedFormsComponent', 'selector': 'app-extendedforms-cmp'},{'name': 'ExtendedTableComponent', 'selector': 'app-extended-table-cmp'},{'name': 'FieldErrorDisplayComponent', 'selector': 'app-field-error-display'},{'name': 'FixedpluginComponent', 'selector': 'app-fixedplugin'},{'name': 'FooterComponent', 'selector': 'app-footer-cmp'},{'name': 'FullScreenMapsComponent', 'selector': 'app-fullscreen-map-cmp'},{'name': 'GoogleMapsComponent', 'selector': 'app-vector-maps-cmp'},{'name': 'GridSystemComponent', 'selector': 'app-grid-cmp'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'IconsComponent', 'selector': 'app-icons-cmp'},{'name': 'LockComponent', 'selector': 'app-lock-cmp'},{'name': 'LoginComponent', 'selector': 'app-login-cmp'},{'name': 'MdChartComponent', 'selector': 'app-md-chart'},{'name': 'MdTableComponent', 'selector': 'app-md-table'},{'name': 'MisProductosComponent', 'selector': 'app-mis-productos'},{'name': 'NavbarComponent', 'selector': 'app-navbar-cmp'},{'name': 'NotificationsComponent', 'selector': 'app-notifications-cmp'},{'name': 'PanelAdminComponent', 'selector': 'app-panel-admin'},{'name': 'PanelsComponent', 'selector': 'app-panels-cmp'},{'name': 'PricingComponent', 'selector': 'app-pricing-cmp'},{'name': 'RegularFormsComponent', 'selector': 'app-regularforms-cmp'},{'name': 'RegularTableComponent', 'selector': 'app-regular-table-cmp'},{'name': 'SearcherComponent', 'selector': 'app-searcher'},{'name': 'SidebarComponent', 'selector': 'app-sidebar-cmp'},{'name': 'SociosAdminComponent', 'selector': 'app-socios-admin'},{'name': 'SociosComponent', 'selector': 'app-socios'},{'name': 'SweetAlertComponent', 'selector': 'app-sweetalert-cmp'},{'name': 'TimelineComponent', 'selector': 'app-timeline-cmp'},{'name': 'TypographyComponent', 'selector': 'app-typography-cmp'},{'name': 'UserComponent', 'selector': 'app-user-cmp'},{'name': 'ValidationFormsComponent', 'selector': 'app-validationforms-cmp'},{'name': 'VectorMapsComponent', 'selector': 'app-vector-maps-cmp'},{'name': 'WidgetsComponent', 'selector': 'app-widgets-cmp'},{'name': 'WizardComponent', 'selector': 'app-wizard-cmp'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'SweetAlertComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SweetAlertComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <script src="../js/menu-wc.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

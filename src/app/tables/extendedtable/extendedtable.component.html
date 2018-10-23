@@ -1,0 +1,78 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-rose card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">inbox</i>
+                        </div>
+                        <h4 class="card-title">Consultas Recibidas</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha recepción</th>
+                                        <th>Empresa emisora</th>
+                                        <th>Consulta</th>
+                                        <th>Responder</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let e of consultasRecibidas">
+                                        <td>{{e.fecha_consulta}}</td>
+                                        <td>{{e.razon_social_empresa}}</td>
+                                        <td>{{e.solicitud_consulta}}</td>
+                                        <td>
+                                            <button mat-raised-button type="button" (click)="showSwal()" class="btn btn-success" align="center">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-rose card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">assignment</i>
+                        </div>
+                        <h4 class="card-title">Consultas Respondidas</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha recepción</th>
+                                        <th>Empresa destinataria</th>
+                                        <th>Consulta</th>
+                                        <th>Respuesta</th>
+                                        <th>Fecha respuesta</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let e of consultasRespondidas">
+                                        <td>{{e.fecha_consulta}}</td>
+                                        <td>{{e.razon_social_empresa}}</td>
+                                        <td>{{e.solicitud_consulta}}</td>
+                                        <td>{{e.respuesta_consulta}}</td>
+                                        <td>{{e.fecha_respuesta_consulta}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

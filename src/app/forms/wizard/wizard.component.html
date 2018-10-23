@@ -1,0 +1,141 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="col-md-8 mr-auto ml-auto">
+      <!--      Wizard container        -->
+      <div class="wizard-container">
+        <div class="card card-wizard" data-color="rose" id="wizardProfile">
+          <form [formGroup]="type" action="" method="">
+            <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
+            <div class="card-header text-center">
+              <h3 class="card-title">
+                Completa tu perfil
+              </h3>
+              <h5 class="card-description">Antes de continuar ayudanos a completar la información básica de tu empresa.</h5>
+            </div>
+            <div class="wizard-navigation">
+              <ul class="nav nav-pills">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#about" data-toggle="tab" role="tab">
+                    Mi empresa
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#account" data-toggle="tab" role="tab">
+                    Descripción
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#address" data-toggle="tab" role="tab">
+                    Contacto
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <div class="tab-content">
+                <div class="tab-pane active" id="about">
+                  <h5 class="info-text"> Partamos con lo básico.</h5>
+                  <div class="row justify-content-center">
+                    <div class="col-sm-4">
+                      <div class="picture-container">
+                        <div class="picture">
+                          <img src="./assets/img/icon-enterprise.png" class="picture-src" id="wizardPicturePreview" title="" />
+                          <input type="file" id="wizard-picture">
+                        </div>
+                        <h6 class="description">Selecciona una imagen</h6>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="input-group form-control-lg">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">
+                            <i class="material-icons">business</i>
+                          </span>
+                        </div>
+                        <mat-form-field class="example-full-width has-label" [ngClass]="displayFieldCss(type, 'firstName')">
+                          <input type="text" name="firstname" matInput id="text" placeholder="Nombre de Empresa" formControlName="firstName">
+                        </mat-form-field>
+                      </div>
+                      <div class="input-group form-control-lg">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">
+                            <i class="material-icons">business</i>
+                          </span>
+                        </div>
+                        <mat-form-field class="example-full-width has-label" [ngClass]="displayFieldCss(type, 'lastName')">
+                          <input type="text" name="lastname" matInput id="text" placeholder="Razón Social" formControlName="lastName">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+                <div class="tab-pane" id="account">
+                  <h5 class="info-text"> Da una breve descripción de tu empresa para llamar la atención de los demás </h5>
+                  <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                      <div class="row">
+                        <div class="col-md-12">                            
+                            <div class="form-group">
+                              <label class="bmd-label-floating"> Mi empresa se dedica a.....</label>
+                              <textarea class="form-control" rows="5"></textarea>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="address">
+                  <div class="row justify-content-center">
+                    <div class="col-sm-12">
+                      <h5 class="info-text"> ¿Donde te pueden encontrar los interesados en tus productos y servicios? </h5>
+                    </div>
+                    <div class="col-sm-7">
+                      <mat-form-field class="example-full-width">
+                        <input matInput type="text" placeholder="Calle">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-sm-5">
+                      <mat-form-field class="example-full-width">
+                        <input matInput type="text" placeholder="N° Calle">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-sm-12">
+                      <mat-form-field class="example-full-width">
+                        <input matInput type="text" placeholder="Ciudad">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-sm-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput type="text" placeholder="Encargado de contacto">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-sm-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput type="text" placeholder="E-Mail Contacto">
+                      </mat-form-field>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="mr-auto">
+                <input type="button" class="btn btn-previous btn-fill btn-default btn-wd disabled" name="previous" value="Anterior">
+              </div>
+              <div class="ml-auto">
+                <input type="button" class="btn btn-next btn-fill btn-rose btn-wd" name="next" value="Siguiente">
+                <input (click)="irDashBoard()" type="button" class="btn btn-finish btn-fill btn-rose btn-wd" name="finish" value="Finalizar"
+                  style="display: none;">
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- wizard container -->
+    </div>
+  </div>
+</div>

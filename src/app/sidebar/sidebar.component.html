@@ -1,0 +1,108 @@
+<div class="logo">
+    <a class="simple-text logo-mini">
+        <div class="logo-img">
+            <img src="/assets/img/asiva-transparente.png" />
+        </div>
+    </a>
+    <a class="simple-text logo-normal">
+        Mercado Asiva
+    </a>
+</div>
+
+
+<div class="sidebar-wrapper">
+
+    <div *ngIf="isMobileMenu()">
+
+        <ul class="nav navbar-nav nav-mobile-menu">
+
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="material-icons">notifications</i>
+                    <span class="notification"></span>
+                    <p>
+                        <span class="d-lg-none d-md-block">Notificaciones</span>
+                    </p>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+
+                </div>
+            </li>
+        </ul>
+    </div>
+    <ul class="nav">
+
+        <div *ngIf="sessionData == 'admin' ; else other_content"> 
+
+
+        <li routerLinkActive="active" *ngFor="let menuitem of menuItemsAdmin" class="nav-item">
+                <!--If is a single link-->
+                <a [routerLink]="[menuitem.path]" *ngIf="menuitem.type === 'link'" class="nav-link">
+                    <i class="material-icons">{{menuitem.icontype}}</i>
+                    <p>{{menuitem.title}}</p>
+                </a>
+                <!--If it have a submenu-->
+                <a data-toggle="collapse" href="#{{menuitem.collapse}}" *ngIf="menuitem.type === 'sub'" (click)="updatePS()" class="nav-link">
+                    <i class="material-icons">{{menuitem.icontype}}</i>
+                    <p>{{menuitem.title}}
+                        <b class="caret"></b>
+                    </p>
+                </a>
+
+                <!--Display the submenu items-->
+                <div id="{{menuitem.collapse}}" class="collapse" *ngIf="menuitem.type === 'sub'">
+                    <ul class="nav">
+                        <li routerLinkActive="active" *ngFor="let childitem of menuitem.children" class="nav-item">
+                            <a [routerLink]="[menuitem.path, childitem.path]" class="nav-link">
+                                <span class="sidebar-mini">{{childitem.ab}}</span>
+                                <span class="sidebar-normal">{{childitem.title}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </div>
+        <ng-template #other_content>
+
+
+
+            <li routerLinkActive="active" *ngFor="let menuitem of menuItems" class="nav-item">
+                <!--If is a single link-->
+                <a [routerLink]="[menuitem.path]" *ngIf="menuitem.type === 'link'" class="nav-link">
+                    <i class="material-icons">{{menuitem.icontype}}</i>
+                    <p>{{menuitem.title}}</p>
+                </a>
+                <!--If it have a submenu-->
+                <a data-toggle="collapse" href="#{{menuitem.collapse}}" *ngIf="menuitem.type === 'sub'" (click)="updatePS()" class="nav-link">
+                    <i class="material-icons">{{menuitem.icontype}}</i>
+                    <p>{{menuitem.title}}
+                        <b class="caret"></b>
+                    </p>
+                </a>
+
+                <!--Display the submenu items-->
+                <div id="{{menuitem.collapse}}" class="collapse" *ngIf="menuitem.type === 'sub'">
+                    <ul class="nav">
+                        <li routerLinkActive="active" *ngFor="let childitem of menuitem.children" class="nav-item">
+                            <a [routerLink]="[menuitem.path, childitem.path]" class="nav-link">
+                                <span class="sidebar-mini">{{childitem.ab}}</span>
+                                <span class="sidebar-normal">{{childitem.title}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+        </ng-template>
+    
+        <li class="nav-item">
+            <a class="nav-link" href="">
+                <i class="material-icons">exit_to_app</i>
+                <span class="d-md-block">Desconectarse</span>
+            </a>
+        </li>
+
+
+    </ul>
+
+</div>

@@ -1,0 +1,60 @@
+
+<div class="wrapper wrapper-full-page">
+  <div class="page-header login-page header-filter" filter-color="black" style="background-image: url('./assets/img/login.jpg'); background-size: cover; background-position: top center;">
+    <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+    <div class="container">
+      <div class="col-lg-4 col-md-6 col-sm-6 ml-auto mr-auto">
+        
+          <div class="card card-login card-hidden">
+            <div class="card-header card-header-rose text-center">
+              <h4 class="card-title">Ingresa tus credenciales</h4>              
+            </div>
+            <div class="card-body ">
+              <span class="bmd-form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons">business</i>
+                    </span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Rut Empresa..." [(ngModel)]="localUser.username">
+                </div>
+              </span>              
+              <span class="bmd-form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons">lock_outline</i>
+                    </span>
+                  </div>
+                  <input type="password" class="form-control" placeholder="Contraseña..."[(ngModel)]="localUser.password"> 
+                </div>
+              </span>
+            </div>
+            <div class="card-footer justify-content-center">
+              <a (click)="irPerfil()" class="btn btn-rose btn-link btn-lg">Acceder a la Plataforma</a>
+            </div>
+          </div>
+       
+      </div>
+    </div>
+    <footer class="footer ">
+      <div class="container">
+        <nav class="pull-left">
+          <ul>
+              <li>
+                  <a href="http://www.asiva.cl/">
+                    Asiva
+                  </a>
+                </li>   
+           
+          </ul>
+        </nav>
+        <div class="copyright pull-left">
+          &copy;
+            {{test | date: 'yyyy'}}
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>

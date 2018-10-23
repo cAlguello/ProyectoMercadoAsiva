@@ -1,0 +1,21 @@
+Mercado ASIVA v0.1.1
+
+La version 0.1.1 contiene mejoras de rendimiento y caracteristicas nuevas en base al buscador.
+
+Requerimientos
+
+Docker Community Edition.
+
+Adiciones
+
+Esta actualizacion contiene mejoras de rendimiento en el procesamiento de informacion.
+
+Cambios
+
+Mejora de procesamiento de busqueda, ahora el usuario puede ver en tiempo real al momento de buscar el indice de todos los productos de la base de datos a medida que escribe, de este modo se espera contar con mas busquedas que terminen con un resultado satisfactorio (tener presente que en la version de prueba actual hay pocas empresas con data).
+
+Arreglos
+
+Solucionado un bug en el que al entrar como admin a la plataforma redirigiera al modulo de usuario comun.
+
+Solucionado un bug en el que los modal (ventanas emergentes) de las vistas para añadir productos y giros no contaban con paginacion en su datatable respectiva lo que relentizaba considerablemente el funcionamiento de la plataforma al ingresar a estos componentes.
