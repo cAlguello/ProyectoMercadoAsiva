@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { APP_BASE_HREF } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import {NgCyto} from './ng-cyto/ng-cyto.directive';
+
 import { CommonModule } from '@angular/common';
 import {
   MatAutocompleteModule,
@@ -47,7 +49,6 @@ import { NavbarModule } from './shared/navbar/navbar.module';
 import { FixedpluginModule } from './shared/fixedplugin/fixedplugin.module';
 import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
-
 import { AppRoutes } from './app.routing';
 import { HomeComponent } from './home/home.component';
 import { SearcherComponent } from './searcher/searcher.component';
@@ -58,6 +59,7 @@ import { CallbackPipe } from './callback.pipe';
 import { PanelAdminComponent } from './panel-admin/panel-admin.component';
 import { SociosComponent } from './panel-admin/socios/socios.component';
 import { AnalisisComponent } from './panel-admin/analisis/analisis.component';
+import { GraphComponent } from './graph/graph.component';
 //import { DashboardModule } from './dashboard/dashboard.module';
 //nuevo
 /*import {
@@ -136,7 +138,7 @@ export class MaterialModule { }
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent   
   ],
   providers: [authGuard//, {
    // provide: MapAPILoader, deps: [], useFactory: useBing ? BingMapServiceProviderFactory : GoogleMapServiceProviderFactory

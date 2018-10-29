@@ -13,8 +13,8 @@ import { map, startWith } from 'rxjs/operators';
 declare const $: any;
 @Component({
     selector: 'app-regular-table-cmp',
-    templateUrl: 'regulartable.component.html',
-    providers: [DatePipe]
+                  templateUrl: 'regulartable.component.html',
+       providers: [DatePipe]
 })
 
 export class RegularTableComponent implements OnInit {

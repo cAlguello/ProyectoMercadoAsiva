@@ -7,6 +7,8 @@ import { MaterialModule } from '../app.module';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutes } from './dashboard.routing';
+import { GraphComponent } from '../graph/graph.component';
+import { NgCyto } from '../ng-cyto/ng-cyto.directive';
 
 
 @NgModule({
@@ -15,9 +17,14 @@ import { DashboardRoutes } from './dashboard.routing';
         RouterModule.forChild(DashboardRoutes),
         FormsModule,
         MdModule,
-        MaterialModule
+        MaterialModule,
+
     ],
-    declarations: [DashboardComponent]
+    declarations: [
+        DashboardComponent,
+        GraphComponent,
+        NgCyto
+    ]
 })
 
-export class DashboardModule {}
+export class DashboardModule { }

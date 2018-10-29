@@ -11,7 +11,7 @@ import { ServicesService } from '../services.service';
 import {MapModule, MapAPILoader, BingMapAPILoaderConfig, BingMapAPILoader, MarkerTypeId, IMapOptions, IBox, WindowRef, DocumentRef, MapServiceFactory, ILatLong, BingMapServiceFactory, ClusterPlacementMode, ClusterClickAction } from 'angular-maps';
 let PathData: Array<any> = null;
 //
-
+declare var cytoscape: any;
 declare const $: any;
 
 @Component({

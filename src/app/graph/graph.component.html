@@ -1,0 +1,10 @@
+<div class="row">
+  <ng2-cytoscape [elements]="graphData" [layout]="layout" (select)="nodeChange($event)"></ng2-cytoscape>
+</div>
+
+<div class="row">
+  <div style="height: 90%; width: 20%; float: left; overflow: auto; overflow-x: hidden">
+    <h5>Selected Node Name</h5>
+    <h4>{{node_name}}</h4>
+</div>
+</div>
