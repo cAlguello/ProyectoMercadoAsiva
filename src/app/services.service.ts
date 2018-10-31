@@ -84,6 +84,15 @@ export class ServicesService {
       .map((res: Response) => res.json())
   }
 
+  getHanConsultadoEmpresa(id): Observable<any> {
+    return this.http.get(this.host + "/empresaController/hanConsultado/" + id)
+      .map((res: Response) => res.json())
+  }
+
+  getHanConsultadoEmpresaDataCompleta(id): Observable<any> {
+    return this.http.get(this.host + "/empresaController/hanConsultadoDatacompleta/" + id)
+      .map((res: Response) => res.json())
+  }
 
   getEmpresasActivas(): Observable<any> {
     return this.http.get(this.host + "/empresaController/empresaActiva")

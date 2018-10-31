@@ -1,10 +1,37 @@
 <div class="row">
-  <ng2-cytoscape [elements]="graphData" [layout]="layout" (select)="nodeChange($event)"></ng2-cytoscape>
-</div>
-
-<div class="row">
-  <div style="height: 90%; width: 20%; float: left; overflow: auto; overflow-x: hidden">
-    <h5>Selected Node Name</h5>
-    <h4>{{node_name}}</h4>
-</div>
+  <div class="col-md-7">
+    <ng2-cytoscape [elements]="graphData" [layout]="layout" (select)="nodeChange($event)"></ng2-cytoscape>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header card-header-text card-header-warning">
+        <div class="card-text">
+          <h4 class="card-title">{{nombre_empresa}}</h4>
+          <p class="card-category">
+              <button mat-raised-button type="submit" class="btn btn-rose" (click)="showSwal(e)" matTooltip="Envia un mensaje a esta Empresa"
+              [matTooltipPosition]="'below'">
+              CONTACTAR
+            </button>
+          </p>
+        </div>
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table table-hover">
+          <thead class="text-warning">
+            <tr>
+              <th>Empresa</th>
+              <th>Consultas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let empresa of hanConsultadoEmpresa">
+              <td>{{empresa.nombre_empresa}}</td>
+              <td>{{empresa.total}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1"></div>
 </div>

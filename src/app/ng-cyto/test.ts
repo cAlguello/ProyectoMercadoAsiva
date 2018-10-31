@@ -24,13 +24,15 @@ export class NgCyto implements OnChanges {
     @Input() public style: any;
     @Input() public layout: any;
     @Input() public zoom: any;
+    node_name: string;
 
     @Output() select: EventEmitter<any> = new EventEmitter<any>();
 
     public constructor(private renderer: Renderer, private el: ElementRef, private service: ServicesService) {
+        
 
         this.layout = this.layout || {
-            name: 'grid',
+            name: 'breadthfirst',
             directed: true,
             padding: 0
         };
@@ -44,17 +46,15 @@ export class NgCyto implements OnChanges {
 
             .selector('node')
             .css({
-                'shape': 'data(shapeType)',
                 'height': 80,
-                'width': 120,                
+                'width': 80,
                 'text-valign': 'center',
                 'text-outline-width': 1,
-                'text-outline-color': 'data(colorCode)',
-                'background-color': 'data(colorCode)',
+               // 'text-outline-color': 'data(colorCode)',
+              //  'background-color': 'data(colorCode)',
                 'color': '#fff',
                 'font-size': 10,
                 'background-fit': 'cover',
-                'background-image':'data(image)'
             })
             .selector(':selected')
             .css({
@@ -102,35 +102,63 @@ export class NgCyto implements OnChanges {
         console.log(this.el.nativeElement);
     }
 
+    nodeChange(event) {
+        this.node_name = event;
+    
+        console.log(this.node_name);
+      }
+
     public render() {
+        this.service.getHanConsultadoEmpresa(sessionStorage.getItem('id')).subscribe(val => {
+            var nodos = {
+                nodes : [],
+                edges : []
+            } ;
+            var data = [];
 
-        let cy_contianer = this.renderer.selectRootElement("#cy");
-        let localselect = this.select;
-        let cy = cytoscape({
-            container: cy_contianer,
-            layout: this.layout,
-            minZoom: this.zoom.min,
-            maxZoom: this.zoom.max,
-            style: this.style,
-            elements: this.elements,
-        });
+            for (var i = 0; i < val.length; i++) {
+                data.push(val[i])
+                nodos.nodes.push(data);
+                //nodos.edges.push(data);
+              }
+           
+            console.log('DATOS NODOS')
+            console.log(data);
+            console.log(nodos)
 
 
-        cy.on('tap', 'node', function (e) {
-            var node = this;
-            var neighborhood = node.neighborhood().add(node);
 
-            cy.elements().addClass('faded');
-            neighborhood.removeClass('faded');
-            localselect.emit(node.data("id"));
-        });
 
-        cy.on('tap', function (e) {
-            if (e.cyTarget === cy) {
-                cy.elements().removeClass('faded');
-            }
-        });
+            let cy_contianer = this.renderer.selectRootElement("#cy");
+            let localselect = this.select;
+            let cy = cytoscape({
+                container: cy_contianer,
+                layout: this.layout,
+                minZoom: this.zoom.min,
+                maxZoom: this.zoom.max,
+                style: this.style,
+                elements: nodos,
+            });
 
+
+            cy.on('tap', 'node', function (e) {
+                var node = this;
+                var neighborhood = node.neighborhood().add(node);
+
+                cy.elements().addClass('faded');
+                neighborhood.removeClass('faded');
+                localselect.emit(node.data("name"));
+            });
+
+            cy.on('tap', function (e) {
+                if (e.cyTarget === cy) {
+                    cy.elements().removeClass('faded');
+                }
+            });
+            //
+        },
+            error => { console.log(error) });
+        //
     }
 
 
