@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { TableData } from '../md/md-table/md-table.component';
 import { LegendItem, ChartType } from '../md/md-chart/md-chart.component';
 
@@ -8,7 +8,7 @@ import * as Chartist from 'chartist';
 import { ServicesService } from '../services.service';
 
 //
-import {MapModule, MapAPILoader, BingMapAPILoaderConfig, BingMapAPILoader, MarkerTypeId, IMapOptions, IBox, WindowRef, DocumentRef, MapServiceFactory, ILatLong, BingMapServiceFactory, ClusterPlacementMode, ClusterClickAction } from 'angular-maps';
+import { MapModule, MapAPILoader, BingMapAPILoaderConfig, BingMapAPILoader, MarkerTypeId, IMapOptions, IBox, WindowRef, DocumentRef, MapServiceFactory, ILatLong, BingMapServiceFactory, ClusterPlacementMode, ClusterClickAction } from 'angular-maps';
 let PathData: Array<any> = null;
 //
 declare var cytoscape: any;
@@ -19,7 +19,7 @@ declare const $: any;
     templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
-    constructor(private service: ServicesService) { }
+    constructor(private service: ServicesService, private chRef: ChangeDetectorRef) { }
     public dataLogEmpresa: Observable<any>;
     public tableData: TableData;
     startAnimationForLineChart(chart: any) {
@@ -85,129 +85,94 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             error => { console.log(error) });
 
 
-        var labelsUso = [], dataUso = [], coloRUso = [];
+        var labelsUso = [], dataUso = [], coloRUso = [], max=0;
         this.service.getProductosMasBuscadosGeneral().subscribe(val => {
             for (var i = 0; i < val.length; i++) {
                 dataUso.push(val[i].total);
+                if(val[i].total>max){
+                    max=val[i].total;
+                }
                 labelsUso.push(val[i].nombre_producto);
             }
+            coloRUso.push(dataUso);
             //
             console.log(dataUso);
             console.log(labelsUso);
+            //
+
+            const dataWebsiteViewsChart = {
+                labels: labelsUso,
+                series: coloRUso
+            };
+
+
+            const optionsWebsiteViewsChart = {
+                axisX: {
+                    showGrid: false
+                },
+                low: 1,
+                high: max,
+                chartPadding: { top: 0, right: 5, bottom: 0, left: 0 }
+            };
+            const responsiveOptions: any = [
+                ['screen and (max-width: 640px)', {
+                    seriesBarDistance: 5,
+                    axisX: {
+                        labelInterpolationFnc: function (value) {
+                            return value[0];
+                        }
+                    }
+                }]
+            ];
+            const websiteViewsChart = new Chartist.Bar('#websiteViewsChart', dataWebsiteViewsChart, optionsWebsiteViewsChart, responsiveOptions);
+
+            this.startAnimationForBarChart(websiteViewsChart);
+
+            //
 
 
         });
-        this.tableData = {
-            headerRow: ['Producto/Servicio', 'Cantidad de Busquedas', 'Cantidad de Contactos'],
-            dataRows: [
-                ['1', 'Item 1', '40'],
-                ['2', 'Item 2', '20'],
-                ['3', 'Item 3', '23'],
-                ['4', 'Item 4', '12'],
-                ['5', 'Item 5', '8'],
-                ['6', 'ITem 6', '3']
-            ]
-        };
+      
         /* ----------==========     Daily Sales Chart initialization    ==========---------- */
+        var labelsMonthly = [], seriesMonthly = [], seriesMonthly2 = [], maxMonthly=0;
+        this.service.getConsultasMes(sessionStorage.getItem('id')).subscribe(val => {
+            for (var i = 0; i < val.length; i++) {
+                seriesMonthly.push(val[i].dataLog);
+                if(val[i].dataLog>maxMonthly){
+                    maxMonthly=val[i].dataLog;
+                }
+                labelsMonthly.push(val[i].month);
+            }
+            seriesMonthly2.push(seriesMonthly);
+            const dataDailySalesChart = {
+                labels: labelsMonthly,
+                series: seriesMonthly2
+            };
+    
+            const optionsDailySalesChart = {
+                lineSmooth: Chartist.Interpolation.cardinal({
+                    tension: 0
+                }),
+                low: 0,
+                high: maxMonthly+10, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+                chartPadding: { top: 0, right: 0, bottom: 0, left: 0 },
+            };
+    
+            const dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
+    
+            this.startAnimationForLineChart(dailySalesChart);
+           
 
-        const dataDailySalesChart = {
-            labels: ['L', 'M', 'M', 'J', 'V', 'S', 'D'],
-            series: [
-                [0, 1, 2, 0, 0, 1, 0]
-            ]
-        };
 
-        const optionsDailySalesChart = {
-            lineSmooth: Chartist.Interpolation.cardinal({
-                tension: 0
-            }),
-            low: 0,
-            high: 10, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-            chartPadding: { top: 0, right: 0, bottom: 0, left: 0 },
-        };
+        });
 
-        const dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
-
-        this.startAnimationForLineChart(dailySalesChart);
-        /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
-
-        const dataCompletedTasksChart = {
-            labels: ['12p', '3p', '6p', '9p', '12p', '3a', '6a', '9a'],
-            series: [
-                [230, 750, 450, 300, 280, 240, 200, 190]
-            ]
-        };
-
-        const optionsCompletedTasksChart = {
-            lineSmooth: Chartist.Interpolation.cardinal({
-                tension: 0
-            }),
-            low: 0,
-            high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better
-            // look
-            chartPadding: { top: 0, right: 0, bottom: 0, left: 0 }
-        };
-
-        const completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart,
-            optionsCompletedTasksChart);
-
-        this.startAnimationForLineChart(completedTasksChart);
-
+        //FIN DAILY
+       
         /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
 
-        const dataWebsiteViewsChart = {
-            labels: ['Bebidas', 'Servicios de Educación', 'Gas'],
-            series: [[3, 5, 10]]
-        };
 
-
-        const optionsWebsiteViewsChart = {
-            axisX: {
-                showGrid: false
-            },
-            low: 1,
-            high: 10,
-            chartPadding: { top: 0, right: 5, bottom: 0, left: 0 }
-        };
-        const responsiveOptions: any = [
-            ['screen and (max-width: 640px)', {
-                seriesBarDistance: 5,
-                axisX: {
-                    labelInterpolationFnc: function (value) {
-                        return value[0];
-                    }
-                }
-            }]
-        ];
-        const websiteViewsChart = new Chartist.Bar('#websiteViewsChart', dataWebsiteViewsChart, optionsWebsiteViewsChart, responsiveOptions);
-
-        this.startAnimationForBarChart(websiteViewsChart);
-
-        $('#worldMap').vectorMap({
-            map: 'world_en',
-            backgroundColor: 'transparent',
-            borderColor: '#818181',
-            borderOpacity: 0.25,
-            borderWidth: 1,
-            color: '#b3b3b3',
-            enableZoom: true,
-            hoverColor: '#eee',
-            hoverOpacity: null,
-            normalizeFunction: 'linear',
-            scaleColors: ['#b6d6ff', '#005ace'],
-            selectedColor: '#c9dfaf',
-            selectedRegions: null,
-            showTooltip: true,
-            onRegionClick: function (element, code, region) {
-                var message = 'You clicked "'
-                    + region
-                    + '" which has the code: '
-                    + code.toUpperCase();
-
-                alert(message);
-            }
-        });
+        
     }
     ngAfterViewInit() {
         const breakCards = true;

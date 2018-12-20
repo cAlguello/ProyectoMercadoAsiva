@@ -29,8 +29,8 @@ export class ServicesService {
   //options = new RequestOptions({ headers: this.headers });
 
   constructor(private httpClient: HttpClient, private http: Http) {
-    this.host = 'http://127.0.0.1:9000';
-    //this.host = 'http://apiasiva.hopto.org:9000';
+   //this.host = 'http://127.0.0.1:9000';   
+    this.host = 'http://68.183.137.170:8181';
     this.header = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded', "method": "post" });
   }
 
@@ -41,9 +41,9 @@ export class ServicesService {
     }
     return false;
   }
-//SEARCH SERVICE TEST
+  //SEARCH SERVICE TEST
 
-//FIN SEARCH SERVICE TEST
+  //FIN SEARCH SERVICE TEST
   //Services Chilecompra
   //TEST CHILECOMPRA
 
@@ -61,6 +61,11 @@ export class ServicesService {
     return this.http.get('http://api.mercadopublico.cl/servicios/v1/publico/ordenesdecompra.json?codigo=' + orden + '&ticket=' + this.ticket)
       .map((res: Response) => res.json())
   }
+  //Servicios MAIL
+  sendEmail(mail): Observable<any> {
+    return this.httpClient.post(this.host + "/send/email", mail, this.header);
+
+  }
 
   //Services Usuarios
   getUser(user): Observable<any> {
@@ -73,12 +78,32 @@ export class ServicesService {
     return this.http.get(this.host + "/giroController/verDatos")
       .map((res: Response) => res.json())
   }
+  addGiroEmpresa(giro): Observable<any> {
+    return this.httpClient.post(this.host + "/giroController", giro, this.header);
+  }
+
+  addGiroPrincipalEmpresa(giro): Observable<any> {
+    return this.httpClient.post(this.host + "/giroController/setPrincipal", giro, this.header);
+  }
+
+
   //Services Productos
   getAllProductos(): Observable<any> {
     return this.http.get(this.host + "/productoController/verDatos")
       .map((res: Response) => res.json())
   }
+  addProductoEmpresa(producto): Observable<any> {
+    return this.httpClient.post(this.host + "/productoController/addProducto", producto, this.header);
+  }
+
   //Services Empresas
+
+  actualizaEmpresa(empresa): Observable<any> {
+    return this.httpClient.post(this.host + "/empresaController/actualizaData", empresa, this.header);
+  }
+
+
+
   getDataEmpresaId(id): Observable<any> {
     return this.http.get(this.host + "/empresaController/empresaId/" + id)
       .map((res: Response) => res.json())
@@ -88,6 +113,12 @@ export class ServicesService {
     return this.http.get(this.host + "/empresaController/hanConsultado/" + id)
       .map((res: Response) => res.json())
   }
+
+  graphDataEdgeEmpresa(id): Observable<any> {
+    return this.http.get(this.host + "/empresaController/graphDataEdgeEmpresa/" + id)
+      .map((res: Response) => res.json())
+  }
+
 
   getHanConsultadoEmpresaDataCompleta(id): Observable<any> {
     return this.http.get(this.host + "/empresaController/hanConsultadoDatacompleta/" + id)
@@ -157,6 +188,11 @@ export class ServicesService {
   addConsulta(consulta): Observable<any> {
     return this.httpClient.post(this.host + "/consultaController", consulta, this.header);
   }
+  addRespuesta(respuesta): Observable<any> {
+    return this.httpClient.post(this.host + "/consultaController/answerConsulta", respuesta, this.header);
+  }
+
+  
 
   getConsultasRecibidas(id): Observable<any> {
     return this.http.get(this.host + "/consultaController/ConsultasRecibidas/" + id)
@@ -189,5 +225,10 @@ export class ServicesService {
     return this.http.get(this.host + "/generalStatsController/productosMasBuscados")
       .map((res: Response) => res.json())
   }
+  getConsultasMes(id): Observable<any> {
+    return this.http.get(this.host + "/generalStatsController/consultasMes/" + id)
+      .map((res: Response) => res.json())
+  }
+
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnChanges, Renderer, ElementRef, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnChanges, Renderer, ElementRef, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { ServicesService } from '../services.service';
 import { graphData } from '../entities/graphData';
 import { nodeData } from '../entities/nodeData';
@@ -27,7 +27,7 @@ export class NgCyto implements OnChanges {
 
     @Output() select: EventEmitter<any> = new EventEmitter<any>();
 
-    public constructor(private renderer: Renderer, private el: ElementRef, private service: ServicesService) {
+    public constructor(private renderer: Renderer, private el: ElementRef, private service: ServicesService, private chRef: ChangeDetectorRef) {
 
         this.layout = this.layout || {
             name: 'grid',
@@ -61,7 +61,7 @@ export class NgCyto implements OnChanges {
                 'border-width': 1,
                 'border-color': 'black'
             })
-            //
+            /*
             .selector('#coca-cola')
             .css({
                 'background-image': 'https://i3.wp.com/tentulogo.com/wp-content/uploads/HistoriadellogodeCocaCola.jpg'
@@ -74,7 +74,7 @@ export class NgCyto implements OnChanges {
             .css({
                 'background-image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Logo-Universidad-Andres-Bello-2013-Nuevo.jpg/240px-Logo-Universidad-Andres-Bello-2013-Nuevo.jpg'
             })
-            //
+            */
             .selector('edge')
             .css({
                 'curve-style': 'bezier',
@@ -98,12 +98,15 @@ export class NgCyto implements OnChanges {
     }
 
     public ngOnChanges(): any {
+        //this.chRef.detectChanges();
         this.render();
+        console.log(this.elements);
+        //this.chRef.detectChanges();
         console.log(this.el.nativeElement);
     }
-
+   
     public render() {
-
+        
         let cy_contianer = this.renderer.selectRootElement("#cy");
         let localselect = this.select;
         let cy = cytoscape({
@@ -114,6 +117,8 @@ export class NgCyto implements OnChanges {
             style: this.style,
             elements: this.elements,
         });
+       
+        
 
 
         cy.on('tap', 'node', function (e) {

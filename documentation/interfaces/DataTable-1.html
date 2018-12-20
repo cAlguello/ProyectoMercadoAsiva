@@ -193,9 +193,11 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, AfterViewInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
 import { ServicesService } from &#x27;../../services.service&#x27;;
 import { Observable } from &#x27;rxjs/Observable&#x27;;
+import { dataEmpresaModal } from &#x27;../../entities/dataEmpresaModal&#x27;;
+import { mail } from &#x27;../../entities/mail&#x27;;
 
 declare interface DataTable {
   headerRow: string[];
@@ -212,50 +214,57 @@ declare const $: any;
   styleUrls: [&#x27;./socios-admin.component.scss&#x27;]
 })
 export class SociosAdminComponent implements OnInit, AfterViewInit {
+  public mailContacto: mail;
   public dataTable: DataTable;
   public dataTable2: DataTable;
   public empresasActivas: Observable&lt;any&gt;;
   public empresasInactivas: Observable&lt;any&gt;;
+  mail &#x3D; {
+    mensaje:&quot;&quot;,
+    mensaje2:&quot;&quot;,
+    mensaje3:&quot;&quot;,
+    destinatario: &quot;&quot;
+  }
 
-  constructor(private service: ServicesService) {
-    setTimeout(function () {
-      //TABLE1
-      $(&#x27;#datatables&#x27;).DataTable({
-        &quot;pagingType&quot;: &quot;full_numbers&quot;,
-        &quot;lengthMenu&quot;: [
-          [10, 25, 50, -1],
-          [10, 25, 50, &quot;All&quot;]
-        ],
-        responsive: true,
-        language: {
-          search: &quot;_INPUT_&quot;,
-          searchPlaceholder: &quot;Buscar Socios&quot;,
-        }
-      });
-      //TABLE2
-      $(&#x27;#datatables2&#x27;).DataTable({
-        &quot;pagingType&quot;: &quot;full_numbers&quot;,
-        &quot;lengthMenu&quot;: [
-          [10, 25, 50, -1],
-          [10, 25, 50, &quot;All&quot;]
-        ],
-        responsive: true,
-        language: {
-          search: &quot;_INPUT_&quot;,
-          searchPlaceholder: &quot;Buscar Socios&quot;,
-        }
+  constructor(private service: ServicesService, private chRef: ChangeDetectorRef) {
 
-      });
-
-    }, 500);
 
   }
 
+  enviarCredencial(empresa: dataEmpresaModal){
+    this.service.getUser(empresa.id_empresa).subscribe(val &#x3D;&gt; {
+      this.mail.destinatario&#x3D;empresa.mail_empresa,
+      this.mail.mensaje&#x3D;&quot;Hola, lo invitamos a activarse en Mercado ASIVA, a continuación tus credenciales.&quot;;
+      this.mail.mensaje2&#x3D;val.usuario;
+      this.mail.mensaje3&#x3D;val.password;
+      console.log(this.mail);
+      this.service.sendEmail(this.mail).subscribe(val&#x3D;&gt;{
+
+      }, error &#x3D;&gt;{
+        console.log(error);
+      });
+    });
+
+  }
 
   ngOnInit() {
     this.service.getEmpresasActivas().subscribe(val &#x3D;&gt; {
       this.empresasActivas &#x3D; val;
       console.log(val);
+      this.chRef.detectChanges();
+      const table: any &#x3D; $(&#x27;#datatables&#x27;).DataTable({
+        &quot;pagingType&quot;: &quot;full_numbers&quot;,
+        &quot;lengthMenu&quot;: [
+          [10, 25, 50, -1],
+          [10, 25, 50, &quot;All&quot;]
+        ],
+        responsive: true,
+        language: {
+          search: &quot;_INPUT_&quot;,
+          searchPlaceholder: &quot;Buscar Socios&quot;,
+        }
+      });
+      this.dataTable &#x3D; table.DataTable();
     },
       error &#x3D;&gt; {
         console.log(error);
@@ -264,6 +273,21 @@ export class SociosAdminComponent implements OnInit, AfterViewInit {
     this.service.getEmpresasInactivas().subscribe(val &#x3D;&gt; {
       this.empresasInactivas &#x3D; val;
       console.log(val);
+      this.chRef.detectChanges();
+      const table: any &#x3D; $(&#x27;#datatables2&#x27;).DataTable({
+        &quot;pagingType&quot;: &quot;full_numbers&quot;,
+        &quot;lengthMenu&quot;: [
+          [10, 25, 50, -1],
+          [10, 25, 50, &quot;All&quot;]
+        ],
+        responsive: true,
+        language: {
+          search: &quot;_INPUT_&quot;,
+          searchPlaceholder: &quot;Buscar Socios&quot;,
+        }
+
+      });
+      this.dataTable2 &#x3D; table.DataTable();
     },
       error &#x3D;&gt; {
         console.log(error);

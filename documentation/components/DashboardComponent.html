@@ -171,12 +171,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(service: <a href="../injectables/ServicesService.html">ServicesService</a>)</code>
+<code>constructor(service: <a href="../injectables/ServicesService.html">ServicesService</a>, chRef: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/dashboard/dashboard.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/dashboard/dashboard.component.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -198,6 +198,18 @@
                                                   
                                                         <td>
                                                                     <code><a href="../injectables/ServicesService.html" target="_self" >ServicesService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>chRef</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -245,7 +257,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="207" class="link-to-prism">src/app/dashboard/dashboard.component.ts:207</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="177" class="link-to-prism">src/app/dashboard/dashboard.component.ts:177</a></div>
                             </td>
                         </tr>
 
@@ -285,7 +297,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/dashboard/dashboard.component.ts:76</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/dashboard/dashboard.component.ts:81</a></div>
                             </td>
                         </tr>
 
@@ -323,7 +335,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/dashboard/dashboard.component.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/dashboard/dashboard.component.ts:58</a></div>
                             </td>
                         </tr>
 
@@ -392,7 +404,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/dashboard/dashboard.component.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/dashboard/dashboard.component.ts:25</a></div>
                             </td>
                         </tr>
 
@@ -474,7 +486,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/dashboard/dashboard.component.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/dashboard/dashboard.component.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -509,7 +521,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/dashboard/dashboard.component.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/dashboard/dashboard.component.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -522,7 +534,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, AfterViewInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
 import { TableData } from &#x27;../md/md-table/md-table.component&#x27;;
 import { LegendItem, ChartType } from &#x27;../md/md-chart/md-chart.component&#x27;;
 
@@ -531,6 +543,11 @@ import { Observable } from &#x27;rxjs/Observable&#x27;;
 import * as Chartist from &#x27;chartist&#x27;;
 import { ServicesService } from &#x27;../services.service&#x27;;
 
+//
+import { MapModule, MapAPILoader, BingMapAPILoaderConfig, BingMapAPILoader, MarkerTypeId, IMapOptions, IBox, WindowRef, DocumentRef, MapServiceFactory, ILatLong, BingMapServiceFactory, ClusterPlacementMode, ClusterClickAction } from &#x27;angular-maps&#x27;;
+let PathData: Array&lt;any&gt; &#x3D; null;
+//
+declare var cytoscape: any;
 declare const $: any;
 
 @Component({
@@ -538,7 +555,7 @@ declare const $: any;
     templateUrl: &#x27;./dashboard.component.html&#x27;
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
-    constructor(private service: ServicesService) { }
+    constructor(private service: ServicesService, private chRef: ChangeDetectorRef) { }
     public dataLogEmpresa: Observable&lt;any&gt;;
     public tableData: TableData;
     startAnimationForLineChart(chart: any) {
@@ -604,129 +621,94 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             error &#x3D;&gt; { console.log(error) });
 
 
-        var labelsUso &#x3D; [], dataUso &#x3D; [], coloRUso &#x3D; [];
+        var labelsUso &#x3D; [], dataUso &#x3D; [], coloRUso &#x3D; [], max&#x3D;0;
         this.service.getProductosMasBuscadosGeneral().subscribe(val &#x3D;&gt; {
             for (var i &#x3D; 0; i &lt; val.length; i++) {
                 dataUso.push(val[i].total);
+                if(val[i].total&gt;max){
+                    max&#x3D;val[i].total;
+                }
                 labelsUso.push(val[i].nombre_producto);
             }
+            coloRUso.push(dataUso);
             //
             console.log(dataUso);
             console.log(labelsUso);
+            //
+
+            const dataWebsiteViewsChart &#x3D; {
+                labels: labelsUso,
+                series: coloRUso
+            };
+
+
+            const optionsWebsiteViewsChart &#x3D; {
+                axisX: {
+                    showGrid: false
+                },
+                low: 1,
+                high: max,
+                chartPadding: { top: 0, right: 5, bottom: 0, left: 0 }
+            };
+            const responsiveOptions: any &#x3D; [
+                [&#x27;screen and (max-width: 640px)&#x27;, {
+                    seriesBarDistance: 5,
+                    axisX: {
+                        labelInterpolationFnc: function (value) {
+                            return value[0];
+                        }
+                    }
+                }]
+            ];
+            const websiteViewsChart &#x3D; new Chartist.Bar(&#x27;#websiteViewsChart&#x27;, dataWebsiteViewsChart, optionsWebsiteViewsChart, responsiveOptions);
+
+            this.startAnimationForBarChart(websiteViewsChart);
+
+            //
 
 
         });
-        this.tableData &#x3D; {
-            headerRow: [&#x27;Producto/Servicio&#x27;, &#x27;Cantidad de Busquedas&#x27;, &#x27;Cantidad de Contactos&#x27;],
-            dataRows: [
-                [&#x27;1&#x27;, &#x27;Item 1&#x27;, &#x27;40&#x27;],
-                [&#x27;2&#x27;, &#x27;Item 2&#x27;, &#x27;20&#x27;],
-                [&#x27;3&#x27;, &#x27;Item 3&#x27;, &#x27;23&#x27;],
-                [&#x27;4&#x27;, &#x27;Item 4&#x27;, &#x27;12&#x27;],
-                [&#x27;5&#x27;, &#x27;Item 5&#x27;, &#x27;8&#x27;],
-                [&#x27;6&#x27;, &#x27;ITem 6&#x27;, &#x27;3&#x27;]
-            ]
-        };
+      
         /* ----------&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;     Daily Sales Chart initialization    &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;---------- */
+        var labelsMonthly &#x3D; [], seriesMonthly &#x3D; [], seriesMonthly2 &#x3D; [], maxMonthly&#x3D;0;
+        this.service.getConsultasMes(sessionStorage.getItem(&#x27;id&#x27;)).subscribe(val &#x3D;&gt; {
+            for (var i &#x3D; 0; i &lt; val.length; i++) {
+                seriesMonthly.push(val[i].dataLog);
+                if(val[i].dataLog&gt;maxMonthly){
+                    maxMonthly&#x3D;val[i].dataLog;
+                }
+                labelsMonthly.push(val[i].month);
+            }
+            seriesMonthly2.push(seriesMonthly);
+            const dataDailySalesChart &#x3D; {
+                labels: labelsMonthly,
+                series: seriesMonthly2
+            };
+    
+            const optionsDailySalesChart &#x3D; {
+                lineSmooth: Chartist.Interpolation.cardinal({
+                    tension: 0
+                }),
+                low: 0,
+                high: maxMonthly+10, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+                chartPadding: { top: 0, right: 0, bottom: 0, left: 0 },
+            };
+    
+            const dailySalesChart &#x3D; new Chartist.Line(&#x27;#dailySalesChart&#x27;, dataDailySalesChart, optionsDailySalesChart);
+    
+            this.startAnimationForLineChart(dailySalesChart);
+           
 
-        const dataDailySalesChart &#x3D; {
-            labels: [&#x27;L&#x27;, &#x27;M&#x27;, &#x27;M&#x27;, &#x27;J&#x27;, &#x27;V&#x27;, &#x27;S&#x27;, &#x27;D&#x27;],
-            series: [
-                [0, 1, 2, 0, 0, 1, 0]
-            ]
-        };
 
-        const optionsDailySalesChart &#x3D; {
-            lineSmooth: Chartist.Interpolation.cardinal({
-                tension: 0
-            }),
-            low: 0,
-            high: 10, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-            chartPadding: { top: 0, right: 0, bottom: 0, left: 0 },
-        };
+        });
 
-        const dailySalesChart &#x3D; new Chartist.Line(&#x27;#dailySalesChart&#x27;, dataDailySalesChart, optionsDailySalesChart);
-
-        this.startAnimationForLineChart(dailySalesChart);
-        /* ----------&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;     Completed Tasks Chart initialization    &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;---------- */
-
-        const dataCompletedTasksChart &#x3D; {
-            labels: [&#x27;12p&#x27;, &#x27;3p&#x27;, &#x27;6p&#x27;, &#x27;9p&#x27;, &#x27;12p&#x27;, &#x27;3a&#x27;, &#x27;6a&#x27;, &#x27;9a&#x27;],
-            series: [
-                [230, 750, 450, 300, 280, 240, 200, 190]
-            ]
-        };
-
-        const optionsCompletedTasksChart &#x3D; {
-            lineSmooth: Chartist.Interpolation.cardinal({
-                tension: 0
-            }),
-            low: 0,
-            high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better
-            // look
-            chartPadding: { top: 0, right: 0, bottom: 0, left: 0 }
-        };
-
-        const completedTasksChart &#x3D; new Chartist.Line(&#x27;#completedTasksChart&#x27;, dataCompletedTasksChart,
-            optionsCompletedTasksChart);
-
-        this.startAnimationForLineChart(completedTasksChart);
-
+        //FIN DAILY
+       
         /* ----------&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;     Emails Subscription Chart initialization    &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;---------- */
 
 
-        const dataWebsiteViewsChart &#x3D; {
-            labels: [&#x27;Bebidas&#x27;, &#x27;Servicios de Educación&#x27;, &#x27;Gas&#x27;],
-            series: [[3, 5, 10]]
-        };
 
-
-        const optionsWebsiteViewsChart &#x3D; {
-            axisX: {
-                showGrid: false
-            },
-            low: 1,
-            high: 10,
-            chartPadding: { top: 0, right: 5, bottom: 0, left: 0 }
-        };
-        const responsiveOptions: any &#x3D; [
-            [&#x27;screen and (max-width: 640px)&#x27;, {
-                seriesBarDistance: 5,
-                axisX: {
-                    labelInterpolationFnc: function (value) {
-                        return value[0];
-                    }
-                }
-            }]
-        ];
-        const websiteViewsChart &#x3D; new Chartist.Bar(&#x27;#websiteViewsChart&#x27;, dataWebsiteViewsChart, optionsWebsiteViewsChart, responsiveOptions);
-
-        this.startAnimationForBarChart(websiteViewsChart);
-
-        $(&#x27;#worldMap&#x27;).vectorMap({
-            map: &#x27;world_en&#x27;,
-            backgroundColor: &#x27;transparent&#x27;,
-            borderColor: &#x27;#818181&#x27;,
-            borderOpacity: 0.25,
-            borderWidth: 1,
-            color: &#x27;#b3b3b3&#x27;,
-            enableZoom: true,
-            hoverColor: &#x27;#eee&#x27;,
-            hoverOpacity: null,
-            normalizeFunction: &#x27;linear&#x27;,
-            scaleColors: [&#x27;#b6d6ff&#x27;, &#x27;#005ace&#x27;],
-            selectedColor: &#x27;#c9dfaf&#x27;,
-            selectedRegions: null,
-            showTooltip: true,
-            onRegionClick: function (element, code, region) {
-                var message &#x3D; &#x27;You clicked &quot;&#x27;
-                    + region
-                    + &#x27;&quot; which has the code: &#x27;
-                    + code.toUpperCase();
-
-                alert(message);
-            }
-        });
+        
     }
     ngAfterViewInit() {
         const breakCards &#x3D; true;
@@ -768,17 +750,16 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     &lt;div class&#x3D;&quot;row&quot;&gt;
 
       &lt;div class&#x3D;&quot;col-md-12&quot;&gt;
-        &lt;div class&#x3D;&quot;card card-chart&quot;&gt;
-          &lt;div class&#x3D;&quot;card&quot;&gt;
-
+        &lt;div class&#x3D;&quot;card&quot;&gt;
+          &lt;cy-graph&gt;&lt;/cy-graph&gt;
+          &lt;div class&#x3D;&quot;card-footer&quot;&gt;
+            &lt;div class&#x3D;&quot;stats&quot;&gt;
+              &lt;i class&#x3D;&quot;material-icons&quot;&gt;access_time&lt;/i&gt;
+              &lt;span class&#x3D;&quot;text-success&quot;&gt;
+                  Empresas que mas has consultado, comunicate rápidamente con alguna!
+                &lt;/span&gt;
+            &lt;/div&gt;
           &lt;/div&gt;
-          &lt;div class&#x3D;&quot;card-body&quot; align&#x3D;&quot;center&quot; &gt;
-             
-            &lt;img class&#x3D;&quot;img&quot; src&#x3D;&quot;http://villalejana.com/wp-content/uploads/2017/08/mapa.png&quot;&gt;
-            &lt;h4 class&#x3D;&quot;card-title&quot;&gt;Ubicación de Interesados&lt;/h4&gt;
-            &lt;p class&#x3D;&quot;card-category&quot;&gt;&lt;/p&gt;
-          &lt;/div&gt;
-
         &lt;/div&gt;
       &lt;/div&gt;
 
@@ -791,15 +772,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
           &lt;/div&gt;
           &lt;div class&#x3D;&quot;card-body&quot;&gt;
             &lt;div class&#x3D;&quot;card-actions&quot;&gt;
-              &lt;button mat-raised-button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-danger btn-link fix-broken-card&quot;&gt;
-                &lt;i class&#x3D;&quot;material-icons&quot;&gt;build&lt;/i&gt; Fix Header!
-              &lt;/button&gt;
-              &lt;button mat-raised-button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-info btn-link&quot; matTooltip&#x3D;&quot;Refresh&quot; [matTooltipPosition]&#x3D;&quot;&#x27;below&#x27;&quot;&gt;
-                &lt;i class&#x3D;&quot;material-icons&quot;&gt;refresh&lt;/i&gt;
-              &lt;/button&gt;
-              &lt;button mat-raised-button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-default btn-link&quot; matTooltip&#x3D;&quot;Change Date&quot; [matTooltipPosition]&#x3D;&quot;&#x27;below&#x27;&quot;&gt;
-                &lt;i class&#x3D;&quot;material-icons&quot;&gt;edit&lt;/i&gt;
-              &lt;/button&gt;
+
             &lt;/div&gt;
             &lt;h4 class&#x3D;&quot;card-title&quot;&gt;Productos mas Consultados&lt;/h4&gt;
             &lt;p class&#x3D;&quot;card-category&quot;&gt;
@@ -825,17 +798,19 @@ export class DashboardComponent implements OnInit, AfterViewInit {
               &lt;button mat-raised-button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-danger btn-link fix-broken-card&quot;&gt;
                 &lt;i class&#x3D;&quot;material-icons&quot;&gt;build&lt;/i&gt; Fix Header!
               &lt;/button&gt;
-              &lt;button mat-raised-button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-info btn-link&quot; matTooltip&#x3D;&quot;Refresh&quot; [matTooltipPosition]&#x3D;&quot;&#x27;below&#x27;&quot;&gt;
+              &lt;button mat-raised-button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-info btn-link&quot; matTooltip&#x3D;&quot;Refresh&quot;
+                [matTooltipPosition]&#x3D;&quot;&#x27;below&#x27;&quot;&gt;
                 &lt;i class&#x3D;&quot;material-icons&quot;&gt;refresh&lt;/i&gt;
               &lt;/button&gt;
-              &lt;button mat-raised-button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-default btn-link&quot; matTooltip&#x3D;&quot;Change Date&quot; [matTooltipPosition]&#x3D;&quot;&#x27;below&#x27;&quot;&gt;
+              &lt;button mat-raised-button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-default btn-link&quot; matTooltip&#x3D;&quot;Change Date&quot;
+                [matTooltipPosition]&#x3D;&quot;&#x27;below&#x27;&quot;&gt;
                 &lt;i class&#x3D;&quot;material-icons&quot;&gt;edit&lt;/i&gt;
               &lt;/button&gt;
             &lt;/div&gt;
             &lt;h4 class&#x3D;&quot;card-title&quot;&gt;Cantidad de consultas&lt;/h4&gt;
             &lt;p class&#x3D;&quot;card-category&quot;&gt;
               &lt;span class&#x3D;&quot;text-success&quot;&gt;
-                Registro de usuarios que han consultado el detalle de tu información
+                Registro de usuarios que te han consultado mensualmente.
               &lt;/span&gt;
             &lt;/p&gt;
           &lt;/div&gt;
@@ -859,7 +834,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             &lt;p class&#x3D;&quot;card-category&quot;&gt;Visitas a mi Perfil&lt;/p&gt;
             &lt;h3 class&#x3D;&quot;card-title&quot; *ngFor&#x3D;&quot;let e of dataLogEmpresa &quot;&gt;{{e.total}}&lt;/h3&gt;
 
-          
+
           &lt;/div&gt;
           &lt;div class&#x3D;&quot;card-footer&quot;&gt;
             &lt;div class&#x3D;&quot;stats&quot;&gt;
@@ -915,8 +890,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="main-content">  <div class="container-fluid">    <div class="row">      <div class="col-md-12">        <div class="card card-chart">          <div class="card">          </div>          <div class="card-body" align="center" >                         <img class="img" src="http://villalejana.com/wp-content/uploads/2017/08/mapa.png">            <h4 class="card-title">Ubicación de Interesados</h4>            <p class="card-category"></p>          </div>        </div>      </div>      <div class="col-md-6">        <div class="card card-chart">          <div class="card-header card-header-rose" data-header-animation="true">            <div class="ct-chart" id="websiteViewsChart"></div>          </div>          <div class="card-body">            <div class="card-actions">              <button mat-raised-button type="button" class="btn btn-danger btn-link fix-broken-card">                <i class="material-icons">build</i> Fix Header!              </button>              <button mat-raised-button type="button" class="btn btn-info btn-link" matTooltip="Refresh" [matTooltipPosition]="\'below\'">                <i class="material-icons">refresh</i>              </button>              <button mat-raised-button type="button" class="btn btn-default btn-link" matTooltip="Change Date" [matTooltipPosition]="\'below\'">                <i class="material-icons">edit</i>              </button>            </div>            <h4 class="card-title">Productos mas Consultados</h4>            <p class="card-category">              <span class="text-success">                Registro de productos mas consultados dentro de la plataforma, revisa si ofreces alguno!              </span>            </p>          </div>          <div class="card-footer">            <div class="stats">              <i class="material-icons">access_time</i>            </div>          </div>        </div>      </div>      <div class="col-md-6">        <div class="card card-chart">          <div class="card-header card-header-success" data-header-animation="true">            <div class="ct-chart" id="dailySalesChart"></div>          </div>          <div class="card-body">            <div class="card-actions">              <button mat-raised-button type="button" class="btn btn-danger btn-link fix-broken-card">                <i class="material-icons">build</i> Fix Header!              </button>              <button mat-raised-button type="button" class="btn btn-info btn-link" matTooltip="Refresh" [matTooltipPosition]="\'below\'">                <i class="material-icons">refresh</i>              </button>              <button mat-raised-button type="button" class="btn btn-default btn-link" matTooltip="Change Date" [matTooltipPosition]="\'below\'">                <i class="material-icons">edit</i>              </button>            </div>            <h4 class="card-title">Cantidad de consultas</h4>            <p class="card-category">              <span class="text-success">                Registro de usuarios que han consultado el detalle de tu información              </span>            </p>          </div>          <div class="card-footer">            <div class="stats">              <i class="material-icons">access_time</i>            </div>          </div>        </div>      </div>    </div>    <div class="row">      <div class="col-lg-6 col-md-6 col-sm-6">        <div class="card card-stats">          <div class="card-header card-header-rose card-header-icon">            <div class="card-icon">              <i class="material-icons">equalizer</i>            </div>            <p class="card-category">Visitas a mi Perfil</p>            <h3 class="card-title" *ngFor="let e of dataLogEmpresa ">{{e.total}}</h3>                    </div>          <div class="card-footer">            <div class="stats">              <i class="material-icons">local_offer</i> Completa tu información para llamar mas la atención!            </div>          </div>        </div>      </div>      <div class="col-lg-6 col-md-6 col-sm-6">        <div class="card card-stats">          <div class="card-header card-header-success card-header-icon">            <div class="card-icon">              <i class="material-icons">store</i>            </div>            <p class="card-category">Tiempo promedio de respuesta</p>            <h3 class="card-title">1,5h</h3>          </div>          <div class="card-footer">            <div class="stats">              <i class="material-icons">date_range</i> Siempre intenta responder rápidamente a tus solicitudes            </div>          </div>        </div>      </div>    </div>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AdminLayoutComponent', 'selector': 'app-layout'},{'name': 'AnalisisComponent', 'selector': 'app-analisis'},{'name': 'AppComponent', 'selector': 'app-my-app'},{'name': 'AuthLayoutComponent', 'selector': 'app-layout'},{'name': 'ButtonsComponent', 'selector': 'app-buttons'},{'name': 'CalendarComponent', 'selector': 'app-calendar-cmp'},{'name': 'ChartsComponent', 'selector': 'app-charts-cmp'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DataTableComponent', 'selector': 'app-data-table-cmp'},{'name': 'ExtendedFormsComponent', 'selector': 'app-extendedforms-cmp'},{'name': 'ExtendedTableComponent', 'selector': 'app-extended-table-cmp'},{'name': 'FieldErrorDisplayComponent', 'selector': 'app-field-error-display'},{'name': 'FixedpluginComponent', 'selector': 'app-fixedplugin'},{'name': 'FooterComponent', 'selector': 'app-footer-cmp'},{'name': 'FullScreenMapsComponent', 'selector': 'app-fullscreen-map-cmp'},{'name': 'GoogleMapsComponent', 'selector': 'app-vector-maps-cmp'},{'name': 'GridSystemComponent', 'selector': 'app-grid-cmp'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'IconsComponent', 'selector': 'app-icons-cmp'},{'name': 'LockComponent', 'selector': 'app-lock-cmp'},{'name': 'LoginComponent', 'selector': 'app-login-cmp'},{'name': 'MdChartComponent', 'selector': 'app-md-chart'},{'name': 'MdTableComponent', 'selector': 'app-md-table'},{'name': 'MisProductosComponent', 'selector': 'app-mis-productos'},{'name': 'NavbarComponent', 'selector': 'app-navbar-cmp'},{'name': 'NotificationsComponent', 'selector': 'app-notifications-cmp'},{'name': 'PanelAdminComponent', 'selector': 'app-panel-admin'},{'name': 'PanelsComponent', 'selector': 'app-panels-cmp'},{'name': 'PricingComponent', 'selector': 'app-pricing-cmp'},{'name': 'RegularFormsComponent', 'selector': 'app-regularforms-cmp'},{'name': 'RegularTableComponent', 'selector': 'app-regular-table-cmp'},{'name': 'SearcherComponent', 'selector': 'app-searcher'},{'name': 'SidebarComponent', 'selector': 'app-sidebar-cmp'},{'name': 'SociosAdminComponent', 'selector': 'app-socios-admin'},{'name': 'SociosComponent', 'selector': 'app-socios'},{'name': 'SweetAlertComponent', 'selector': 'app-sweetalert-cmp'},{'name': 'TimelineComponent', 'selector': 'app-timeline-cmp'},{'name': 'TypographyComponent', 'selector': 'app-typography-cmp'},{'name': 'UserComponent', 'selector': 'app-user-cmp'},{'name': 'ValidationFormsComponent', 'selector': 'app-validationforms-cmp'},{'name': 'VectorMapsComponent', 'selector': 'app-vector-maps-cmp'},{'name': 'WidgetsComponent', 'selector': 'app-widgets-cmp'},{'name': 'WizardComponent', 'selector': 'app-wizard-cmp'}];
+        var COMPONENT_TEMPLATE = '<div><div class="main-content">  <div class="container-fluid">    <div class="row">      <div class="col-md-12">        <div class="card">          <cy-graph></cy-graph>          <div class="card-footer">            <div class="stats">              <i class="material-icons">access_time</i>              <span class="text-success">                  Empresas que mas has consultado, comunicate rápidamente con alguna!                </span>            </div>          </div>        </div>      </div>      <div class="col-md-6">        <div class="card card-chart">          <div class="card-header card-header-rose" data-header-animation="true">            <div class="ct-chart" id="websiteViewsChart"></div>          </div>          <div class="card-body">            <div class="card-actions">            </div>            <h4 class="card-title">Productos mas Consultados</h4>            <p class="card-category">              <span class="text-success">                Registro de productos mas consultados dentro de la plataforma, revisa si ofreces alguno!              </span>            </p>          </div>          <div class="card-footer">            <div class="stats">              <i class="material-icons">access_time</i>            </div>          </div>        </div>      </div>      <div class="col-md-6">        <div class="card card-chart">          <div class="card-header card-header-success" data-header-animation="true">            <div class="ct-chart" id="dailySalesChart"></div>          </div>          <div class="card-body">            <div class="card-actions">              <button mat-raised-button type="button" class="btn btn-danger btn-link fix-broken-card">                <i class="material-icons">build</i> Fix Header!              </button>              <button mat-raised-button type="button" class="btn btn-info btn-link" matTooltip="Refresh"                [matTooltipPosition]="\'below\'">                <i class="material-icons">refresh</i>              </button>              <button mat-raised-button type="button" class="btn btn-default btn-link" matTooltip="Change Date"                [matTooltipPosition]="\'below\'">                <i class="material-icons">edit</i>              </button>            </div>            <h4 class="card-title">Cantidad de consultas</h4>            <p class="card-category">              <span class="text-success">                Registro de usuarios que te han consultado mensualmente.              </span>            </p>          </div>          <div class="card-footer">            <div class="stats">              <i class="material-icons">access_time</i>            </div>          </div>        </div>      </div>    </div>    <div class="row">      <div class="col-lg-6 col-md-6 col-sm-6">        <div class="card card-stats">          <div class="card-header card-header-rose card-header-icon">            <div class="card-icon">              <i class="material-icons">equalizer</i>            </div>            <p class="card-category">Visitas a mi Perfil</p>            <h3 class="card-title" *ngFor="let e of dataLogEmpresa ">{{e.total}}</h3>          </div>          <div class="card-footer">            <div class="stats">              <i class="material-icons">local_offer</i> Completa tu información para llamar mas la atención!            </div>          </div>        </div>      </div>      <div class="col-lg-6 col-md-6 col-sm-6">        <div class="card card-stats">          <div class="card-header card-header-success card-header-icon">            <div class="card-icon">              <i class="material-icons">store</i>            </div>            <p class="card-category">Tiempo promedio de respuesta</p>            <h3 class="card-title">1,5h</h3>          </div>          <div class="card-footer">            <div class="stats">              <i class="material-icons">date_range</i> Siempre intenta responder rápidamente a tus solicitudes            </div>          </div>        </div>      </div>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminLayoutComponent', 'selector': 'app-layout'},{'name': 'AnalisisComponent', 'selector': 'app-analisis'},{'name': 'AppComponent', 'selector': 'app-my-app'},{'name': 'AuthLayoutComponent', 'selector': 'app-layout'},{'name': 'ButtonsComponent', 'selector': 'app-buttons'},{'name': 'CalendarComponent', 'selector': 'app-calendar-cmp'},{'name': 'ChartsComponent', 'selector': 'app-charts-cmp'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DataTableComponent', 'selector': 'app-data-table-cmp'},{'name': 'ExtendedFormsComponent', 'selector': 'app-extendedforms-cmp'},{'name': 'ExtendedTableComponent', 'selector': 'app-extended-table-cmp'},{'name': 'FieldErrorDisplayComponent', 'selector': 'app-field-error-display'},{'name': 'FixedpluginComponent', 'selector': 'app-fixedplugin'},{'name': 'FooterComponent', 'selector': 'app-footer-cmp'},{'name': 'FullScreenMapsComponent', 'selector': 'app-fullscreen-map-cmp'},{'name': 'GoogleMapsComponent', 'selector': 'app-vector-maps-cmp'},{'name': 'GraphComponent', 'selector': 'cy-graph'},{'name': 'GridSystemComponent', 'selector': 'app-grid-cmp'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'IconsComponent', 'selector': 'app-icons-cmp'},{'name': 'LockComponent', 'selector': 'app-lock-cmp'},{'name': 'LoginComponent', 'selector': 'app-login-cmp'},{'name': 'MdChartComponent', 'selector': 'app-md-chart'},{'name': 'MdTableComponent', 'selector': 'app-md-table'},{'name': 'MisProductosComponent', 'selector': 'app-mis-productos'},{'name': 'NavbarComponent', 'selector': 'app-navbar-cmp'},{'name': 'NgCyto', 'selector': 'ng2-cytoscape'},{'name': 'NotificationsComponent', 'selector': 'app-notifications-cmp'},{'name': 'PanelAdminComponent', 'selector': 'app-panel-admin'},{'name': 'PanelsComponent', 'selector': 'app-panels-cmp'},{'name': 'PricingComponent', 'selector': 'app-pricing-cmp'},{'name': 'RegularFormsComponent', 'selector': 'app-regularforms-cmp'},{'name': 'RegularTableComponent', 'selector': 'app-regular-table-cmp'},{'name': 'SearcherComponent', 'selector': 'app-searcher'},{'name': 'SidebarComponent', 'selector': 'app-sidebar-cmp'},{'name': 'SociosAdminComponent', 'selector': 'app-socios-admin'},{'name': 'SociosComponent', 'selector': 'app-socios'},{'name': 'SweetAlertComponent', 'selector': 'app-sweetalert-cmp'},{'name': 'TimelineComponent', 'selector': 'app-timeline-cmp'},{'name': 'TypographyComponent', 'selector': 'app-typography-cmp'},{'name': 'UserComponent', 'selector': 'app-user-cmp'},{'name': 'ValidationFormsComponent', 'selector': 'app-validationforms-cmp'},{'name': 'VectorMapsComponent', 'selector': 'app-vector-maps-cmp'},{'name': 'WidgetsComponent', 'selector': 'app-widgets-cmp'},{'name': 'WizardComponent', 'selector': 'app-wizard-cmp'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'DashboardComponent'};
 </script>

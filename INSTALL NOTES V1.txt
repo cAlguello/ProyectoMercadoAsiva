@@ -4,3 +4,30 @@ Referencia: https://docs.docker.com/get-started/part6/
 
 Se necesita tener instalado docker community edition con anterioridad
 
+Para Front-End:
+
+1.Configurar dentro de carpeta DIST
+
+    1.1-a Para ISS: Web.Config con la direccion donde sera desplegada la app
+
+    1.1-b Para Apache: .htaccess con la direccion donde sera desplegada la app
+
+    1.2 Configurar archivo index.html 
+        <base href='/'> 
+        Cambiar '/' con alguna direccion particular  (ej: '/miApp') en caso de no querer desplegar en root del servidor
+
+2.Desplegar build
+
+    Arrastrar la carpeta dist al lugar donde este alojado el servidor a montar, por ej: /etc/www...
+
+Para Backend:
+
+1.Obtener una version en docker (tener instalado docker con anterioridad)
+    
+    1.1 Por consola usar los siguientes comandos
+        1.1.1 docker pull calguello/mercadoasiva   #para bajar la imagen            
+        1.1.2 docker images                        #para comprobar que se encuentra efectivamente descargada la imagen en el directorio
+        1.1.3 docker run -it -p 8181:8181 calguello/mercadoasiva #para correr la imagen en el servidor bajo la ip 8181
+
+
+

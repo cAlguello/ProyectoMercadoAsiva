@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ServicesService } from '../../services.service';
+import { productoEmpresa } from '../../entities/productoEmpresa';
 
 declare const $: any;
 
@@ -11,9 +12,10 @@ declare const $: any;
 })
 export class MisProductosComponent implements OnInit {
   public dataTable: any;
+  public dataTableProducto: any;
   public regularItems: any;
   public dataProductos: Observable<any>;
-  public misProductos: Observable<any>;  
+  public misProductos: Observable<any>;
   public mercadoPublicoProductos: Observable<any>;
   public dataProductosEmpresa: Observable<Array<any>>;
   public productoServicioEmpresa: any;
@@ -26,22 +28,6 @@ export class MisProductosComponent implements OnInit {
 
   constructor(private service: ServicesService, private chRef: ChangeDetectorRef) {
     setTimeout(function () {
-      //TABLE1
-      $('#productoDatatable').DataTable({
-        "pagingType": "full_numbers",
-        "lengthMenu": [
-          [10, 25, 50, -1],
-          [10, 25, 50, "TODOS"]
-        ],
-        "info": false,
-        responsive: true,
-        language: {
-          search: "_INPUT_",
-          "lengthMenu": "Mostrar _MENU_ por pagina",
-          "zeroRecords": "No hay resultados",
-          searchPlaceholder: "Buscar Productos",
-        }
-      });
       //Mercado Publico
       $('#mercadoPublicoDatatable').DataTable({
         "pagingType": "full_numbers",
@@ -119,9 +105,82 @@ export class MisProductosComponent implements OnInit {
 
     //CHILECOMPRA
   }
+
+  addProducto(producto: productoEmpresa) {
+    producto.empresa_id_empresa_producto = sessionStorage.getItem('id');
+    console.log(producto);
+    this.service.addProductoEmpresa(producto).subscribe(val => {
+      console.log(val);
+      //this.getDataEmpresa();
+    }, error => {
+
+    });
+  }
+
+  getDataEmpresa() {
+    this.service.getProductosEmpresasConData(sessionStorage.getItem('id')).subscribe(val => {
+      this.misProductos = val;
+
+      //
+      //DATATABLE
+      //Indice
+      this.chRef.detectChanges();
+
+      // Now you can use jQuery DataTables :
+      const table: any = $('#productoDatatable').DataTable({
+        "pagingType": "full_numbers",
+        "lengthMenu": [
+          [10, 25, 50, -1],
+          [10, 25, 50, "TODOS"]
+        ],
+        "info": false,
+        responsive: true,
+        language: {
+          search: "_INPUT_",
+          "lengthMenu": "Mostrar _MENU_ por pagina",
+          "zeroRecords": "No hay resultados",
+          searchPlaceholder: "Buscar Productos"
+        }
+      });
+      this.dataTableProducto = table.DataTable();
+      //
+    }, error => {
+      console.log(error);
+    });
+  }
   ngOnInit() {
+
+    this.service.getProductosEmpresasConData(sessionStorage.getItem('id')).subscribe(val => {
+      this.misProductos = val;
+
+      //
+      //DATATABLE
+      //Indice
+      this.chRef.detectChanges();
+
+      // Now you can use jQuery DataTables :
+      const table: any = $('#productoDatatable').DataTable({
+        "pagingType": "full_numbers",
+        "lengthMenu": [
+          [10, 25, 50, -1],
+          [10, 25, 50, "TODOS"]
+        ],
+        "info": false,
+        responsive: true,
+        language: {
+          search: "_INPUT_",
+          "lengthMenu": "Mostrar _MENU_ por pagina",
+          "zeroRecords": "No hay resultados",
+          searchPlaceholder: "Buscar Productos"
+        }
+      });
+      this.dataTableProducto = table.DataTable();
+      //
+    }, error => {
+      console.log(error);
+    });
     this.service.getAllProductos().subscribe(val => {
-     // this.dataProductos = val;
+      this.dataProductos = val;
 
       //DATATABLE
       //Indice

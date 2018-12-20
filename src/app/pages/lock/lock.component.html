@@ -13,13 +13,24 @@
       </div>
       <div class="row">
         <div class="card">
-          <div class="input-group">
-            <input type="text" [(ngModel)]="searchText1" class="form-control" placeholder="    Intenta buscar un producto o servicio...">
-            <button mat-raised-button type="submit" id="button-search" (click)="search(searchText1)" class="btn btn-white btn-round btn-just-icon"
-              data-toggle="modal" data-target="#noticeModal">
-              <i class="material-icons">search</i>
-            </button>
-          </div>
+          <!---->
+          <form>
+              <mat-form-field>
+                <input matInput placeholder="    Intenta buscar un producto o servicio..." [matAutocomplete]="auto" name="joke" #joke="ngModel"
+                  [(ngModel)]="currentItem" (ngModelChange)="doFilter()">
+                <button mat-raised-button type="submit" matSuffix (click)="search(currentItem)" class="btn btn-white btn-round btn-just-icon center"  data-toggle="modal" data-target="#noticeModal">
+                  <i class="material-icons">search</i>
+                </button>
+              </mat-form-field>
+    
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let item of items | async" [value]="item.nombre_producto">
+                  {{item.nombre_producto}}
+                </mat-option>
+              </mat-autocomplete>
+            </form>
+          <!---->
+         
         </div>
       </div>
 

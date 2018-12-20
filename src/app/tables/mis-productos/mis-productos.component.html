@@ -2,7 +2,8 @@
   <div class="container-fluid">
 
     <div class="row">
-      <button mat-raised-button type="submit" class="btn btn-rose col-md-6 ml-auto mr-auto text-center" data-toggle="modal" data-target="#productoModal">Agregar Productos/Servicios</button>
+      <button mat-raised-button type="submit" class="btn btn-rose col-md-6 ml-auto mr-auto text-center" data-toggle="modal"
+        data-target="#productoModal">Agregar Productos/Servicios</button>
 
     </div>
     <div class="row">
@@ -13,14 +14,15 @@
             <div class="card-icon">
               <i class="material-icons">assignment</i>
             </div>
-            <h4 class="card-title">Contactos</h4>
+            <h4 class="card-title">Productos</h4>
           </div>
           <div class="card-body">
             <div class="toolbar">
               <!--        Here you can write extra buttons/actions for the toolbar              -->
             </div>
             <div class="material-datatables">
-              <table id="productoDatatable" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+              <table id="productoDatatable" class="table table-striped table-no-bordered table-hover" cellspacing="0"
+                width="100%" style="width:100%">
                 <thead>
                   <tr>
                     <th>Nombre Producto/Servicio</th>
@@ -36,7 +38,8 @@
                 <tbody>
                   <tr *ngFor="let e of misProductos">
                     <td>{{e.nombre_producto}}</td>
-                    <td>Editar</td>
+                    <td>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -60,7 +63,7 @@
   <div class="modal-dialog modal-notice">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel">Agrega Items desde Mercado Publico o de nuestro Indice</h5>
+        <h5 class="modal-title" id="myModalLabel">Agrega Items desde nuestro Indice</h5>
 
 
       </div>
@@ -70,11 +73,6 @@
           <div class="card-body ">
             <ul class="nav nav-pills nav-pills-warning" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#link1" role="tablist">
-                  Mercado Publico
-                </a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#link2" role="tablist">
                   Indice de Plataforma
                 </a>
@@ -83,63 +81,13 @@
             </ul>
             <div class="tab-content tab-space">
 
-
-              <div class="tab-pane active" id="link1">
-                <!--MERCADOPUBLICO-->
-
-                <div class="input-field">
-                  <input id="rut" type="text" class="form-control" [(ngModel)]="localRut.rut">
-                  <label for="rut">Rut Empresa</label>
-                </div>
-                <button mat-raised-button type="submit" (click)="informacionOrdenDeCompra()" class="btn btn-rose col-md-6 ml-auto mr-auto text-center">Obtener datos de Mercado Publico</button>
-                <div>
-                  <i class="small material-icons">account_circle</i>
-                  <label>ID EMPRESA MERCADO PUBLICO</label>
-                  <div>
-                    <p class="header h2">{{this.localRut.id_chilecompra}}</p>
-                  </div>
-                </div>
-                <table class="highlight">
-                  <thead>
-                    <tr>
-                      <th>Ordenes de Compra</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr *ngFor="let d of ordenesDeCompraEmpresa ">
-                      <td>{{d}}</td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <table class="highlight">
-                  <thead>
-                    <tr>
-                      <th>Productos/Servicios</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr *ngFor="let e of productoServicioEmpresa ">
-                      <td>{{e}}</td>
-                    </tr>
-                  </tbody>
-                </table>
-
-
-                <!--FIN MERCADOPUBLICO-->
-
-
-
-
-              </div>
               <div class="tab-pane" id="link2">
                 <div class="toolbar">
                   <!--        Here you can write extra buttons/actions for the toolbar              -->
                 </div>
                 <div class="material-datatables">
-                  <table id="indiceDatatable" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                  <table id="indiceDatatable" class="table table-striped table-no-bordered table-hover" cellspacing="0"
+                    width="100%" style="width:100%">
                     <thead>
                       <tr>
                         <th>Producto</th>
@@ -148,7 +96,7 @@
                     </thead>
                     <tfoot>
                       <tr>
-                        <th>Producto Giro</th>
+                        <th>Producto</th>
                         <th>Agregar</th>
                       </tr>
                     </tfoot>
@@ -156,7 +104,8 @@
                       <tr *ngFor="let e of dataProductos">
                         <td>{{e.nombre_producto}}</td>
                         <td>
-                          <button mat-raised-button type="submit" class="btn btn-rose">Agregar </button>
+                          <button mat-raised-button type="submit" class="btn btn-rose" (click)="addProducto(e)">Agregar</button>
+
 
                         </td>
                       </tr>

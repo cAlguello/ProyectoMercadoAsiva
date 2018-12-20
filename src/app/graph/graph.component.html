@@ -8,10 +8,7 @@
         <div class="card-text">
           <h4 class="card-title">{{nombre_empresa}}</h4>
           <p class="card-category">
-              <button mat-raised-button type="submit" class="btn btn-rose" (click)="showSwal(e)" matTooltip="Envia un mensaje a esta Empresa"
-              [matTooltipPosition]="'below'">
-              CONTACTAR
-            </button>
+
           </p>
         </div>
       </div>
@@ -21,12 +18,19 @@
             <tr>
               <th>Empresa</th>
               <th>Consultas</th>
+              <th>Contactar</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let empresa of hanConsultadoEmpresa">
               <td>{{empresa.nombre_empresa}}</td>
               <td>{{empresa.total}}</td>
+              <td>
+                <button mat-raised-button type="submit" class="btn btn-rose" (click)="showSwal(e)" matTooltip="Envia un mensaje a esta Empresa"
+                  [matTooltipPosition]="'below'">
+                  CONTACTAR
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>

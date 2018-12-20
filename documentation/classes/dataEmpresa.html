@@ -86,6 +86,10 @@
                                     <span class="modifier">Public</span>
                                 <a href="#empresa_id_empresa">empresa_id_empresa</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#mail_empresa">mail_empresa</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -105,7 +109,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(empresa_id_empresa: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+<code>constructor(empresa_id_empresa: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, mail_empresa: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -129,6 +133,18 @@
                                         <tbody>
                                                 <tr>
                                                         <td>empresa_id_empresa</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>mail_empresa</td>
                                                   
                                                         <td>
                                                                     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
@@ -188,6 +204,41 @@
 
             </tbody>
         </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="mail_empresa"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            mail_empresa
+                            </b>
+                            <a href="#mail_empresa"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>mail_empresa:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/app/entities/dataEmpresa.ts:4</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
 </section>
 
 
@@ -202,7 +253,8 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export class dataEmpresa {
     constructor(
-        public empresa_id_empresa: any,                  
+        public empresa_id_empresa: any, 
+        public mail_empresa:any                 
     ) { }
   }</code></pre>
     </div>

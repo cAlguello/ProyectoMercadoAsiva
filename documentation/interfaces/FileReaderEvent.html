@@ -138,7 +138,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/forms/wizard/wizard.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/forms/wizard/wizard.component.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -194,10 +194,12 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, OnChanges, AfterViewInit, SimpleChanges } from &#x27;@angular/core&#x27;;
-import {FormControl, FormGroupDirective, NgForm, Validators, FormGroup} from &#x27;@angular/forms&#x27;;
-import {ErrorStateMatcher} from &#x27;@angular/material/core&#x27;;
+import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup } from &#x27;@angular/forms&#x27;;
+import { ErrorStateMatcher } from &#x27;@angular/material/core&#x27;;
 import { FormBuilder } from &#x27;@angular/forms&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
+import { dataEmpresaModal } from &#x27;../../entities/dataEmpresaModal&#x27;;
+import { ServicesService } from &#x27;../../services.service&#x27;;
 
 declare const $: any;
 interface FileReaderEventTarget extends EventTarget {
@@ -210,10 +212,10 @@ interface FileReaderEvent extends Event {
 }
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted &#x3D; form &amp;&amp; form.submitted;
-    return !!(control &amp;&amp; control.invalid &amp;&amp; (control.dirty || control.touched || isSubmitted));
-  }
+    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+        const isSubmitted &#x3D; form &amp;&amp; form.submitted;
+        return !!(control &amp;&amp; control.invalid &amp;&amp; (control.dirty || control.touched || isSubmitted));
+    }
 }
 
 @Component({
@@ -223,71 +225,97 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 
 export class WizardComponent implements OnInit, OnChanges, AfterViewInit {
-  cities &#x3D; [
-    {value: &#x27;paris-0&#x27;, viewValue: &#x27;Paris&#x27;},
-    {value: &#x27;miami-1&#x27;, viewValue: &#x27;Miami&#x27;},
-    {value: &#x27;bucharest-2&#x27;, viewValue: &#x27;Bucharest&#x27;},
-    {value: &#x27;new-york-3&#x27;, viewValue: &#x27;New York&#x27;},
-    {value: &#x27;london-4&#x27;, viewValue: &#x27;London&#x27;},
-    {value: &#x27;barcelona-5&#x27;, viewValue: &#x27;Barcelona&#x27;},
-    {value: &#x27;moscow-6&#x27;, viewValue: &#x27;Moscow&#x27;},
-  ];
-  emailFormControl &#x3D; new FormControl(&#x27;&#x27;, [
-    Validators.required,
-    Validators.email,
-  ]);
+    public submitted: boolean;
+    cities &#x3D; [
+        { value: &#x27;paris-0&#x27;, viewValue: &#x27;Paris&#x27; },
+        { value: &#x27;miami-1&#x27;, viewValue: &#x27;Miami&#x27; },
+        { value: &#x27;bucharest-2&#x27;, viewValue: &#x27;Bucharest&#x27; },
+        { value: &#x27;new-york-3&#x27;, viewValue: &#x27;New York&#x27; },
+        { value: &#x27;london-4&#x27;, viewValue: &#x27;London&#x27; },
+        { value: &#x27;barcelona-5&#x27;, viewValue: &#x27;Barcelona&#x27; },
+        { value: &#x27;moscow-6&#x27;, viewValue: &#x27;Moscow&#x27; },
+    ];
+    emailFormControl &#x3D; new FormControl(&#x27;&#x27;, [
+        Validators.required,
+        Validators.email,
+    ]);
 
-  matcher &#x3D; new MyErrorStateMatcher();
+    matcher &#x3D; new MyErrorStateMatcher();
 
-  type : FormGroup;
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+    type: FormGroup;
+    userForm: FormGroup;
+    constructor(private formBuilder: FormBuilder, private router: Router, private service: ServicesService) { }
 
-  isFieldValid(form: FormGroup, field: string) {
-    return !form.get(field).valid &amp;&amp; form.get(field).touched;
-  }
+    isFieldValid(form: FormGroup, field: string) {
+        return !form.get(field).valid &amp;&amp; form.get(field).touched;
+    }
 
-  displayFieldCss(form: FormGroup, field: string) {
-    return {
-      &#x27;has-error&#x27;: this.isFieldValid(form, field),
-      &#x27;has-feedback&#x27;: this.isFieldValid(form, field)
-    };
-  }
-  irDashBoard(){
-      this.router.navigateByUrl(&#x27;dashboard&#x27;);
+    displayFieldCss(form: FormGroup, field: string) {
+        return {
+            &#x27;has-error&#x27;: this.isFieldValid(form, field),
+            &#x27;has-feedback&#x27;: this.isFieldValid(form, field)
+        };
+    }
 
-  }
+    save(model: dataEmpresaModal, isValid: boolean) {
+        model.id_empresa &#x3D; sessionStorage.getItem(&#x27;id&#x27;);
+        console.log(&quot;RESULTADO FORM&quot;)
+        console.log(model)
+        this.submitted &#x3D; true;
+        this.service.actualizaEmpresa(model).subscribe(val &#x3D;&gt; {
+            console.log(val);
+        },
+            error &#x3D;&gt; {
+                console.log(error)
+            });
+
+
+    }
+    irDashBoard() {
+        this.router.navigateByUrl(&#x27;dashboard&#x27;);
+
+    }
     ngOnInit() {
-      this.type &#x3D; this.formBuilder.group({
-        // To add a validator, we must first convert the string value into an array. The first item in the array is the default value if any, then the next item in the array is the validator. Here we are adding a required validator meaning that the firstName attribute must have a value in it.
-        firstName: [null, Validators.required],
-        lastName: [null, Validators.required],
-        email: [null, [Validators.required, Validators.pattern(&quot;^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$&quot;)]],
-       });
+        this.type &#x3D; this.formBuilder.group({
+            // To add a validator, we must first convert the string value into an array. The first item in the array is the default value if any, then the next item in the array is the validator. Here we are adding a required validator meaning that the firstName attribute must have a value in it.
+            firstName: [null, Validators.required],
+            lastName: [null, Validators.required],
+            email: [null, [Validators.required, Validators.pattern(&quot;^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$&quot;)]],
+        });
+
+        this.userForm &#x3D; this.formBuilder.group({
+            nombre_empresa: [&#x27;&#x27;, [&lt;any&gt;Validators.required, &lt;any&gt;Validators.minLength(1)]],
+            razon_social_empresa: [&#x27;&#x27;, [&lt;any&gt;Validators.required, &lt;any&gt;Validators.minLength(1)]],
+            tamano_empresa: [&#x27;&#x27;, [&lt;any&gt;Validators.required, &lt;any&gt;Validators.minLength(1)]],
+            calle_empresa: [&#x27;&#x27;, [&lt;any&gt;Validators.required, &lt;any&gt;Validators.minLength(1)]],
+            descripcion_empresa: [&#x27;&#x27;, [&lt;any&gt;Validators.required, &lt;any&gt;Validators.minLength(1)]],
+            numero_calle_empresa: [&#x27;&#x27;, [&lt;any&gt;Validators.required, &lt;any&gt;Validators.minLength(1)]],
+            ciudad_empresa: [&#x27;&#x27;, [&lt;any&gt;Validators.required, &lt;any&gt;Validators.minLength(1)]],
+            encargado_contacto_empresa: [&#x27;&#x27;, [&lt;any&gt;Validators.required, &lt;any&gt;Validators.minLength(1)]],
+            fono_empresa: [&#x27;&#x27;, [&lt;any&gt;Validators.required, &lt;any&gt;Validators.minLength(1)]],
+            mail_empresa: [&#x27;&#x27;, [&lt;any&gt;Validators.required, &lt;any&gt;Validators.minLength(1)]]
+        });
         // Code for the Validator
         const $validator &#x3D; $(&#x27;.card-wizard form&#x27;).validate({
             rules: {
-                firstname: {
+                nombre_empresa: {
                     required: true,
                     minlength: 3
                 },
-                lastname: {
+                razon_social_empresa: {
                     required: true,
                     minlength: 3
-                },
-                email: {
-                    required: true,
-                    minlength: 3,
                 }
             },
 
-            highlight: function(element) {
-              $(element).closest(&#x27;.form-group&#x27;).removeClass(&#x27;has-success&#x27;).addClass(&#x27;has-danger&#x27;);
+            highlight: function (element) {
+                $(element).closest(&#x27;.form-group&#x27;).removeClass(&#x27;has-success&#x27;).addClass(&#x27;has-danger&#x27;);
             },
-            success: function(element) {
-              $(element).closest(&#x27;.form-group&#x27;).removeClass(&#x27;has-danger&#x27;).addClass(&#x27;has-success&#x27;);
+            success: function (element) {
+                $(element).closest(&#x27;.form-group&#x27;).removeClass(&#x27;has-danger&#x27;).addClass(&#x27;has-success&#x27;);
             },
-            errorPlacement : function(error, element) {
-              $(element).append(error);
+            errorPlacement: function (error, element) {
+                $(element).append(error);
             }
         });
 
@@ -297,69 +325,69 @@ export class WizardComponent implements OnInit, OnChanges, AfterViewInit {
             &#x27;nextSelector&#x27;: &#x27;.btn-next&#x27;,
             &#x27;previousSelector&#x27;: &#x27;.btn-previous&#x27;,
 
-            onNext: function(tab, navigation, index) {
+            onNext: function (tab, navigation, index) {
                 var $valid &#x3D; $(&#x27;.card-wizard form&#x27;).valid();
-                if(!$valid) {
+                if (!$valid) {
                     $validator.focusInvalid();
                     return false;
                 }
             },
 
-            onInit: function(tab: any, navigation: any, index: any){
+            onInit: function (tab: any, navigation: any, index: any) {
 
-              // check number of tabs and fill the entire row
-              let $total &#x3D; navigation.find(&#x27;li&#x27;).length;
-              let $wizard &#x3D; navigation.closest(&#x27;.card-wizard&#x27;);
+                // check number of tabs and fill the entire row
+                let $total &#x3D; navigation.find(&#x27;li&#x27;).length;
+                let $wizard &#x3D; navigation.closest(&#x27;.card-wizard&#x27;);
 
-              let $first_li &#x3D; navigation.find(&#x27;li:first-child a&#x27;).html();
-              let $moving_div &#x3D; $(&#x27;&lt;div class&#x3D;&quot;moving-tab&quot;&gt;&#x27; + $first_li + &#x27;&lt;/div&gt;&#x27;);
-              $(&#x27;.card-wizard .wizard-navigation&#x27;).append($moving_div);
+                let $first_li &#x3D; navigation.find(&#x27;li:first-child a&#x27;).html();
+                let $moving_div &#x3D; $(&#x27;&lt;div class&#x3D;&quot;moving-tab&quot;&gt;&#x27; + $first_li + &#x27;&lt;/div&gt;&#x27;);
+                $(&#x27;.card-wizard .wizard-navigation&#x27;).append($moving_div);
 
-              $total &#x3D; $wizard.find(&#x27;.nav li&#x27;).length;
-             let  $li_width &#x3D; 100/$total;
+                $total &#x3D; $wizard.find(&#x27;.nav li&#x27;).length;
+                let $li_width &#x3D; 100 / $total;
 
-              let total_steps &#x3D; $wizard.find(&#x27;.nav li&#x27;).length;
-              let move_distance &#x3D; $wizard.width() / total_steps;
-              let index_temp &#x3D; index;
-              let vertical_level &#x3D; 0;
+                let total_steps &#x3D; $wizard.find(&#x27;.nav li&#x27;).length;
+                let move_distance &#x3D; $wizard.width() / total_steps;
+                let index_temp &#x3D; index;
+                let vertical_level &#x3D; 0;
 
-              let mobile_device &#x3D; $(document).width() &lt; 600 &amp;&amp; $total &gt; 3;
+                let mobile_device &#x3D; $(document).width() &lt; 600 &amp;&amp; $total &gt; 3;
 
-              if(mobile_device){
-                  move_distance &#x3D; $wizard.width() / 2;
-                  index_temp &#x3D; index % 2;
-                  $li_width &#x3D; 50;
-              }
+                if (mobile_device) {
+                    move_distance &#x3D; $wizard.width() / 2;
+                    index_temp &#x3D; index % 2;
+                    $li_width &#x3D; 50;
+                }
 
-              $wizard.find(&#x27;.nav li&#x27;).css(&#x27;width&#x27;,$li_width + &#x27;%&#x27;);
+                $wizard.find(&#x27;.nav li&#x27;).css(&#x27;width&#x27;, $li_width + &#x27;%&#x27;);
 
-              let step_width &#x3D; move_distance;
-              move_distance &#x3D; move_distance * index_temp;
+                let step_width &#x3D; move_distance;
+                move_distance &#x3D; move_distance * index_temp;
 
-              let $current &#x3D; index + 1;
+                let $current &#x3D; index + 1;
 
-              if($current &#x3D;&#x3D; 1 || (mobile_device &#x3D;&#x3D; true &amp;&amp; (index % 2 &#x3D;&#x3D; 0) )){
-                  move_distance -&#x3D; 8;
-              } else if($current &#x3D;&#x3D; total_steps || (mobile_device &#x3D;&#x3D; true &amp;&amp; (index % 2 &#x3D;&#x3D; 1))){
-                  move_distance +&#x3D; 8;
-              }
+                if ($current &#x3D;&#x3D; 1 || (mobile_device &#x3D;&#x3D; true &amp;&amp; (index % 2 &#x3D;&#x3D; 0))) {
+                    move_distance -&#x3D; 8;
+                } else if ($current &#x3D;&#x3D; total_steps || (mobile_device &#x3D;&#x3D; true &amp;&amp; (index % 2 &#x3D;&#x3D; 1))) {
+                    move_distance +&#x3D; 8;
+                }
 
-              if(mobile_device){
-                  let x: any &#x3D; index / 2;
-                  vertical_level &#x3D; parseInt(x);
-                  vertical_level &#x3D; vertical_level * 38;
-              }
+                if (mobile_device) {
+                    let x: any &#x3D; index / 2;
+                    vertical_level &#x3D; parseInt(x);
+                    vertical_level &#x3D; vertical_level * 38;
+                }
 
-              $wizard.find(&#x27;.moving-tab&#x27;).css(&#x27;width&#x27;, step_width);
-              $(&#x27;.moving-tab&#x27;).css({
-                  &#x27;transform&#x27;:&#x27;translate3d(&#x27; + move_distance + &#x27;px, &#x27; + vertical_level +  &#x27;px, 0)&#x27;,
-                  &#x27;transition&#x27;: &#x27;all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1)&#x27;
+                $wizard.find(&#x27;.moving-tab&#x27;).css(&#x27;width&#x27;, step_width);
+                $(&#x27;.moving-tab&#x27;).css({
+                    &#x27;transform&#x27;: &#x27;translate3d(&#x27; + move_distance + &#x27;px, &#x27; + vertical_level + &#x27;px, 0)&#x27;,
+                    &#x27;transition&#x27;: &#x27;all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1)&#x27;
 
-              });
-              $(&#x27;.moving-tab&#x27;).css(&#x27;transition&#x27;,&#x27;transform 0s&#x27;);
-           },
+                });
+                $(&#x27;.moving-tab&#x27;).css(&#x27;transition&#x27;, &#x27;transform 0s&#x27;);
+            },
 
-            onTabClick : function(tab: any, navigation: any, index: any){
+            onTabClick: function (tab: any, navigation: any, index: any) {
 
                 const $valid &#x3D; $(&#x27;.card-wizard form&#x27;).valid();
 
@@ -370,7 +398,7 @@ export class WizardComponent implements OnInit, OnChanges, AfterViewInit {
                 }
             },
 
-            onTabShow: function(tab: any, navigation: any, index: any) {
+            onTabShow: function (tab: any, navigation: any, index: any) {
                 let $total &#x3D; navigation.find(&#x27;li&#x27;).length;
                 let $current &#x3D; index + 1;
 
@@ -387,26 +415,26 @@ export class WizardComponent implements OnInit, OnChanges, AfterViewInit {
 
                 const button_text &#x3D; navigation.find(&#x27;li:nth-child(&#x27; + $current + &#x27;) a&#x27;).html();
 
-                setTimeout(function(){
+                setTimeout(function () {
                     $(&#x27;.moving-tab&#x27;).text(button_text);
                 }, 150);
 
                 const checkbox &#x3D; $(&#x27;.footer-checkbox&#x27;);
 
-                if ( index !&#x3D;&#x3D; 0 ) {
+                if (index !&#x3D;&#x3D; 0) {
                     $(checkbox).css({
-                        &#x27;opacity&#x27;:&#x27;0&#x27;,
-                        &#x27;visibility&#x27;:&#x27;hidden&#x27;,
-                        &#x27;position&#x27;:&#x27;absolute&#x27;
+                        &#x27;opacity&#x27;: &#x27;0&#x27;,
+                        &#x27;visibility&#x27;: &#x27;hidden&#x27;,
+                        &#x27;position&#x27;: &#x27;absolute&#x27;
                     });
                 } else {
                     $(checkbox).css({
-                        &#x27;opacity&#x27;:&#x27;1&#x27;,
-                        &#x27;visibility&#x27;:&#x27;visible&#x27;
+                        &#x27;opacity&#x27;: &#x27;1&#x27;,
+                        &#x27;visibility&#x27;: &#x27;visible&#x27;
                     });
                 }
                 $total &#x3D; $wizard.find(&#x27;.nav li&#x27;).length;
-               let  $li_width &#x3D; 100/$total;
+                let $li_width &#x3D; 100 / $total;
 
                 let total_steps &#x3D; $wizard.find(&#x27;.nav li&#x27;).length;
                 let move_distance &#x3D; $wizard.width() / total_steps;
@@ -415,26 +443,26 @@ export class WizardComponent implements OnInit, OnChanges, AfterViewInit {
 
                 let mobile_device &#x3D; $(document).width() &lt; 600 &amp;&amp; $total &gt; 3;
 
-                if(mobile_device){
+                if (mobile_device) {
                     move_distance &#x3D; $wizard.width() / 2;
                     index_temp &#x3D; index % 2;
                     $li_width &#x3D; 50;
                 }
 
-                $wizard.find(&#x27;.nav li&#x27;).css(&#x27;width&#x27;,$li_width + &#x27;%&#x27;);
+                $wizard.find(&#x27;.nav li&#x27;).css(&#x27;width&#x27;, $li_width + &#x27;%&#x27;);
 
                 let step_width &#x3D; move_distance;
                 move_distance &#x3D; move_distance * index_temp;
 
                 $current &#x3D; index + 1;
 
-                if($current &#x3D;&#x3D; 1 || (mobile_device &#x3D;&#x3D; true &amp;&amp; (index % 2 &#x3D;&#x3D; 0) )){
+                if ($current &#x3D;&#x3D; 1 || (mobile_device &#x3D;&#x3D; true &amp;&amp; (index % 2 &#x3D;&#x3D; 0))) {
                     move_distance -&#x3D; 8;
-                } else if($current &#x3D;&#x3D; total_steps || (mobile_device &#x3D;&#x3D; true &amp;&amp; (index % 2 &#x3D;&#x3D; 1))){
+                } else if ($current &#x3D;&#x3D; total_steps || (mobile_device &#x3D;&#x3D; true &amp;&amp; (index % 2 &#x3D;&#x3D; 1))) {
                     move_distance +&#x3D; 8;
                 }
 
-                if(mobile_device){
+                if (mobile_device) {
                     let x: any &#x3D; index / 2;
                     vertical_level &#x3D; parseInt(x);
                     vertical_level &#x3D; vertical_level * 38;
@@ -442,7 +470,7 @@ export class WizardComponent implements OnInit, OnChanges, AfterViewInit {
 
                 $wizard.find(&#x27;.moving-tab&#x27;).css(&#x27;width&#x27;, step_width);
                 $(&#x27;.moving-tab&#x27;).css({
-                    &#x27;transform&#x27;:&#x27;translate3d(&#x27; + move_distance + &#x27;px, &#x27; + vertical_level +  &#x27;px, 0)&#x27;,
+                    &#x27;transform&#x27;: &#x27;translate3d(&#x27; + move_distance + &#x27;px, &#x27; + vertical_level + &#x27;px, 0)&#x27;,
                     &#x27;transition&#x27;: &#x27;all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1)&#x27;
 
                 });
@@ -451,7 +479,7 @@ export class WizardComponent implements OnInit, OnChanges, AfterViewInit {
 
 
         // Prepare the preview for profile picture
-        $(&#x27;#wizard-picture&#x27;).change(function(){
+        $(&#x27;#wizard-picture&#x27;).change(function () {
             const input &#x3D; $(this);
 
             if (input[0].files &amp;&amp; input[0].files[0]) {
@@ -464,7 +492,7 @@ export class WizardComponent implements OnInit, OnChanges, AfterViewInit {
             }
         });
 
-        $(&#x27;[data-toggle&#x3D;&quot;wizard-radio&quot;]&#x27;).click(function(){
+        $(&#x27;[data-toggle&#x3D;&quot;wizard-radio&quot;]&#x27;).click(function () {
             const wizard &#x3D; $(this).closest(&#x27;.card-wizard&#x27;);
             wizard.find(&#x27;[data-toggle&#x3D;&quot;wizard-radio&quot;]&#x27;).removeClass(&#x27;active&#x27;);
             $(this).addClass(&#x27;active&#x27;);
@@ -472,8 +500,8 @@ export class WizardComponent implements OnInit, OnChanges, AfterViewInit {
             $(this).find(&#x27;[type&#x3D;&quot;radio&quot;]&#x27;).attr(&#x27;checked&#x27;, &#x27;true&#x27;);
         });
 
-        $(&#x27;[data-toggle&#x3D;&quot;wizard-checkbox&quot;]&#x27;).click(function(){
-            if ( $(this).hasClass(&#x27;active&#x27;)) {
+        $(&#x27;[data-toggle&#x3D;&quot;wizard-checkbox&quot;]&#x27;).click(function () {
+            if ($(this).hasClass(&#x27;active&#x27;)) {
                 $(this).removeClass(&#x27;active&#x27;);
                 $(this).find(&#x27;[type&#x3D;&quot;checkbox&quot;]&#x27;).removeAttr(&#x27;checked&#x27;);
             } else {
@@ -500,54 +528,55 @@ export class WizardComponent implements OnInit, OnChanges, AfterViewInit {
     }
     ngAfterViewInit() {
 
-        $( window ).resize( () &#x3D;&gt; { $(&#x27;.card-wizard&#x27;).each(function(){
+        $(window).resize(() &#x3D;&gt; {
+            $(&#x27;.card-wizard&#x27;).each(function () {
 
-            const $wizard &#x3D; $(this);
-            const index &#x3D; $wizard.bootstrapWizard(&#x27;currentIndex&#x27;);
-            let $total &#x3D; $wizard.find(&#x27;.nav li&#x27;).length;
-            let  $li_width &#x3D; 100/$total;
+                const $wizard &#x3D; $(this);
+                const index &#x3D; $wizard.bootstrapWizard(&#x27;currentIndex&#x27;);
+                let $total &#x3D; $wizard.find(&#x27;.nav li&#x27;).length;
+                let $li_width &#x3D; 100 / $total;
 
-            let total_steps &#x3D; $wizard.find(&#x27;.nav li&#x27;).length;
-            let move_distance &#x3D; $wizard.width() / total_steps;
-            let index_temp &#x3D; index;
-            let vertical_level &#x3D; 0;
+                let total_steps &#x3D; $wizard.find(&#x27;.nav li&#x27;).length;
+                let move_distance &#x3D; $wizard.width() / total_steps;
+                let index_temp &#x3D; index;
+                let vertical_level &#x3D; 0;
 
-            let mobile_device &#x3D; $(document).width() &lt; 600 &amp;&amp; $total &gt; 3;
+                let mobile_device &#x3D; $(document).width() &lt; 600 &amp;&amp; $total &gt; 3;
 
-            if(mobile_device){
-                move_distance &#x3D; $wizard.width() / 2;
-                index_temp &#x3D; index % 2;
-                $li_width &#x3D; 50;
-            }
+                if (mobile_device) {
+                    move_distance &#x3D; $wizard.width() / 2;
+                    index_temp &#x3D; index % 2;
+                    $li_width &#x3D; 50;
+                }
 
-            $wizard.find(&#x27;.nav li&#x27;).css(&#x27;width&#x27;,$li_width + &#x27;%&#x27;);
+                $wizard.find(&#x27;.nav li&#x27;).css(&#x27;width&#x27;, $li_width + &#x27;%&#x27;);
 
-            let step_width &#x3D; move_distance;
-            move_distance &#x3D; move_distance * index_temp;
+                let step_width &#x3D; move_distance;
+                move_distance &#x3D; move_distance * index_temp;
 
-            let $current &#x3D; index + 1;
+                let $current &#x3D; index + 1;
 
-            if($current &#x3D;&#x3D; 1 || (mobile_device &#x3D;&#x3D; true &amp;&amp; (index % 2 &#x3D;&#x3D; 0) )){
-                move_distance -&#x3D; 8;
-            } else if($current &#x3D;&#x3D; total_steps || (mobile_device &#x3D;&#x3D; true &amp;&amp; (index % 2 &#x3D;&#x3D; 1))){
-                move_distance +&#x3D; 8;
-            }
+                if ($current &#x3D;&#x3D; 1 || (mobile_device &#x3D;&#x3D; true &amp;&amp; (index % 2 &#x3D;&#x3D; 0))) {
+                    move_distance -&#x3D; 8;
+                } else if ($current &#x3D;&#x3D; total_steps || (mobile_device &#x3D;&#x3D; true &amp;&amp; (index % 2 &#x3D;&#x3D; 1))) {
+                    move_distance +&#x3D; 8;
+                }
 
-            if(mobile_device){
-                let x: any &#x3D; index / 2;
-                vertical_level &#x3D; parseInt(x);
-                vertical_level &#x3D; vertical_level * 38;
-            }
+                if (mobile_device) {
+                    let x: any &#x3D; index / 2;
+                    vertical_level &#x3D; parseInt(x);
+                    vertical_level &#x3D; vertical_level * 38;
+                }
 
-            $wizard.find(&#x27;.moving-tab&#x27;).css(&#x27;width&#x27;, step_width);
-            $(&#x27;.moving-tab&#x27;).css({
-                &#x27;transform&#x27;:&#x27;translate3d(&#x27; + move_distance + &#x27;px, &#x27; + vertical_level +  &#x27;px, 0)&#x27;,
-                &#x27;transition&#x27;: &#x27;all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1)&#x27;
-            });
+                $wizard.find(&#x27;.moving-tab&#x27;).css(&#x27;width&#x27;, step_width);
+                $(&#x27;.moving-tab&#x27;).css({
+                    &#x27;transform&#x27;: &#x27;translate3d(&#x27; + move_distance + &#x27;px, &#x27; + vertical_level + &#x27;px, 0)&#x27;,
+                    &#x27;transition&#x27;: &#x27;all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1)&#x27;
+                });
 
-            $(&#x27;.moving-tab&#x27;).css({
-                &#x27;transition&#x27;: &#x27;transform 0s&#x27;
-            });
+                $(&#x27;.moving-tab&#x27;).css({
+                    &#x27;transition&#x27;: &#x27;transform 0s&#x27;
+                });
             });
         });
     }

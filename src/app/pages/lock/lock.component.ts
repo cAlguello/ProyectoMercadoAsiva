@@ -3,6 +3,7 @@ import { DatePipe } from '@angular/common';
 import { ServicesService } from '../../services.service';
 import { Observable } from 'rxjs/Observable';
 import { dataSinLog } from '../../entities/dataSinLog';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
     selector: 'app-lock-cmp',
@@ -10,6 +11,8 @@ import { dataSinLog } from '../../entities/dataSinLog';
 })
 
 export class LockComponent implements OnInit, OnDestroy {
+    items;
+    currentItem= '';
     public searchText1: any;
     public totalEmpresas: any;
     public totalProductos: any;
@@ -20,6 +23,16 @@ export class LockComponent implements OnInit, OnDestroy {
     test: Date = new Date();
     constructor(private service: ServicesService) {
     }
+    doFilter() {
+        this.items = this.service.getAllProductos()
+          .pipe(
+          map(items => this.filter(items)),
+        )
+      }
+
+      filter(values) {
+        return values.filter(items => items.nombre_producto.toLowerCase().includes(this.currentItem))
+      }
     ngOnInit() {
         //test
         // Get the input field

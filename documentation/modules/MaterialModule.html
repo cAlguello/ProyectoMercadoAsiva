@@ -208,6 +208,8 @@ import { RouterModule } from &#x27;@angular/router&#x27;;
 import { HttpModule } from &#x27;@angular/http&#x27;;
 import { APP_BASE_HREF } from &#x27;@angular/common&#x27;;
 import { FormsModule } from &#x27;@angular/forms&#x27;;
+import {NgCyto} from &#x27;./ng-cyto/ng-cyto.directive&#x27;;
+
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import {
   MatAutocompleteModule,
@@ -251,7 +253,6 @@ import { NavbarModule } from &#x27;./shared/navbar/navbar.module&#x27;;
 import { FixedpluginModule } from &#x27;./shared/fixedplugin/fixedplugin.module&#x27;;
 import { AdminLayoutComponent } from &#x27;./layouts/admin/admin-layout.component&#x27;;
 import { AuthLayoutComponent } from &#x27;./layouts/auth/auth-layout.component&#x27;;
-
 import { AppRoutes } from &#x27;./app.routing&#x27;;
 import { HomeComponent } from &#x27;./home/home.component&#x27;;
 import { SearcherComponent } from &#x27;./searcher/searcher.component&#x27;;
@@ -262,6 +263,16 @@ import { CallbackPipe } from &#x27;./callback.pipe&#x27;;
 import { PanelAdminComponent } from &#x27;./panel-admin/panel-admin.component&#x27;;
 import { SociosComponent } from &#x27;./panel-admin/socios/socios.component&#x27;;
 import { AnalisisComponent } from &#x27;./panel-admin/analisis/analisis.component&#x27;;
+import { GraphComponent } from &#x27;./graph/graph.component&#x27;;
+//import { DashboardModule } from &#x27;./dashboard/dashboard.module&#x27;;
+//nuevo
+/*import {
+  MapModule, MapAPILoader, WindowRef,
+  DocumentRef, BingMapAPILoaderConfig, BingMapAPILoader,
+  GoogleMapAPILoader, GoogleMapAPILoaderConfig
+} from &#x27;angular-maps&#x27;;*/
+const useBing &#x3D; true;
+//fin nuevo
 
 @NgModule({
   exports: [
@@ -297,14 +308,23 @@ import { AnalisisComponent } from &#x27;./panel-admin/analisis/analisis.componen
     MatToolbarModule,
     MatTooltipModule
   ],
-  providers: [authGuard],
+  providers: [authGuard//, {
+  //  provide: MapAPILoader, deps: [], useFactory: useBing ? BingMapServiceProviderFactory : GoogleMapServiceProviderFactory
+//  }
+]
+  ,
   declarations: [HomeComponent, SearcherComponent, PanelAdminComponent, SociosComponent, AnalisisComponent]
 })
 export class MaterialModule { }
 
 @NgModule({
   imports: [
+    //nuevo
+ /*   BrowserModule,
+    useBing ? MapModule.forRootBing() : MapModule.forRootGoogle(),
+   */ //fin nuevo
     HttpModule,
+    //DashboardModule,
     HttpClientModule,
     CommonModule,
     BrowserAnimationsModule,
@@ -317,18 +337,43 @@ export class MaterialModule { }
     SidebarModule,
     NavbarModule,
     FooterModule,
-    FixedpluginModule    
+    FixedpluginModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent   
   ],
-  providers: [authGuard],
+  providers: [authGuard//, {
+   // provide: MapAPILoader, deps: [], useFactory: useBing ? BingMapServiceProviderFactory : GoogleMapServiceProviderFactory
+  //}
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-</code></pre>
+
+/*
+
+export function BingMapServiceProviderFactory() {
+  let bc: BingMapAPILoaderConfig &#x3D; new BingMapAPILoaderConfig();
+  bc.apiKey &#x3D; &quot;AhB4ueykZeH9sG0FnMQksz10l57G2hR-IcCZQyjpvHlE-zfLhjE6Wg9ESCvbij4J&quot;;
+  // replace with your bing map key
+  // the usage of this key outside this plunker is illegal. 
+  bc.branch &#x3D; &quot;experimental&quot;;
+  // to use the experimental bing brach. There are some bug fixes for
+  // clustering in that branch you will need if you want to use 
+  // clustering.
+  return new BingMapAPILoader(bc, new WindowRef(), new DocumentRef());
+}
+
+export function GoogleMapServiceProviderFactory() {
+  const gc: GoogleMapAPILoaderConfig &#x3D; new GoogleMapAPILoaderConfig();
+  gc.apiKey &#x3D; &#x27;AIzaSyDe2QqXrbtaORvL-I0WHpiI72HxtfTz5Zo&#x27;;
+  // replace with your google map key
+  // the usage of this key outside this plunker is illegal. 
+  gc.enableClustering &#x3D; true;
+  return new GoogleMapAPILoader(gc, new WindowRef(), new DocumentRef());
+}*/</code></pre>
     </div>
 </div>
 

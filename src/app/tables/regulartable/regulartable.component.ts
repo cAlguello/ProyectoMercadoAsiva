@@ -13,8 +13,8 @@ import { map, startWith } from 'rxjs/operators';
 declare const $: any;
 @Component({
     selector: 'app-regular-table-cmp',
-                  templateUrl: 'regulartable.component.html',
-       providers: [DatePipe]
+    templateUrl: 'regulartable.component.html',
+    providers: [DatePipe]
 })
 
 export class RegularTableComponent implements OnInit {
@@ -31,9 +31,15 @@ export class RegularTableComponent implements OnInit {
 
     //TEST
     items;
-    currentItem= '';
-    
+    currentItem = '';
+
     //TEST
+    mail = {
+        mensaje: "",
+        mensaje2: "",
+        mensaje3: "",
+        destinatario: ""
+    }
 
     dataConsulta = {
         usuario_id: "",
@@ -48,7 +54,7 @@ export class RegularTableComponent implements OnInit {
 
     }
     //SweetAlert
-    showSwal(Empresa: dataEmpresa) {
+    showSwal(Empresa: dataEmpresaModal) {
         swal({
             input: 'textarea',
             inputPlaceholder: 'Escribe tu consulta aquí...',
@@ -60,21 +66,25 @@ export class RegularTableComponent implements OnInit {
             buttonsStyling: false
         }).then((result) => {
             if (result.value) {
+
                 //console.log(Empresa);
-                this.dataConsulta.empresa_id_empresa = Empresa.empresa_id_empresa;
+                this.dataConsulta.empresa_id_empresa = Empresa.id_empresa;
                 this.dataConsulta.usuario_id = sessionStorage.getItem('id');
                 this.dataConsulta.solicitud_consulta = result.value;
                 this.dataConsulta.fecha_consulta = this.dateFilter.transform(new Date(), 'yy-MM-dd hh:mm');
                 //console.log(result);
                 console.log(this.dataConsulta);
+
                 this.service.addConsulta(this.dataConsulta).subscribe(val => {
-                    console.log("ENTRO EN POST");
-                    console.log(val)
-                },
-                    error => { console.log(error) });
+                }, error => {
+                });
+                this.mail.destinatario = Empresa.mail_empresa;
+                this.mail.mensaje = 'Te han realizado una consulta en MERCADO ASIVA, por favor revisa el buzón en la plataforma.'
+                this.service.sendEmail(this.mail).subscribe(val => {
+                }, error => { });
                 swal({
                     title: 'Consulta Enviada!',
-                    text: 'Te avisaremos en tu buzón cuando te respondan',
+                    text: 'Te avisaremos por correo cuando te respondan',
                     type: 'success',
                     confirmButtonClass: "btn btn-success",
                     buttonsStyling: false
@@ -94,7 +104,7 @@ export class RegularTableComponent implements OnInit {
     //
 
     constructor(private dateFilter: DatePipe, private service: ServicesService) {
-        
+
     }
 
 
@@ -106,10 +116,10 @@ export class RegularTableComponent implements OnInit {
                 console.log(error)
             });
         this.service.searchProductoLogin(text).subscribe(val => {
-            if(val){                
-            this.dataEmpresa = val;
+            if (val) {
+                this.dataEmpresa = val;
             }
-            else{
+            else {
                 this.dataEmpresa = null;
             }
         },
@@ -148,19 +158,21 @@ export class RegularTableComponent implements OnInit {
 
     doFilter() {
         this.items = this.service.getAllProductos()
-          .pipe(
-          map(items => this.filter(items)),
-        )
-      }
+            .pipe(
+                map(items => items.length >= 4 ? this.filter(items) : []),
+            )
+    }
+    //
 
-      filter(values) {
+    //
+    filter(values) {
         return values.filter(items => items.nombre_producto.toLowerCase().includes(this.currentItem))
-      }
+    }
 
-      ///
+    ///
     ngOnInit() {
-      
-        
+
+
         this.service.getAllEmpresasConData().subscribe(val => {
             this.dataEmpresa = val;
             console.log(val);

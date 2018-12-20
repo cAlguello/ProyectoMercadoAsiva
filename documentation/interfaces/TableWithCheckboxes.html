@@ -337,6 +337,8 @@
 import { Observable } from &#x27;rxjs/Observable&#x27;;
 import { ServicesService } from &#x27;../../services.service&#x27;;
 import swal from &#x27;sweetalert2&#x27;;
+import { dataRespuesta } from &#x27;../../entities/dataRespuesta&#x27;;
+import { DatePipe } from &#x27;@angular/common&#x27;;
 
 declare var $: any;
 declare interface TableData {
@@ -359,18 +361,25 @@ export interface TableData2 {
 
 @Component({
     selector: &#x27;app-extended-table-cmp&#x27;,
-    templateUrl: &#x27;extendedtable.component.html&#x27;
+    templateUrl: &#x27;extendedtable.component.html&#x27;,
+    providers: [DatePipe]
 })
 
 export class ExtendedTableComponent implements OnInit {
+    mail &#x3D; {
+        mensaje: &quot;&quot;,
+        mensaje2: &quot;&quot;,
+        mensaje3: &quot;&quot;,
+        destinatario: &quot;&quot;
+    }
     public consultasRecibidas: Observable&lt;any&gt;;
     public consultasRespondidas: Observable&lt;any&gt;;
     public tableData1: TableData;
     public tableData2: TableData2;
     public tableData3: TableData;
-    constructor(private service: ServicesService) { }
+    constructor(private service: ServicesService, private dateFilter: DatePipe) { }
     //SweetAlert
-    showSwal() {
+    showSwal(respuesta: dataRespuesta) {
         swal({
             input: &#x27;textarea&#x27;,
             inputPlaceholder: &#x27;Escribe tu respuesta aquí...&#x27;,
@@ -382,7 +391,23 @@ export class ExtendedTableComponent implements OnInit {
             buttonsStyling: false
         }).then((result) &#x3D;&gt; {
             if (result.value) {
-                
+                //
+                //console.log(Empresa);
+                respuesta.respuesta_consulta &#x3D; result.value;
+                respuesta.fecha_respuesta_consulta &#x3D; this.dateFilter.transform(new Date(), &#x27;yy-MM-dd hh:mm&#x27;);
+                respuesta.estado_consulta &#x3D; 1;
+                console.log(respuesta);
+
+                this.service.addRespuesta(respuesta).subscribe(val &#x3D;&gt; {
+                }, error &#x3D;&gt; {
+                });
+                // this.mail.destinatario &#x3D; Empresa.mail_empresa;
+                //0this.mail.mensaje &#x3D; &#x27;Te han respondido una consulta en MERCADO ASIVA, por favor revisa el buzón en la plataforma.&#x27;
+                /* this.service.sendEmail(this.mail).subscribe(val &#x3D;&gt; {
+                 }, error &#x3D;&gt; { });
+ */
+                //
+
                 swal({
                     title: &#x27;Respuesta Enviada!&#x27;,
                     text: &#x27;Siempre responde rápidamente para mejorar tus estadísticas&#x27;,
@@ -403,18 +428,18 @@ export class ExtendedTableComponent implements OnInit {
 
     }
     ngOnInit() {
-        
-        this.service.getConsultasRecibidas(sessionStorage.getItem(&#x27;id&#x27;)).subscribe(val&#x3D;&gt;{
-            this.consultasRecibidas&#x3D;val;
+
+        this.service.getConsultasRecibidas(sessionStorage.getItem(&#x27;id&#x27;)).subscribe(val &#x3D;&gt; {
+            this.consultasRecibidas &#x3D; val;
             console.log(val);
-        }, error &#x3D;&gt;{
+        }, error &#x3D;&gt; {
             console.log(error);
         });
 
-        this.service.getConsultasRespondidas(sessionStorage.getItem(&#x27;id&#x27;)).subscribe(val&#x3D;&gt;{
-            this.consultasRespondidas&#x3D;val;
+        this.service.getConsultasRespondidas(sessionStorage.getItem(&#x27;id&#x27;)).subscribe(val &#x3D;&gt; {
+            this.consultasRespondidas &#x3D; val;
             console.log(val);
-        }, error &#x3D;&gt;{
+        }, error &#x3D;&gt; {
             console.log(error);
         });
 

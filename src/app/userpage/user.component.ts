@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { dataEmpresaModal } from '../entities/dataEmpresaModal';
 import { Observable } from 'rxjs/Observable';
 import { catchError, map, tap, startWith, switchMap, debounceTime, distinctUntilChanged, takeWhile, first } from 'rxjs/operators';
+import { giroUnicoEmpresa } from '../entities/giroUnicoEmpresa';
 
 declare const $: any;
 
@@ -27,25 +28,10 @@ export class UserComponent {
     constructor(private service: ServicesService, private _fb: FormBuilder, private chRef: ChangeDetectorRef) {
 
     }
-    
-    ngOnInit() {
 
-        //TEST AUTOCOMPLETE
-        this.filteredOptions = this.myControl.valueChanges
-        .pipe(
-        startWith(null),
-        debounceTime(500),
-        distinctUntilChanged(),
-        switchMap(val => 
-           this.service.getAllGiros()
-            .pipe(
-            map(response =>response)
-            )
-        )
-        );
-        //TEST AUTOCOMPLETE
+    ngOnInit() {
         this.service.getAllGiros().subscribe(val => {
-            this.AllGiros = val;            
+            this.AllGiros = val;
             //DATATABLE
             this.chRef.detectChanges();
             const table: any = $('#giroDatatable1').DataTable({
@@ -70,7 +56,7 @@ export class UserComponent {
             this.dataTable = table.DataTable();
         }, error => { console.log(error) });
         //
-       
+
         //
         this.userForm = this._fb.group({
             nombre_empresa: ['', [<any>Validators.required, <any>Validators.minLength(1)]],
@@ -120,25 +106,56 @@ export class UserComponent {
                 )
             });
     }
+    addGiroPrincipal(giro: giroUnicoEmpresa) {
+        giro.empresa_id_empresa = sessionStorage.getItem('id');
+        console.log(giro);
+        this.service.addGiroPrincipalEmpresa(giro).subscribe(val => {
+            console.log(val);
+            //
+            this.service.getGirosEmpresasConData(sessionStorage.getItem('id')).subscribe(val => {
+                this.DataGiros = val;
+            },
+                error => {
+                    console.log(error
+                    )
+                });
+        }, error => {
 
-    private _filter(value: string): string[] {
-        this.service.getAllGiros().subscribe(val => {
-            this.AllGiros = val;
-            //TEST AUTOCOMPLETE
-            var dataAutocomplete = [];
-            for (var i = 0; i < val.length; i++) {
-                dataAutocomplete.push(val[i].nombre_giro);
-                this.options = dataAutocomplete;
-            }
         });
-
-        const filterValue = value.toLowerCase();
-
-        return this.options.filter(option => option.toLowerCase().includes(filterValue));
     }
 
+    addGiro(giro: giroUnicoEmpresa) {
+        giro.empresa_id_empresa = sessionStorage.getItem('id');
+        console.log(giro);
+        this.service.addGiroEmpresa(giro).subscribe(val => {
+            console.log(val);
+            //
+            this.service.getGirosEmpresasConData(sessionStorage.getItem('id')).subscribe(val => {
+                this.DataGiros = val;
+            },
+                error => {
+                    console.log(error
+                    )
+                });
+        }, error => {
+
+        });
+    }
+
+
+
     save(model: dataEmpresaModal, isValid: boolean) {
+
         this.submitted = true;
+        model.id_empresa = sessionStorage.getItem('id');
+        console.log(model);
+        this.service.actualizaEmpresa(model).subscribe(val => {
+            console.log(val);
+        },
+            error => {
+                console.log(error)
+            });
+
 
     }
 

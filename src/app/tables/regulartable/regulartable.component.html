@@ -20,15 +20,11 @@
           </mat-form-field>
 
           <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let item of items | async" [value]="item.nombre_producto">
+            <mat-option *ngFor="let item of items | async" [value]="item.nombre_producto"  >
               {{item.nombre_producto}}
             </mat-option>
           </mat-autocomplete>
-
         </form>
-
-
-
       </div>
     </div>
     <!--FIN BUSCADOR-->
@@ -43,10 +39,7 @@
             </a>
           </div>
           <div class="card-body">
-            <div class="card-actions text-center">
-              <button mat-raised-button type="button" class="btn btn-danger btn-link fix-broken-card">
-                <i class="material-icons">build</i> Fix Header!
-              </button>
+            <div class="card-actions text-center">              
               <button mat-raised-button type="button" class="btn btn-default btn-link" (click)="showSwal(e)" matTooltip="Envia un mensaje a esta Empresa"
                 [matTooltipPosition]="'below'">
                 <i class="material-icons">art_track</i>

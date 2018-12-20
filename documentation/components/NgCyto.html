@@ -1,0 +1,715 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>md-angular-cli-pro documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">md-angular-cli-pro documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>NgCyto</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/ng-cyto/ng-cyto.directive.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ng2-cytoscape</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>#cy {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        left: 0;
+        top: 0;
+    }</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div id&#x3D;&quot;cy&quot;&gt;&lt;/div&gt;</code></pre></td>
+            </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnChanges">ngOnChanges</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#render">render</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#elements">elements</a>
+                            </li>
+                            <li>
+                                <a href="#layout">layout</a>
+                            </li>
+                            <li>
+                                <a href="#style">style</a>
+                            </li>
+                            <li>
+                                <a href="#zoom">zoom</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#select">select</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                                <span class="modifier">Public</span>
+                        <code>constructor(renderer: <a href="https://angular.io/api/core/Renderer" target="_blank">Renderer</a>, el: <a href="https://angular.io/api/core/ElementRef" target="_blank">ElementRef</a>, service: <a href="../injectables/ServicesService.html">ServicesService</a>, chRef: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/ng-cyto/ng-cyto.directive.ts:28</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>renderer</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="https://angular.io/api/core/Renderer" target="_blank" >Renderer</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>el</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>service</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/ServicesService.html" target="_self" >ServicesService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>chRef</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="elements"></a>
+                        <code>elements</code>
+                    </td>
+                    <td class="col-md-10">
+                            <p>
+                            <em>Type :</em>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/ng-cyto/ng-cyto.directive.ts:23</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="layout"></a>
+                        <code>layout</code>
+                    </td>
+                    <td class="col-md-10">
+                            <p>
+                            <em>Type :</em>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/ng-cyto/ng-cyto.directive.ts:25</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="style"></a>
+                        <code>style</code>
+                    </td>
+                    <td class="col-md-10">
+                            <p>
+                            <em>Type :</em>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/ng-cyto/ng-cyto.directive.ts:24</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="zoom"></a>
+                        <code>zoom</code>
+                    </td>
+                    <td class="col-md-10">
+                            <p>
+                            <em>Type :</em>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/ng-cyto/ng-cyto.directive.ts:26</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="select"></a>
+                        <code>select</code>
+                    </td>
+                    <td class="col-md-10">
+                        <em><code>$event</code> Type:</em>    <code>EventEmitter&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/ng-cyto/ng-cyto.directive.ts:28</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngOnChanges"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            ngOnChanges
+                            </b>
+                            <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>ngOnChanges()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/app/ng-cyto/ng-cyto.directive.ts:100</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="render"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            render
+                            </b>
+                            <a href="#render"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>render()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/app/ng-cyto/ng-cyto.directive.ts:108</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnChanges, Renderer, ElementRef, Input, Output, EventEmitter, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
+import { ServicesService } from &#x27;../services.service&#x27;;
+import { graphData } from &#x27;../entities/graphData&#x27;;
+import { nodeData } from &#x27;../entities/nodeData&#x27;;
+
+declare var cytoscape: any;
+
+@Component({
+    selector: &#x27;ng2-cytoscape&#x27;,
+    template: &#x27;&lt;div id&#x3D;&quot;cy&quot;&gt;&lt;/div&gt;&#x27;,
+    styles: [&#x60;#cy {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        left: 0;
+        top: 0;
+    }&#x60;]
+})
+
+
+export class NgCyto implements OnChanges {
+
+    @Input() public elements: any;
+    @Input() public style: any;
+    @Input() public layout: any;
+    @Input() public zoom: any;
+
+    @Output() select: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
+
+    public constructor(private renderer: Renderer, private el: ElementRef, private service: ServicesService, private chRef: ChangeDetectorRef) {
+
+        this.layout &#x3D; this.layout || {
+            name: &#x27;grid&#x27;,
+            directed: true,
+            padding: 0
+        };
+
+        this.zoom &#x3D; this.zoom || {
+            min: 1,
+            max: 1.5
+        };
+
+        this.style &#x3D; this.style || cytoscape.stylesheet()
+
+            .selector(&#x27;node&#x27;)
+            .css({
+                &#x27;shape&#x27;: &#x27;data(shapeType)&#x27;,
+                &#x27;height&#x27;: 80,
+                &#x27;width&#x27;: 120,                
+                &#x27;text-valign&#x27;: &#x27;center&#x27;,
+                &#x27;text-outline-width&#x27;: 1,
+                &#x27;text-outline-color&#x27;: &#x27;data(colorCode)&#x27;,
+                &#x27;background-color&#x27;: &#x27;data(colorCode)&#x27;,
+                &#x27;color&#x27;: &#x27;#fff&#x27;,
+                &#x27;font-size&#x27;: 10,
+                &#x27;background-fit&#x27;: &#x27;cover&#x27;,
+                &#x27;background-image&#x27;:&#x27;data(image)&#x27;
+            })
+            .selector(&#x27;:selected&#x27;)
+            .css({
+                &#x27;border-width&#x27;: 1,
+                &#x27;border-color&#x27;: &#x27;black&#x27;
+            })
+            /*
+            .selector(&#x27;#coca-cola&#x27;)
+            .css({
+                &#x27;background-image&#x27;: &#x27;https://i3.wp.com/tentulogo.com/wp-content/uploads/HistoriadellogodeCocaCola.jpg&#x27;
+            })
+            .selector(&#x27;#abastible&#x27;)
+            .css({
+                &#x27;background-image&#x27;: &#x27;https://pbs.twimg.com/profile_images/1006566767437733888/X8Snf8d7_400x400.jpg&#x27;
+            })
+            .selector(&#x27;#unab&#x27;)
+            .css({
+                &#x27;background-image&#x27;: &#x27;https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Logo-Universidad-Andres-Bello-2013-Nuevo.jpg/240px-Logo-Universidad-Andres-Bello-2013-Nuevo.jpg&#x27;
+            })
+            */
+            .selector(&#x27;edge&#x27;)
+            .css({
+                &#x27;curve-style&#x27;: &#x27;bezier&#x27;,
+                &#x27;opacity&#x27;: 0.666,
+                &#x27;width&#x27;: &#x27;mapData(strength, 70, 100, 2, 6)&#x27;,
+                &#x27;target-arrow-shape&#x27;: &#x27;triangle&#x27;,
+                &#x27;line-color&#x27;: &#x27;data(colorCode)&#x27;,
+                &#x27;source-arrow-color&#x27;: &#x27;data(colorCode)&#x27;,
+                &#x27;target-arrow-color&#x27;: &#x27;data(colorCode)&#x27;
+            })
+            .selector(&#x27;edge.questionable&#x27;)
+            .css({
+                &#x27;line-style&#x27;: &#x27;dotted&#x27;,
+                &#x27;target-arrow-shape&#x27;: &#x27;diamond&#x27;
+            })
+            .selector(&#x27;.faded&#x27;)
+            .css({
+                &#x27;opacity&#x27;: 0.25,
+                &#x27;text-opacity&#x27;: 0
+            });
+    }
+
+    public ngOnChanges(): any {
+        //this.chRef.detectChanges();
+        this.render();
+        console.log(this.elements);
+        //this.chRef.detectChanges();
+        console.log(this.el.nativeElement);
+    }
+   
+    public render() {
+        
+        let cy_contianer &#x3D; this.renderer.selectRootElement(&quot;#cy&quot;);
+        let localselect &#x3D; this.select;
+        let cy &#x3D; cytoscape({
+            container: cy_contianer,
+            layout: this.layout,
+            minZoom: this.zoom.min,
+            maxZoom: this.zoom.max,
+            style: this.style,
+            elements: this.elements,
+        });
+       
+        
+
+
+        cy.on(&#x27;tap&#x27;, &#x27;node&#x27;, function (e) {
+            var node &#x3D; this;
+            var neighborhood &#x3D; node.neighborhood().add(node);
+
+            cy.elements().addClass(&#x27;faded&#x27;);
+            neighborhood.removeClass(&#x27;faded&#x27;);
+            localselect.emit(node.data(&quot;id&quot;));
+        });
+
+        cy.on(&#x27;tap&#x27;, function (e) {
+            if (e.cyTarget &#x3D;&#x3D;&#x3D; cy) {
+                cy.elements().removeClass(&#x27;faded&#x27;);
+            }
+        });
+
+    }
+
+
+
+
+}
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div id="cy"></div></div>'
+    var COMPONENTS = [{'name': 'AdminLayoutComponent', 'selector': 'app-layout'},{'name': 'AnalisisComponent', 'selector': 'app-analisis'},{'name': 'AppComponent', 'selector': 'app-my-app'},{'name': 'AuthLayoutComponent', 'selector': 'app-layout'},{'name': 'ButtonsComponent', 'selector': 'app-buttons'},{'name': 'CalendarComponent', 'selector': 'app-calendar-cmp'},{'name': 'ChartsComponent', 'selector': 'app-charts-cmp'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DataTableComponent', 'selector': 'app-data-table-cmp'},{'name': 'ExtendedFormsComponent', 'selector': 'app-extendedforms-cmp'},{'name': 'ExtendedTableComponent', 'selector': 'app-extended-table-cmp'},{'name': 'FieldErrorDisplayComponent', 'selector': 'app-field-error-display'},{'name': 'FixedpluginComponent', 'selector': 'app-fixedplugin'},{'name': 'FooterComponent', 'selector': 'app-footer-cmp'},{'name': 'FullScreenMapsComponent', 'selector': 'app-fullscreen-map-cmp'},{'name': 'GoogleMapsComponent', 'selector': 'app-vector-maps-cmp'},{'name': 'GraphComponent', 'selector': 'cy-graph'},{'name': 'GridSystemComponent', 'selector': 'app-grid-cmp'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'IconsComponent', 'selector': 'app-icons-cmp'},{'name': 'LockComponent', 'selector': 'app-lock-cmp'},{'name': 'LoginComponent', 'selector': 'app-login-cmp'},{'name': 'MdChartComponent', 'selector': 'app-md-chart'},{'name': 'MdTableComponent', 'selector': 'app-md-table'},{'name': 'MisProductosComponent', 'selector': 'app-mis-productos'},{'name': 'NavbarComponent', 'selector': 'app-navbar-cmp'},{'name': 'NgCyto', 'selector': 'ng2-cytoscape'},{'name': 'NotificationsComponent', 'selector': 'app-notifications-cmp'},{'name': 'PanelAdminComponent', 'selector': 'app-panel-admin'},{'name': 'PanelsComponent', 'selector': 'app-panels-cmp'},{'name': 'PricingComponent', 'selector': 'app-pricing-cmp'},{'name': 'RegularFormsComponent', 'selector': 'app-regularforms-cmp'},{'name': 'RegularTableComponent', 'selector': 'app-regular-table-cmp'},{'name': 'SearcherComponent', 'selector': 'app-searcher'},{'name': 'SidebarComponent', 'selector': 'app-sidebar-cmp'},{'name': 'SociosAdminComponent', 'selector': 'app-socios-admin'},{'name': 'SociosComponent', 'selector': 'app-socios'},{'name': 'SweetAlertComponent', 'selector': 'app-sweetalert-cmp'},{'name': 'TimelineComponent', 'selector': 'app-timeline-cmp'},{'name': 'TypographyComponent', 'selector': 'app-typography-cmp'},{'name': 'UserComponent', 'selector': 'app-user-cmp'},{'name': 'ValidationFormsComponent', 'selector': 'app-validationforms-cmp'},{'name': 'VectorMapsComponent', 'selector': 'app-vector-maps-cmp'},{'name': 'WidgetsComponent', 'selector': 'app-widgets-cmp'},{'name': 'WizardComponent', 'selector': 'app-wizard-cmp'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'NgCyto'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgCyto.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <script src="../js/menu-wc.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
